@@ -613,3 +613,8 @@
 .animate-bounce-subtle {
   animation: bounce-subtle 4s infinite 3s;
 }
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}

@@ -212,16 +212,21 @@ export default function Home() {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Get current page for active menu styling
-  const isActive = (path: string) => {
-    if (path === '/' && location === '/') return true;
-    if (path !== '/' && location === path) return true;
-    return false;
+  // Smooth scroll to sections
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    setIsMobileMenuOpen(false); // Close mobile menu after clicking
   };
 
-  // Close mobile menu when clicking a link
-  const handleMobileLinkClick = () => {
-    setIsMobileMenuOpen(false);
+  // Get current active section (simplified - always show first item as active for now)
+  const isActive = (sectionId: string) => {
+    return sectionId === 'audio-showreel'; // Default to audio showreel as active
   };
 
   const soundCloudItems = [
@@ -269,42 +274,42 @@ export default function Home() {
 
             {/* Desktop Navigation Links - Right Side */}
             <div className="hidden md:flex items-center space-x-2 lg:space-x-4" data-testid="desktop-nav">
-              <Link 
-                href="/" 
+              <button 
+                onClick={() => scrollToSection('audio-showreel')}
                 className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
-                  isActive('/') 
+                  isActive('audio-showreel') 
                     ? 'bg-mickey-yellow text-toontown-darkbrown shadow-lg transform scale-105' 
                     : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md'
                 }`}
                 data-testid="link-audio"
-                aria-current={isActive('/') ? 'page' : undefined}
+                aria-current={isActive('audio-showreel') ? 'page' : undefined}
               >
                 🎵 Audio Showreel
-              </Link>
-              <Link 
-                href="/video" 
+              </button>
+              <button 
+                onClick={() => scrollToSection('video-showreel')}
                 className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
-                  isActive('/video') 
+                  isActive('video-showreel') 
                     ? 'bg-disney-blue text-white shadow-lg transform scale-105' 
                     : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md'
                 }`}
                 data-testid="link-video"
-                aria-current={isActive('/video') ? 'page' : undefined}
+                aria-current={isActive('video-showreel') ? 'page' : undefined}
               >
                 🎬 Video Showreel
-              </Link>
-              <Link 
-                href="/contact" 
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')}
                 className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
-                  isActive('/contact') 
+                  isActive('contact') 
                     ? 'bg-mickey-red text-white shadow-lg transform scale-105' 
                     : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md'
                 }`}
                 data-testid="link-contact"
-                aria-current={isActive('/contact') ? 'page' : undefined}
+                aria-current={isActive('contact') ? 'page' : undefined}
               >
                 📧 Contact
-              </Link>
+              </button>
             </div>
 
             {/* Mobile Hamburger Menu */}
@@ -328,45 +333,42 @@ export default function Home() {
           {isMobileMenuOpen && (
             <div className="md:hidden mt-4 bg-white/95 border-4 border-mickey-yellow rounded-2xl p-4 shadow-xl animate-in slide-in-from-top-2 duration-300" data-testid="mobile-menu">
               <div className="space-y-3">
-                <Link 
-                  href="/" 
-                  onClick={handleMobileLinkClick}
-                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
-                    isActive('/') 
+                <button 
+                  onClick={() => scrollToSection('audio-showreel')}
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
+                    isActive('audio-showreel') 
                       ? 'bg-mickey-yellow text-toontown-darkbrown shadow-md' 
                       : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
                   }`}
                   data-testid="mobile-link-audio"
-                  aria-current={isActive('/') ? 'page' : undefined}
+                  aria-current={isActive('audio-showreel') ? 'page' : undefined}
                 >
                   🎵 Audio Showreel
-                </Link>
-                <Link 
-                  href="/video" 
-                  onClick={handleMobileLinkClick}
-                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
-                    isActive('/video') 
+                </button>
+                <button 
+                  onClick={() => scrollToSection('video-showreel')}
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
+                    isActive('video-showreel') 
                       ? 'bg-disney-blue text-white shadow-md' 
                       : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
                   }`}
                   data-testid="mobile-link-video"
-                  aria-current={isActive('/video') ? 'page' : undefined}
+                  aria-current={isActive('video-showreel') ? 'page' : undefined}
                 >
                   🎬 Video Showreel
-                </Link>
-                <Link 
-                  href="/contact" 
-                  onClick={handleMobileLinkClick}
-                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
-                    isActive('/contact') 
+                </button>
+                <button 
+                  onClick={() => scrollToSection('contact')}
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
+                    isActive('contact') 
                       ? 'bg-mickey-red text-white shadow-md' 
                       : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
                   }`}
                   data-testid="mobile-link-contact"
-                  aria-current={isActive('/contact') ? 'page' : undefined}
+                  aria-current={isActive('contact') ? 'page' : undefined}
                 >
                   📧 Contact
-                </Link>
+                </button>
               </div>
             </div>
           )}
@@ -441,10 +443,9 @@ export default function Home() {
           {/* Testimonials Section - Always Visible */}
           <TestimonialsCarousel />
 
-          {/* Conditional Content Based on Current Route */}
-          {location === '/' && (
-            <div data-testid="audio-content">
-            <section className="mb-12" data-testid="soundcloud-section">
+          {/* Audio Showreel Section - Always Visible */}
+          <div data-testid="audio-content">
+            <section id="audio-showreel" className="mb-12 scroll-mt-24" data-testid="soundcloud-section">
               <div className="text-center mb-8">
                 <Volume2 className="text-mickey-yellow text-4xl mb-4 mx-auto" data-testid="soundcloud-icon" />
                 <h3 className="font-bold text-3xl md:text-4xl text-mickey-yellow">Listen to Arabella's Voice!</h3>
@@ -473,12 +474,10 @@ export default function Home() {
               </div>
             </section>
             </div>
-          )}
 
-          {/* Video Showreel Content */}
-          {location === '/video' && (
-            <div data-testid="video-content">
-            <section className="mb-12" data-testid="youtube-section">
+          {/* Video Showreel Section - Always Visible */}
+          <div data-testid="video-content">
+            <section id="video-showreel" className="mb-12 scroll-mt-24" data-testid="youtube-section">
               <div className="text-center mb-8">
                 <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
                 <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
@@ -517,12 +516,10 @@ export default function Home() {
           </div>
         </section>
             </div>
-          )}
 
-          {/* Contact Content */}
-          {location === '/contact' && (
-            <div data-testid="contact-content">
-        <section className="mb-12" data-testid="contact-section">
+          {/* Contact Section - Always Visible */}
+          <div data-testid="contact-content">
+        <section id="contact" className="mb-12 scroll-mt-24" data-testid="contact-section">
           <div className="text-center mb-8">
             <Mail className="text-disney-blue text-4xl mb-4 mx-auto" data-testid="contact-icon" />
             <h3 className="font-bold text-3xl md:text-4xl text-disney-blue">Get in Touch!</h3>
@@ -555,7 +552,6 @@ export default function Home() {
           </div>
         </section>
             </div>
-          )}
         </main>
 
       {/* Footer Note */}
