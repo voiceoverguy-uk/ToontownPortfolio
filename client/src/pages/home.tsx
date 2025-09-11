@@ -19,7 +19,7 @@ const FloatingIcon = ({ icon: Icon, className = "", delay = 0, position }: Float
   return (
     <Icon
       className={`absolute text-2xl cursor-pointer floating-icon transition-transform duration-500 ${position} ${className} ${
-        isClicked ? 'scale-120 rotate-360' : ''
+        isClicked ? 'scale-[1.2] rotate-[360deg]' : ''
       }`}
       style={{ animationDelay: `${delay}s` }}
       onClick={handleClick}
@@ -106,7 +106,7 @@ const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: Rea
   return (
     <div
       ref={itemRef}
-      className={`soundcloud-item transition-all duration-600 ${isVisible ? 'animate-in' : ''}`}
+      className={`soundcloud-item transition-all duration-700 ${isVisible ? 'animate-in' : ''}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
       data-testid={`soundcloud-item-${index}`}
     >
