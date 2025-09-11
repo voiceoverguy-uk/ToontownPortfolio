@@ -316,14 +316,18 @@ export default function Home() {
           <div className="flex items-center justify-between">
             {/* Logo on the left */}
             <div className="flex-shrink-0" data-testid="nav-logo">
-              <Link href="/" className="block">
+              <button 
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="block cursor-pointer"
+                data-testid="nav-logo-button"
+              >
                 <img 
                   src={arabellaNavLogo} 
                   alt="Arabella Harris - Professional Voiceover Artist"
                   className="h-12 md:h-16 w-auto logo transition-transform duration-300 hover:scale-105"
                   data-testid="arabella-nav-logo"
                 />
-              </Link>
+              </button>
             </div>
 
             {/* Desktop Navigation Links - Right Side */}
