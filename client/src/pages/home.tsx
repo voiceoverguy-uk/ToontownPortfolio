@@ -94,34 +94,22 @@ const TestimonialsCarousel = () => {
   
   const testimonials: Testimonial[] = [
     {
-      quote: "Arabella is a joy to work with, we love working with her.",
-      author: "Tom Hammond",
-      company: "Bauer Radio Group",
+      quote: "Arabella has an incredible gift, her voice is full of charm, authenticity, and youthful energy. I especially love it when she dances during our voiceover sessions 😊 She brings every project to life with a true natural delivery, she's a rare young voice talent! Arabella is an absolute joy to work with, and we look forward to the next project.",
+      author: "Graham Hellis",
+      company: "Clearwave",
       role: "Producer"
     },
     {
-      quote: "Her natural talent and professionalism shine through in every project. Arabella brings such warmth and energy to our campaigns.",
-      author: "Sarah Mitchell",
-      company: "Tesco Creative",
-      role: "Creative Director"
+      quote: "Arabella has been a pleasure to record on a number of occasions. She takes direction well, mature beyond her age and I always end up with a great result.",
+      author: "Steve Withey",
+      company: "Sound Logic",
+      role: "Producer"
     },
     {
-      quote: "Working with Arabella is always a pleasure. She delivers exceptional quality and brings our scripts to life with her incredible voice.",
-      author: "James Wilson",
-      company: "Sainsbury's Media",
-      role: "Brand Manager"
-    },
-    {
-      quote: "Arabella's voice perfectly captures the spirit of our brand. She's reliable, talented, and an absolute delight to work with.",
-      author: "Emma Thompson",
-      company: "Uber UK",
-      role: "Marketing Lead"
-    },
-    {
-      quote: "From commercials to character work, Arabella consistently exceeds our expectations. A true professional at such a young age!",
-      author: "David Brown",
-      company: "AXA Insurance",
-      role: "Communications Director"
+      quote: "Arabella is one of the best CVO's I've had the joy of working with. She is a go to for any project, due to her amazing direction understanding, and can deliver depth, character and emotion into any script given.",
+      author: "Tom Hammond",
+      company: "Bauer Media",
+      role: "Producer"
     }
   ];
 
