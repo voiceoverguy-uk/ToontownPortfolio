@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
+import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -113,7 +114,7 @@ const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: Rea
     >
       <div className="flex items-center mb-3">
         <Icon className="text-mickey-red text-xl mr-2" data-testid={`soundcloud-icon-${index}`} />
-        <span className="font-friendly font-bold text-toontown-darkbrown">{title}</span>
+        <span className="font-bold text-toontown-darkbrown">{title}</span>
       </div>
       <iframe
         width="100%"
@@ -222,7 +223,7 @@ const TestimonialsCarousel = () => {
                   "{testimonial.quote}"
                 </blockquote>
                 <footer className="text-right">
-                  <cite className="cartoon-text text-lg text-mickey-red not-italic" data-testid={`testimonial-author-${index}`}>
+                  <cite className="font-bold text-lg text-mickey-red not-italic" data-testid={`testimonial-author-${index}`}>
                     – {testimonial.author}
                   </cite>
                   <p className="text-sm font-friendly font-bold text-disney-blue mt-1" data-testid={`testimonial-company-${index}`}>
@@ -277,63 +278,28 @@ export default function Home() {
     { title: "Gaming", icon: Gamepad2 },
     { title: "Kids Content", icon: Baby },
     { title: "International", icon: Globe },
-    { title: "E-learning", icon: ShoppingCart },
-    { title: "Award Winners", icon: Star },
   ];
 
   return (
     <div className="bg-background text-foreground min-h-screen">
       {/* Header */}
-      <header className="relative overflow-hidden py-8 px-4" data-testid="header-section">
-        {/* Floating Background Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          <FloatingIcon 
-            icon={Star} 
-            className="text-toontown-yellow" 
-            delay={0} 
-            position="top-10 left-10" 
-          />
-          <FloatingIcon 
-            icon={Music} 
-            className="text-toontown-red text-xl" 
-            delay={1} 
-            position="top-20 right-20" 
-          />
-          <FloatingIcon 
-            icon={Mic} 
-            className="text-toontown-blue" 
-            delay={2} 
-            position="bottom-20 left-20" 
-          />
-          <FloatingIcon 
-            icon={Heart} 
-            className="text-toontown-red text-xl" 
-            delay={1.5} 
-            position="bottom-10 right-10" 
-          />
-        </div>
-
-        {/* Main Sign */}
+      <header className="relative py-8 px-4" data-testid="header-section">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="wooden-sign px-8 py-12 mx-4 relative bounce-in" data-testid="main-sign">
-            {/* Decorative screws */}
-            <div className="absolute top-4 left-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-tl"></div>
-            <div className="absolute top-4 right-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-tr"></div>
-            <div className="absolute bottom-4 left-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-bl"></div>
-            <div className="absolute bottom-4 right-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-br"></div>
-
-            <h1 className="cartoon-text text-4xl md:text-6xl lg:text-7xl text-mickey-yellow mb-6" data-testid="presenting-text">
-              Presenting...
-            </h1>
-            <h2 className="cartoon-text-glow text-5xl md:text-7xl lg:text-8xl text-white mb-8" data-testid="name-text">
-              Arabella Harris!
-            </h2>
-
+          <div className="relative" data-testid="main-logo">
+            <img 
+              src={arabellaLogo} 
+              alt="Presenting Arabella Harris - Professional Young Voiceover Artist"
+              className="w-full max-w-2xl mx-auto h-auto"
+              data-testid="arabella-logo"
+            />
+            
             {/* Animated Counter */}
-            <div className="bg-mickey-red rounded-2xl px-6 py-4 inline-block cartoon-border" data-testid="age-counter-container">
-              <span className="cartoon-text-glow text-2xl md:text-3xl text-white">
-                Aged... <AnimatedCounter />
-              </span>
+            <div className="mt-6">
+              <div className="bg-mickey-red border-4 border-toontown-darkbrown rounded-2xl px-6 py-4 inline-block shadow-lg" data-testid="age-counter-container">
+                <span className="font-bold text-2xl md:text-3xl text-white">
+                  Aged... <AnimatedCounter />
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -344,8 +310,8 @@ export default function Home() {
         {/* Bio Section */}
         <section className="bg-white rounded-3xl p-8 mb-12 shadow-lg cartoon-border" data-testid="bio-section">
           <div className="flex items-center mb-6">
-            <Mic className="text-mickey-orange text-3xl mr-4 floating-icon" data-testid="bio-icon" />
-            <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
+            <Mic className="text-mickey-orange text-3xl mr-4" data-testid="bio-icon" />
+            <h3 className="font-bold text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 items-center">
@@ -355,12 +321,9 @@ export default function Home() {
                 <img 
                   src={arabellaImage} 
                   alt="Arabella Harris in recording studio with headphones and microphone"
-                  className="w-full max-w-xs rounded-3xl cartoon-border shadow-lg transform hover:scale-105 transition-transform duration-300"
+                  className="w-full max-w-xs rounded-3xl border-4 border-toontown-darkbrown shadow-lg transform hover:scale-105 transition-transform duration-300"
                   data-testid="arabella-profile-image"
                 />
-                <div className="absolute -top-4 -right-4 bg-mickey-yellow rounded-full p-2 cartoon-border bounce-in" style={{ animationDelay: '0.5s' }}>
-                  <Mic className="text-mickey-red text-xl" data-testid="mic-badge" />
-                </div>
               </div>
             </div>
             
@@ -372,9 +335,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-mickey-yellow rounded-2xl p-6 text-center cartoon-border mt-8" data-testid="disclaimer-box">
-            <GraduationCap className="text-disney-blue text-2xl mb-3 floating-icon mx-auto" data-testid="graduation-icon" />
-            <p className="cartoon-text text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
+          <div className="bg-white border-4 border-mickey-yellow rounded-2xl p-6 text-center shadow-lg mt-8" data-testid="disclaimer-box">
+            <GraduationCap className="text-disney-blue text-2xl mb-3 mx-auto" data-testid="graduation-icon" />
+            <p className="font-bold text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
               Note: Arabella is not available during school hours or when homework is due! 📚✏️
             </p>
           </div>
@@ -383,43 +346,39 @@ export default function Home() {
         {/* YouTube Section */}
         <section className="mb-12" data-testid="youtube-section">
           <div className="text-center mb-8">
-            <Play className="text-mickey-red text-4xl mb-4 floating-icon mx-auto" data-testid="youtube-icon" />
-            <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
+            <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
+            <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Video 1 */}
-            <div className="video-container bg-disney-blue p-4 cartoon-border" data-testid="video-container-1">
-              <div className="bg-white rounded-lg p-2">
-                <iframe
-                  width="100%"
-                  height="315"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="Arabella Harris Voiceover Demo 1"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="rounded-lg"
-                  data-testid="youtube-iframe-1"
-                />
-              </div>
+            <div className="bg-white border-8 border-disney-blue rounded-2xl p-4 shadow-lg" data-testid="video-container-1">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Arabella Harris Voiceover Demo 1"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+                data-testid="youtube-iframe-1"
+              />
             </div>
 
             {/* Video 2 */}
-            <div className="video-container bg-mickey-orange p-4 cartoon-border" data-testid="video-container-2">
-              <div className="bg-white rounded-lg p-2">
-                <iframe
-                  width="100%"
-                  height="315"
-                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                  title="Arabella Harris Voiceover Demo 2"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="rounded-lg"
-                  data-testid="youtube-iframe-2"
-                />
-              </div>
+            <div className="bg-white border-8 border-mickey-orange rounded-2xl p-4 shadow-lg" data-testid="video-container-2">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Arabella Harris Voiceover Demo 2"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="rounded-lg"
+                data-testid="youtube-iframe-2"
+              />
             </div>
           </div>
         </section>
@@ -430,8 +389,8 @@ export default function Home() {
         {/* SoundCloud Section */}
         <section className="mb-12" data-testid="soundcloud-section">
           <div className="text-center mb-8">
-            <Volume2 className="text-disney-blue text-4xl mb-4 floating-icon mx-auto" data-testid="soundcloud-header-icon" />
-            <h3 className="cartoon-text text-3xl md:text-4xl text-disney-blue">Listen to Arabella's Voice Reels!</h3>
+            <Volume2 className="text-disney-blue text-4xl mb-4 mx-auto" data-testid="soundcloud-header-icon" />
+            <h3 className="font-bold text-3xl md:text-4xl text-disney-blue">Listen to Arabella's Voice Reels!</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6" data-testid="soundcloud-grid">
@@ -465,7 +424,7 @@ export default function Home() {
               </div>
             </div>
             <div className="md:col-span-3 text-center md:text-left">
-              <p className="cartoon-text text-xl md:text-2xl text-white leading-relaxed" data-testid="footer-note-text">
+              <p className="font-bold text-xl md:text-2xl text-white leading-relaxed" data-testid="footer-note-text">
                 She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
               </p>
               <p className="font-friendly text-lg text-toontown-cream mt-2 opacity-90">
@@ -479,17 +438,29 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-mickey-orange py-8 px-4 mt-12" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="wooden-sign px-6 py-8 mx-4" data-testid="footer-sign">
-            <h4 className="cartoon-text-glow text-2xl md:text-3xl text-white mb-4" data-testid="footer-title">
+          <div className="bg-white border-6 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg" data-testid="footer-sign">
+            <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-4" data-testid="footer-title">
               Ready to Work with Arabella?
             </h4>
-            <p className="text-lg text-toontown-cream font-friendly font-semibold mb-4" data-testid="footer-text">
+            <p className="text-lg text-toontown-darkbrown font-friendly font-semibold mb-6" data-testid="footer-text">
               Contact her representation for bookings and inquiries!
             </p>
+            
+            {/* Book Now Button */}
+            <div className="mb-6">
+              <a 
+                href="mailto:arabella@voiceoverguy.co.uk"
+                className="book-now-button"
+                data-testid="book-now-button"
+              >
+                📧 Book Now!
+              </a>
+            </div>
+            
             <div className="flex justify-center space-x-6">
-              <Mail className="text-mickey-yellow text-2xl floating-icon cursor-pointer" data-testid="contact-email" />
-              <Phone className="text-mickey-yellow text-2xl floating-icon cursor-pointer" style={{ animationDelay: '0.5s' }} data-testid="contact-phone" />
-              <GlobeIcon className="text-mickey-yellow text-2xl floating-icon cursor-pointer" style={{ animationDelay: '1s' }} data-testid="contact-website" />
+              <Mail className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-email" />
+              <Phone className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-phone" />
+              <GlobeIcon className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-website" />
             </div>
           </div>
         </div>

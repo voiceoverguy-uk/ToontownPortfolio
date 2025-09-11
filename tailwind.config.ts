@@ -86,7 +86,7 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
-        cartoon: ["var(--font-cartoon)"],
+        heading: ["var(--font-heading)"],
         friendly: ["var(--font-friendly)"],
         bold: ["var(--font-bold)"],
       },
