@@ -439,13 +439,6 @@ export default function Home() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* White Heading */}
-          <div className="text-center mb-12">
-            <h1 className="font-bold text-4xl md:text-6xl text-white mb-4" data-testid="meet-arabella-heading">
-              Meet Arabella Harris
-            </h1>
-          </div>
-
           {/* Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Arabella's Image */}
@@ -476,6 +469,9 @@ export default function Home() {
             
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" data-testid="meet-arabella-heading">
+                Meet Arabella Harris
+              </h2>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
                 Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
