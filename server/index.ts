@@ -1,6 +1,8 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
-import { setupVite, serveStatic, log } from "./vite";
+
+// Local logger placeholder - will be replaced when vite module loads
+let log: (message: string, source?: string) => void = (m) => console.log(m);
 
 const app = express();
 app.use(express.json());
@@ -51,8 +53,16 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
+    // Delete REPL_ID to avoid top-level await in vite.config.ts
+    delete process.env.REPL_ID;
+    
+    // Dynamically import vite module to avoid static import issues
+    const { setupVite, log: viteLog } = await import("./vite");
+    log = viteLog;
     await setupVite(app, server);
   } else {
+    // Dynamically import serveStatic for production
+    const { serveStatic } = await import("./vite");
     serveStatic(app);
   }
 
