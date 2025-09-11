@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocation } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
-import arabellaBanner from '@assets/arabella-harris-logo_1757601692768.jpg';
+import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -250,68 +250,74 @@ export default function Home() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      {/* Header */}
+      {/* Header with Banner */}
       <header className="relative py-8 px-4" data-testid="header-section">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="relative" data-testid="main-logo">
+          <div className="relative mb-8" data-testid="main-logo">
             <img 
               src={arabellaBanner} 
-              alt="Presenting Arabella Harris - Professional Young Voiceover Artist Aged 09"
+              alt="Arabella Harris - Professional Voiceover Artist"
               className="w-full h-auto"
               data-testid="arabella-banner"
             />
           </div>
+          
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* Bio Section - Always Visible */}
-        <section className="bg-white rounded-3xl p-8 mb-12 shadow-lg cartoon-border" data-testid="bio-section">
-          <div className="flex items-center mb-6">
-            <Mic className="text-mickey-orange text-3xl mr-4" data-testid="bio-icon" />
-            <h3 className="font-bold text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
+      {/* Main Content with Tabs */}
+      <Tabs value={getActiveTab()} onValueChange={handleTabChange} className="w-full" data-testid="main-tabs">
+        {/* Navigation Tabs as Sticky Header */}
+        <div className="sticky top-0 z-50 bg-white border-b-8 border-toontown-darkbrown shadow-lg">
+          <div className="max-w-4xl mx-auto px-4 py-4">
+            <TabsList className="grid w-full grid-cols-3 bg-white border-4 border-mickey-yellow rounded-2xl p-2" data-testid="tabs-list">
+              <TabsTrigger value="audio" className="font-bold text-lg py-3 px-6 rounded-xl data-[state=active]:bg-mickey-yellow data-[state=active]:text-toontown-darkbrown hover:bg-mickey-yellow/20" data-testid="tab-audio">🎵 Audio Showreel</TabsTrigger>
+              <TabsTrigger value="video" className="font-bold text-lg py-3 px-6 rounded-xl data-[state=active]:bg-disney-blue data-[state=active]:text-white hover:bg-disney-blue/20" data-testid="tab-video">🎬 Video Showreel</TabsTrigger>
+              <TabsTrigger value="contact" className="font-bold text-lg py-3 px-6 rounded-xl data-[state=active]:bg-mickey-red data-[state=active]:text-white hover:bg-mickey-red/20" data-testid="tab-contact">📧 Contact</TabsTrigger>
+            </TabsList>
           </div>
+        </div>
 
-          <div className="grid md:grid-cols-3 gap-8 items-center">
-            {/* Arabella's Image */}
-            <div className="md:col-span-1 flex justify-center">
-              <div className="relative">
-                <img 
-                  src={arabellaImage} 
-                  alt="Arabella Harris in recording studio with headphones and microphone"
-                  className="w-full max-w-xs rounded-3xl border-4 border-toontown-darkbrown shadow-lg transform hover:scale-105 transition-transform duration-300"
-                  data-testid="arabella-profile-image"
-                />
+        {/* Main Content */}
+        <main className="max-w-6xl mx-auto px-4 py-8">
+          {/* Bio Section - Always Visible */}
+          <section className="bg-white rounded-3xl p-8 mb-12 shadow-lg cartoon-border" data-testid="bio-section">
+            <div className="flex items-center mb-6">
+              <Mic className="text-mickey-orange text-3xl mr-4" data-testid="bio-icon" />
+              <h3 className="font-bold text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-8 items-center">
+              {/* Arabella's Image */}
+              <div className="md:col-span-1 flex justify-center">
+                <div className="relative">
+                  <img 
+                    src={arabellaImage} 
+                    alt="Arabella Harris in recording studio with headphones and microphone"
+                    className="w-full max-w-xs rounded-3xl border-4 border-toontown-darkbrown shadow-lg transform hover:scale-105 transition-transform duration-300"
+                    data-testid="arabella-profile-image"
+                  />
+                </div>
+              </div>
+              
+              {/* Bio Text */}
+              <div className="md:col-span-2 prose prose-lg max-w-none">
+                <p className="text-lg md:text-xl text-toontown-darkbrown leading-relaxed font-friendly font-semibold mb-6" data-testid="bio-text">
+                  Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
+                </p>
               </div>
             </div>
-            
-            {/* Bio Text */}
-            <div className="md:col-span-2 prose prose-lg max-w-none">
-              <p className="text-lg md:text-xl text-toontown-darkbrown leading-relaxed font-friendly font-semibold mb-6" data-testid="bio-text">
-                Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
+
+            <div className="bg-white border-4 border-mickey-yellow rounded-2xl p-6 text-center shadow-lg mt-8" data-testid="disclaimer-box">
+              <GraduationCap className="text-disney-blue text-2xl mb-3 mx-auto" data-testid="graduation-icon" />
+              <p className="font-bold text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
+                Note: Arabella is not available during school hours or when homework is due! 📚✏️
               </p>
             </div>
-          </div>
+          </section>
 
-          <div className="bg-white border-4 border-mickey-yellow rounded-2xl p-6 text-center shadow-lg mt-8" data-testid="disclaimer-box">
-            <GraduationCap className="text-disney-blue text-2xl mb-3 mx-auto" data-testid="graduation-icon" />
-            <p className="font-bold text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
-              Note: Arabella is not available during school hours or when homework is due! 📚✏️
-            </p>
-          </div>
-        </section>
-
-        {/* Testimonials Section - Always Visible */}
-        <TestimonialsCarousel />
-
-        {/* Navigation Tabs */}
-        <Tabs value={getActiveTab()} onValueChange={handleTabChange} className="w-full" data-testid="main-tabs">
-          <TabsList className="grid w-full grid-cols-3 mb-8" data-testid="tabs-list">
-            <TabsTrigger value="audio" data-testid="tab-audio">🎵 Audio Showreel</TabsTrigger>
-            <TabsTrigger value="video" data-testid="tab-video">🎬 Video Showreel</TabsTrigger>
-            <TabsTrigger value="contact" data-testid="tab-contact">📧 Contact</TabsTrigger>
-          </TabsList>
+          {/* Testimonials Section - Always Visible */}
+          <TestimonialsCarousel />
 
           {/* Audio Showreel Tab */}
           <TabsContent value="audio" data-testid="audio-content">
@@ -422,8 +428,8 @@ export default function Home() {
           </div>
         </section>
       </TabsContent>
-    </Tabs>
-      </main>
+        </main>
+      </Tabs>
 
       {/* Footer Note */}
       <div className="max-w-5xl mx-auto px-4 mb-8">
