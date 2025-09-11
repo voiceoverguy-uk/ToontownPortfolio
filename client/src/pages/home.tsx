@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useLocation } from 'wouter';
+import { useLocation, Link } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
@@ -222,19 +221,11 @@ const TestimonialsCarousel = () => {
 export default function Home() {
   const [location, setLocation] = useLocation();
   
-  // Tab routing logic
-  const getActiveTab = () => {
-    if (location === '/video') return 'video';
-    if (location === '/contact') return 'contact';
-    return 'audio'; // default to audio tab
-  };
-  
-  const handleTabChange = (value: string) => {
-    if (value === 'audio') {
-      setLocation('/');
-    } else {
-      setLocation(`/${value}`);
-    }
+  // Get current page for active menu styling
+  const isActive = (path: string) => {
+    if (path === '/' && location === '/') return true;
+    if (path !== '/' && location === path) return true;
+    return false;
   };
 
   const soundCloudItems = [
@@ -265,18 +256,49 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Main Content with Tabs */}
-      <Tabs value={getActiveTab()} onValueChange={handleTabChange} className="w-full" data-testid="main-tabs">
-        {/* Navigation Tabs as Sticky Header */}
-        <div className="sticky top-0 z-50 bg-white border-b-8 border-toontown-darkbrown shadow-lg">
-          <div className="max-w-4xl mx-auto px-4 py-4">
-            <TabsList className="grid w-full grid-cols-3 bg-white border-4 border-mickey-yellow rounded-2xl p-2" data-testid="tabs-list">
-              <TabsTrigger value="audio" className="font-bold text-lg py-3 px-6 rounded-xl data-[state=active]:bg-mickey-yellow data-[state=active]:text-toontown-darkbrown hover:bg-mickey-yellow/20" data-testid="tab-audio">🎵 Audio Showreel</TabsTrigger>
-              <TabsTrigger value="video" className="font-bold text-lg py-3 px-6 rounded-xl data-[state=active]:bg-disney-blue data-[state=active]:text-white hover:bg-disney-blue/20" data-testid="tab-video">🎬 Video Showreel</TabsTrigger>
-              <TabsTrigger value="contact" className="font-bold text-lg py-3 px-6 rounded-xl data-[state=active]:bg-mickey-red data-[state=active]:text-white hover:bg-mickey-red/20" data-testid="tab-contact">📧 Contact</TabsTrigger>
-            </TabsList>
+      {/* Traditional Navigation Menu */}
+      <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white border-b-8 border-toontown-darkbrown shadow-lg">
+        <div className="max-w-4xl mx-auto px-4 py-4">
+          <div className="grid grid-cols-3 gap-4 bg-white border-4 border-mickey-yellow rounded-2xl p-2">
+            <Link 
+              href="/" 
+              className={`font-bold text-lg py-3 px-6 rounded-xl text-center transition-all duration-200 ${
+                isActive('/') 
+                  ? 'bg-mickey-yellow text-toontown-darkbrown' 
+                  : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
+              }`}
+              data-testid="link-audio"
+              aria-current={isActive('/') ? 'page' : undefined}
+            >
+              🎵 Audio Showreel
+            </Link>
+            <Link 
+              href="/video" 
+              className={`font-bold text-lg py-3 px-6 rounded-xl text-center transition-all duration-200 ${
+                isActive('/video') 
+                  ? 'bg-disney-blue text-white' 
+                  : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
+              }`}
+              data-testid="link-video"
+              aria-current={isActive('/video') ? 'page' : undefined}
+            >
+              🎬 Video Showreel
+            </Link>
+            <Link 
+              href="/contact" 
+              className={`font-bold text-lg py-3 px-6 rounded-xl text-center transition-all duration-200 ${
+                isActive('/contact') 
+                  ? 'bg-mickey-red text-white' 
+                  : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
+              }`}
+              data-testid="link-contact"
+              aria-current={isActive('/contact') ? 'page' : undefined}
+            >
+              📧 Contact
+            </Link>
           </div>
         </div>
+      </nav>
 
         {/* Main Content */}
         <main className="max-w-6xl mx-auto px-4 py-8">
@@ -319,8 +341,9 @@ export default function Home() {
           {/* Testimonials Section - Always Visible */}
           <TestimonialsCarousel />
 
-          {/* Audio Showreel Tab */}
-          <TabsContent value="audio" data-testid="audio-content">
+          {/* Conditional Content Based on Current Route */}
+          {location === '/' && (
+            <div data-testid="audio-content">
             <section className="mb-12" data-testid="soundcloud-section">
               <div className="text-center mb-8">
                 <Volume2 className="text-mickey-yellow text-4xl mb-4 mx-auto" data-testid="soundcloud-icon" />
@@ -349,10 +372,12 @@ export default function Home() {
                 />
               </div>
             </section>
-          </TabsContent>
+            </div>
+          )}
 
-          {/* Video Showreel Tab */}
-          <TabsContent value="video" data-testid="video-content">
+          {/* Video Showreel Content */}
+          {location === '/video' && (
+            <div data-testid="video-content">
             <section className="mb-12" data-testid="youtube-section">
               <div className="text-center mb-8">
                 <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
@@ -391,10 +416,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </TabsContent>
+            </div>
+          )}
 
-      {/* Contact Tab */}
-      <TabsContent value="contact" data-testid="contact-content">
+          {/* Contact Content */}
+          {location === '/contact' && (
+            <div data-testid="contact-content">
         <section className="mb-12" data-testid="contact-section">
           <div className="text-center mb-8">
             <Mail className="text-disney-blue text-4xl mb-4 mx-auto" data-testid="contact-icon" />
@@ -427,9 +454,9 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </TabsContent>
+            </div>
+          )}
         </main>
-      </Tabs>
 
       {/* Footer Note */}
       <div className="max-w-5xl mx-auto px-4 mb-8">
