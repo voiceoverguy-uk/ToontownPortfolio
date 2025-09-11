@@ -425,41 +425,6 @@ export default function Home() {
 
         {/* Main Content */}
         <main className="max-w-6xl mx-auto px-4 py-8">
-          {/* Bio Section - Always Visible */}
-          <section className="bg-white rounded-3xl p-8 mb-12 shadow-lg cartoon-border" data-testid="bio-section">
-            <div className="flex items-center mb-6">
-              <Mic className="text-mickey-orange text-3xl mr-4" data-testid="bio-icon" />
-              <h3 className="font-bold text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 items-center">
-              {/* Arabella's Image */}
-              <div className="md:col-span-1 flex justify-center">
-                <div className="relative">
-                  <img 
-                    src={arabellaImage} 
-                    alt="Arabella Harris in recording studio with headphones and microphone"
-                    className="w-full max-w-xs rounded-3xl border-4 border-toontown-darkbrown shadow-lg transform hover:scale-105 transition-transform duration-300"
-                    data-testid="arabella-profile-image"
-                  />
-                </div>
-              </div>
-              
-              {/* Bio Text */}
-              <div className="md:col-span-2 prose prose-lg max-w-none">
-                <p className="text-lg md:text-xl text-toontown-darkbrown leading-relaxed font-friendly font-semibold mb-6" data-testid="bio-text">
-                  Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white border-4 border-mickey-yellow rounded-2xl p-6 text-center shadow-lg mt-8" data-testid="disclaimer-box">
-              <GraduationCap className="text-disney-blue text-2xl mb-3 mx-auto" data-testid="graduation-icon" />
-              <p className="font-bold text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
-                Note: Arabella is not available during school hours or when homework is due! 📚✏️
-              </p>
-            </div>
-          </section>
 
           {/* Testimonials Section - Always Visible */}
           <TestimonialsCarousel />
