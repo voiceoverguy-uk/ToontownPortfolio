@@ -53,13 +53,69 @@ app.use((req, res, next) => {
   // setting up all the other routes so the catch-all route
   // doesn't interfere with the other routes
   if (app.get("env") === "development") {
-    // Delete REPL_ID to avoid top-level await in vite.config.ts
-    delete process.env.REPL_ID;
+    // Setup Vite directly to avoid protected file issues
+    const { createServer: createViteServer } = await import("vite");
+    const fs = await import("fs");
+    const path = await import("path");
+    const { nanoid } = await import("nanoid");
     
-    // Dynamically import vite module to avoid static import issues
-    const { setupVite, log: viteLog } = await import("./vite");
-    log = viteLog;
-    await setupVite(app, server);
+    log("Initializing Vite middleware", "vite");
+    
+    const vite = await createViteServer({
+      root: path.resolve(import.meta.dirname, "../client"),  // Set root to client directory
+      server: { 
+        middlewareMode: true, 
+        hmr: { server },
+        host: true,
+        strictPort: false,
+        allowedHosts: true  // This is what disables the host check!
+      },
+      appType: 'custom',
+      configFile: false, // Don't use vite.config.ts to avoid issues
+      plugins: [
+        // Import plugins directly to avoid config issues
+        (await import("@vitejs/plugin-react")).default(),
+      ],
+      resolve: {
+        alias: {
+          "@": path.resolve(import.meta.dirname, "../client/src"),
+          "@lib": path.resolve(import.meta.dirname, "../client/src/lib"),
+          "@components": path.resolve(import.meta.dirname, "../client/src/components"),
+          "@assets": path.resolve(import.meta.dirname, "../attached_assets"),
+          "@shared": path.resolve(import.meta.dirname, "../shared"),
+        },
+      },
+    });
+
+    app.use(vite.middlewares);
+    
+    // Catch-all route to serve client HTML
+    app.use("*", async (req, res, next) => {
+      const url = req.originalUrl;
+
+      try {
+        const clientTemplate = path.resolve(
+          import.meta.dirname,
+          "..",
+          "client",
+          "index.html",
+        );
+
+        // Reload the index.html file from disk in case it changes
+        let template = await fs.promises.readFile(clientTemplate, "utf-8");
+        template = template.replace(
+          `src="/src/main.tsx"`,
+          `src="/src/main.tsx?v=${nanoid()}"`,
+        );
+        const page = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      } catch (e) {
+        vite.ssrFixStacktrace(e as Error);
+        next(e);
+      }
+    });
+    
+    log("Vite middleware attached successfully", "vite");
   } else {
     // Dynamically import serveStatic for production
     const { serveStatic } = await import("./vite");
