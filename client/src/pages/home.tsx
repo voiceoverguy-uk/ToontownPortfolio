@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -347,17 +348,35 @@ export default function Home() {
             <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
           </div>
 
-          <div className="prose prose-lg max-w-none">
-            <p className="text-lg md:text-xl text-toontown-darkbrown leading-relaxed font-friendly font-semibold mb-6" data-testid="bio-text">
-              Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
-            </p>
-
-            <div className="bg-mickey-yellow rounded-2xl p-6 text-center cartoon-border" data-testid="disclaimer-box">
-              <GraduationCap className="text-disney-blue text-2xl mb-3 floating-icon mx-auto" data-testid="graduation-icon" />
-              <p className="cartoon-text text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
-                Note: Arabella is not available during school hours or when homework is due! 📚✏️
+          <div className="grid md:grid-cols-3 gap-8 items-center">
+            {/* Arabella's Image */}
+            <div className="md:col-span-1 flex justify-center">
+              <div className="relative">
+                <img 
+                  src={arabellaImage} 
+                  alt="Arabella Harris in recording studio with headphones and microphone"
+                  className="w-full max-w-xs rounded-3xl cartoon-border shadow-lg transform hover:scale-105 transition-transform duration-300"
+                  data-testid="arabella-profile-image"
+                />
+                <div className="absolute -top-4 -right-4 bg-mickey-yellow rounded-full p-2 cartoon-border bounce-in" style={{ animationDelay: '0.5s' }}>
+                  <Mic className="text-mickey-red text-xl" data-testid="mic-badge" />
+                </div>
+              </div>
+            </div>
+            
+            {/* Bio Text */}
+            <div className="md:col-span-2 prose prose-lg max-w-none">
+              <p className="text-lg md:text-xl text-toontown-darkbrown leading-relaxed font-friendly font-semibold mb-6" data-testid="bio-text">
+                Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
             </div>
+          </div>
+
+          <div className="bg-mickey-yellow rounded-2xl p-6 text-center cartoon-border mt-8" data-testid="disclaimer-box">
+            <GraduationCap className="text-disney-blue text-2xl mb-3 floating-icon mx-auto" data-testid="graduation-icon" />
+            <p className="cartoon-text text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
+              Note: Arabella is not available during school hours or when homework is due! 📚✏️
+            </p>
           </div>
         </section>
 
@@ -429,12 +448,31 @@ export default function Home() {
       </main>
 
       {/* Footer Note */}
-      <div className="max-w-4xl mx-auto px-4 mb-8">
-        <div className="footer-note text-center" data-testid="footer-note">
-          <Heart className="text-white text-3xl mb-4 floating-icon mx-auto" data-testid="footer-heart-icon" />
-          <p className="cartoon-text text-xl md:text-2xl text-white" data-testid="footer-note-text">
-            She was always going to be good – she's the daughter of award-winning British male voiceover, Guy Harris.
-          </p>
+      <div className="max-w-5xl mx-auto px-4 mb-8">
+        <div className="footer-note" data-testid="footer-note">
+          <div className="grid md:grid-cols-4 gap-6 items-center">
+            <div className="md:col-span-1 flex justify-center">
+              <div className="relative">
+                <img 
+                  src={arabellaImage} 
+                  alt="Arabella Harris - Professional Young Voiceover Artist"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg transform hover:scale-110 transition-transform duration-300"
+                  data-testid="arabella-footer-image"
+                />
+                <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg">
+                  <Heart className="text-mickey-red text-lg floating-icon" data-testid="footer-heart-icon" />
+                </div>
+              </div>
+            </div>
+            <div className="md:col-span-3 text-center md:text-left">
+              <p className="cartoon-text text-xl md:text-2xl text-white leading-relaxed" data-testid="footer-note-text">
+                She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
+              </p>
+              <p className="font-friendly text-lg text-toontown-cream mt-2 opacity-90">
+                🎤 Talent runs in the family! 🎆
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
