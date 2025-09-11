@@ -236,15 +236,18 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-background text-foreground min-h-screen relative">
+    <div className="bg-transparent text-foreground min-h-screen relative z-10">
       {/* Fixed Background Image */}
       <div 
         className="header-background"
         style={{ 
-          backgroundImage: `linear-gradient(135deg, rgba(255, 193, 7, 0.4) 0%, rgba(255, 107, 107, 0.3) 50%, rgba(255, 215, 61, 0.4) 100%), url(${headerBg})`
+          backgroundImage: `url(${headerBg})`
         }}
         data-testid="header-background"
       />
+      
+      {/* Subtle overlay for content readability */}
+      <div className="fixed inset-0 bg-white/40 z-[1] pointer-events-none" data-testid="bg-overlay" />
       
       {/* Main Content Wrapper */}
       <div className="relative z-10">
