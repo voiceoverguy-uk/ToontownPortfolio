@@ -534,7 +534,7 @@ export default function Home() {
             <section id="video-showreel" className="mb-12 scroll-mt-24" data-testid="youtube-section">
               <div className="text-center mb-8">
                 <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
-                <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
+                <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Hear Arabella in Action!</h3>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
@@ -551,6 +551,7 @@ export default function Home() {
                     className="rounded-lg"
                     data-testid="youtube-iframe-1"
               />
+              <p className="text-center font-bold text-xl text-disney-blue mt-3" data-testid="video-label-1">Arabella</p>
             </div>
 
             {/* Video 2 */}
@@ -566,6 +567,7 @@ export default function Home() {
                 className="rounded-lg"
                 data-testid="youtube-iframe-2"
               />
+              <p className="text-center font-bold text-xl text-mickey-orange mt-3" data-testid="video-label-2">Dad</p>
             </div>
           </div>
         </section>
@@ -579,16 +581,12 @@ export default function Home() {
             <h3 className="font-bold text-3xl md:text-4xl text-disney-blue">Get in Touch!</h3>
           </div>
 
-          <div className="bg-white border-8 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg max-w-2xl mx-auto" data-testid="contact-info">
-            <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-4" data-testid="contact-title">
+          <div className="bg-white border-8 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg max-w-xl mx-auto" data-testid="contact-info">
+            <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-6 text-center" data-testid="contact-title">
               Ready to Work with Arabella?
             </h4>
-            <p className="text-lg text-toontown-darkbrown font-bold font-semibold mb-6" data-testid="contact-text">
-              Contact her representation for bookings and inquiries!
-            </p>
             
-            {/* Book Now Button */}
-            <div className="mb-6">
+            <div className="text-center">
               <a 
                 href="mailto:arabella@voiceoverguy.co.uk"
                 className="book-now-button"
@@ -596,12 +594,6 @@ export default function Home() {
               >
                 📧 Book Now!
               </a>
-            </div>
-            
-            <div className="flex justify-center space-x-6">
-              <Mail className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-email" />
-              <Phone className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-phone" />
-              <GlobeIcon className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-website" />
             </div>
           </div>
         </section>
