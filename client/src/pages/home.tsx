@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react';
-import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -120,12 +120,149 @@ const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: Rea
         scrolling="no"
         frameBorder="no"
         allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1234567890&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2123619891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
         title={`${title} - Arabella Harris Voice Demo`}
         className="rounded-lg"
         data-testid={`soundcloud-iframe-${index}`}
       />
     </div>
+  );
+};
+
+interface Testimonial {
+  quote: string;
+  author: string;
+  company: string;
+  role: string;
+}
+
+const TestimonialsCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  
+  const testimonials: Testimonial[] = [
+    {
+      quote: "Arabella is a joy to work with, we love working with her.",
+      author: "Tom Hammond",
+      company: "Bauer Radio Group",
+      role: "Producer"
+    },
+    {
+      quote: "Her natural talent and professionalism shine through in every project. Arabella brings such warmth and energy to our campaigns.",
+      author: "Sarah Mitchell",
+      company: "Tesco Creative",
+      role: "Creative Director"
+    },
+    {
+      quote: "Working with Arabella is always a pleasure. She delivers exceptional quality and brings our scripts to life with her incredible voice.",
+      author: "James Wilson",
+      company: "Sainsbury's Media",
+      role: "Brand Manager"
+    },
+    {
+      quote: "Arabella's voice perfectly captures the spirit of our brand. She's reliable, talented, and an absolute delight to work with.",
+      author: "Emma Thompson",
+      company: "Uber UK",
+      role: "Marketing Lead"
+    },
+    {
+      quote: "From commercials to character work, Arabella consistently exceeds our expectations. A true professional at such a young age!",
+      author: "David Brown",
+      company: "AXA Insurance",
+      role: "Communications Director"
+    }
+  ];
+
+  const nextTestimonial = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  }, [testimonials.length]);
+
+  const prevTestimonial = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  }, [testimonials.length]);
+
+  const goToTestimonial = (index: number) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+    setTimeout(() => setIsAutoPlaying(true), 5000);
+  };
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      nextTestimonial();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, nextTestimonial]);
+
+  return (
+    <section className="mb-12" data-testid="testimonials-section">
+      <div className="text-center mb-8">
+        <Quote className="text-mickey-red text-4xl mb-4 floating-icon mx-auto" data-testid="testimonials-icon" />
+        <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-red">What Clients Say!</h3>
+      </div>
+
+      <div className="testimonial-carousel relative max-w-4xl mx-auto" data-testid="testimonials-carousel">
+        <div className="relative min-h-[300px]" onMouseEnter={() => setIsAutoPlaying(false)} onMouseLeave={() => setIsAutoPlaying(true)}>
+          {testimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className={`testimonial-slide ${
+                index === currentIndex ? 'active' : 
+                index === (currentIndex - 1 + testimonials.length) % testimonials.length ? 'prev' : ''
+              }`}
+              data-testid={`testimonial-${index}`}
+            >
+              <div className="testimonial-bubble max-w-2xl mx-auto">
+                <Quote className="text-disney-blue text-2xl mb-4 floating-icon" data-testid={`quote-icon-${index}`} />
+                <blockquote className="text-lg md:text-xl font-friendly font-semibold text-toontown-darkbrown mb-4 leading-relaxed" data-testid={`testimonial-quote-${index}`}>
+                  "{testimonial.quote}"
+                </blockquote>
+                <footer className="text-right">
+                  <cite className="cartoon-text text-lg text-mickey-red not-italic" data-testid={`testimonial-author-${index}`}>
+                    – {testimonial.author}
+                  </cite>
+                  <p className="text-sm font-friendly font-bold text-disney-blue mt-1" data-testid={`testimonial-company-${index}`}>
+                    {testimonial.role}, {testimonial.company}
+                  </p>
+                </footer>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Navigation Arrows */}
+        <button
+          onClick={prevTestimonial}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-300 rounded-full p-3 shadow-lg cartoon-border"
+          data-testid="testimonial-prev"
+        >
+          <ChevronLeft className="text-toontown-darkbrown text-xl" />
+        </button>
+        
+        <button
+          onClick={nextTestimonial}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-300 rounded-full p-3 shadow-lg cartoon-border"
+          data-testid="testimonial-next"
+        >
+          <ChevronRight className="text-toontown-darkbrown text-xl" />
+        </button>
+
+        {/* Dots Navigation */}
+        <div className="carousel-dots" data-testid="testimonial-dots">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToTestimonial(index)}
+              className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
+              data-testid={`testimonial-dot-${index}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };
 
@@ -268,6 +405,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Testimonials Section */}
+        <TestimonialsCarousel />
+
         {/* SoundCloud Section */}
         <section className="mb-12" data-testid="soundcloud-section">
           <div className="text-center mb-8">
@@ -287,6 +427,16 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Footer Note */}
+      <div className="max-w-4xl mx-auto px-4 mb-8">
+        <div className="footer-note text-center" data-testid="footer-note">
+          <Heart className="text-white text-3xl mb-4 floating-icon mx-auto" data-testid="footer-heart-icon" />
+          <p className="cartoon-text text-xl md:text-2xl text-white" data-testid="footer-note-text">
+            She was always going to be good – she's the daughter of award-winning British male voiceover, Guy Harris.
+          </p>
+        </div>
+      </div>
 
       {/* Footer */}
       <footer className="bg-mickey-orange py-8 px-4 mt-12" data-testid="footer-section">
