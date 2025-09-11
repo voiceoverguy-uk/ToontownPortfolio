@@ -439,12 +439,6 @@ export default function Home() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Main Heading */}
-          <div className="text-center mb-12">
-            <h1 className="font-bold text-4xl md:text-6xl text-red-600 mb-4" data-testid="meet-arabella-heading">
-              MEET ARABELLA!
-            </h1>
-          </div>
 
           {/* Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
