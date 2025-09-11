@@ -97,6 +97,7 @@
   body {
     @apply font-sans antialiased bg-background text-foreground;
     min-height: 100vh;
+    overflow-x: hidden; /* Prevent horizontal scrolling/wobbling on mobile */
   }
 }
 

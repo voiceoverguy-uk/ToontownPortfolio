@@ -212,17 +212,18 @@ export default function Home() {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Calculate Arabella's current age (birthday: June 4th)
+  // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
     const today = new Date();
     const currentYear = today.getFullYear();
     const birthday = new Date(currentYear, 5, 4); // June 4th (month is 0-indexed)
+    const birthYear = 2016; // Born June 4, 2016
     
-    // If today is before June 4th this year, she's still the previous age
+    // If today is before June 4th this year, she hasn't had her birthday yet
     if (today < birthday) {
-      return currentYear - 2016; // Born in 2016, so she'll be current year - 2016 after June 4th
+      return currentYear - birthYear - 1; // Subtract 1 because birthday hasn't happened yet this year
     } else {
-      return currentYear - 2015; // She's already had her birthday this year
+      return currentYear - birthYear; // Birthday has happened this year
     }
   };
   
@@ -257,7 +258,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-transparent text-foreground min-h-screen relative z-10">
+    <div className="bg-transparent text-foreground min-h-screen relative z-10 overflow-x-hidden">
       {/* Fixed Background Image */}
       <div 
         className="header-background"
