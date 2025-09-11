@@ -252,7 +252,7 @@ export default function Home() {
       {/* Main Content Wrapper */}
       <div className="relative z-10">
         {/* Top Navigation Bar */}
-      <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
+      <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white/20 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Logo on the left */}
