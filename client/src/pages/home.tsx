@@ -373,19 +373,55 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Header with Banner - Now below navigation */}
-      <header className="relative py-8 px-4" data-testid="header-section">
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="relative mb-8" data-testid="main-logo">
-            <img 
-              src={arabellaBanner} 
-              alt="Arabella Harris - Professional Voiceover Artist"
-              className="w-full h-auto"
-              data-testid="arabella-banner"
-            />
+      {/* New Golden Hero Section */}
+      <section className="relative py-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-yellow-500" data-testid="hero-section">
+        {/* Subtle background text */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+          <div className="text-9xl md:text-[12rem] font-bold text-white/30 select-none">
+            ARABELLA HARRIS
           </div>
         </div>
-      </header>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Main Heading */}
+          <div className="text-center mb-12">
+            <h1 className="font-bold text-4xl md:text-6xl text-red-600 font-heading mb-4" data-testid="meet-arabella-heading">
+              MEET ARABELLA!
+            </h1>
+          </div>
+
+          {/* Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Arabella's Image */}
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative transform rotate-3 hover:rotate-6 transition-transform duration-300">
+                <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
+                  <img 
+                    src={arabellaImage} 
+                    alt="Arabella Harris in recording studio with headphones and microphone"
+                    className="w-full max-w-md rounded-lg"
+                    data-testid="arabella-hero-image"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Side - Bio Text */}
+            <div className="space-y-6">
+              <p className="text-lg md:text-xl text-white font-bold leading-relaxed font-friendly" data-testid="hero-bio-text">
+                Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
+              </p>
+              
+              <div className="bg-white/90 border-4 border-red-500 rounded-2xl p-6 shadow-lg" data-testid="hero-disclaimer-box">
+                <GraduationCap className="text-blue-600 text-2xl mb-3 mx-auto" data-testid="hero-graduation-icon" />
+                <p className="font-bold text-lg md:text-xl text-gray-800 text-center" data-testid="hero-disclaimer-text">
+                  Note: Arabella is not available during school hours or when homework is due! 📚✏️
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
         {/* Main Content */}
         <main className="max-w-6xl mx-auto px-4 py-8">
