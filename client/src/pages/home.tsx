@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocation } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
-import arabellaBanner from '@assets/Banner_1757598439390.jpg';
+import arabellaBanner from '@assets/arabella-harris-logo_1757601692768.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
