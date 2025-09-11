@@ -430,7 +430,7 @@ export default function Home() {
       </nav>
 
       {/* New Golden Hero Section */}
-      <section className="relative py-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-yellow-500" data-testid="hero-section">
+      <section className="relative pt-32 pb-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-yellow-500" data-testid="hero-section">
         {/* Subtle background text */}
         <div className="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
           <div className="text-9xl md:text-[12rem] font-bold text-white/30 select-none">
@@ -439,6 +439,12 @@ export default function Home() {
         </div>
         
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* White Heading */}
+          <div className="text-center mb-12">
+            <h1 className="font-bold text-4xl md:text-6xl text-white mb-4" data-testid="meet-arabella-heading">
+              Meet Arabella Harris
+            </h1>
+          </div>
 
           {/* Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
