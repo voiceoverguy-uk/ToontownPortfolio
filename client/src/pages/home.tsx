@@ -506,8 +506,8 @@ export default function Home() {
                   <iframe
                     width="100%"
                     height="315"
-                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                    title="Arabella Harris Voiceover Demo 1"
+                    src="https://www.youtube.com/embed/XUJm7iRZ8FI"
+                    title="Arabella Showreel 2025"
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -521,8 +521,8 @@ export default function Home() {
               <iframe
                 width="100%"
                 height="315"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Arabella Harris Voiceover Demo 2"
+                src="https://www.youtube.com/embed/TqkdBK8mBW8"
+                title="Arabella's Dad, Guy"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
