@@ -2,6 +2,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
+import arabellaBanner from '@assets/Banner_1757598439390.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -235,10 +236,10 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="relative" data-testid="main-logo">
             <img 
-              src={arabellaLogo} 
-              alt="Arabella Harris - Professional Young Voiceover Artist"
+              src={arabellaBanner} 
+              alt="Presenting Arabella Harris - Professional Young Voiceover Artist Aged 09"
               className="w-full max-w-2xl mx-auto h-auto"
-              data-testid="arabella-logo"
+              data-testid="arabella-banner"
             />
           </div>
         </div>
