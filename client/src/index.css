@@ -525,12 +525,13 @@
   height: 100vh;
   background-attachment: fixed;
   background-size: cover;
-  background-position: center top;
+  background-position: center center;
   background-repeat: no-repeat;
-  opacity: 0.1;
+  opacity: 0.3;
   pointer-events: none;
   z-index: -10;
   will-change: transform;
+  filter: blur(0.5px);
 }
 
 /* Enhanced performance for mobile devices */
@@ -539,6 +540,8 @@
     background-attachment: scroll; /* Fixed attachment can cause performance issues on mobile */
     background-size: cover;
     transform: translateZ(0); /* Hardware acceleration */
+    opacity: 0.25; /* Slightly less opacity on mobile for better text readability */
+    filter: blur(0.8px); /* Slightly more blur on mobile */
   }
 }
 

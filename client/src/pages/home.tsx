@@ -5,7 +5,7 @@ import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_175
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
 import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
-import headerBg from '@assets/header-bg_1757621255964.jpg';
+import headerBg from '@assets/header-bg_1757622267624.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -241,7 +241,7 @@ export default function Home() {
       <div 
         className="header-background"
         style={{ 
-          backgroundImage: `linear-gradient(135deg, rgba(255, 215, 61, 0.3) 0%, rgba(255, 107, 107, 0.2) 50%, rgba(78, 205, 196, 0.3) 100%), url(${headerBg})`
+          backgroundImage: `linear-gradient(135deg, rgba(255, 193, 7, 0.4) 0%, rgba(255, 107, 107, 0.3) 50%, rgba(255, 215, 61, 0.4) 100%), url(${headerBg})`
         }}
         data-testid="header-background"
       />
