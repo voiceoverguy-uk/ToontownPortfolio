@@ -211,6 +211,8 @@ const TestimonialsCarousel = () => {
 export default function Home() {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isNavVisible, setIsNavVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   
   // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
@@ -228,6 +230,41 @@ export default function Home() {
   };
   
   const arabellaAge = calculateAge();
+  
+  // Handle navbar visibility on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Show navbar if at top of page or scrolling up
+      if (currentScrollY < 10) {
+        setIsNavVisible(true);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up
+        setIsNavVisible(true);
+      } else {
+        // Scrolling down
+        setIsNavVisible(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    // Add throttle to improve performance
+    let ticking = false;
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledScroll);
+    return () => window.removeEventListener('scroll', throttledScroll);
+  }, [lastScrollY]);
   
   // Smooth scroll to sections
   const scrollToSection = (sectionId: string) => {
@@ -274,7 +311,7 @@ export default function Home() {
       {/* Main Content Wrapper */}
       <div className="relative z-10">
         {/* Top Navigation Bar */}
-      <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white/20 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
+      <nav role="navigation" aria-label="Primary" className={`fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg transition-transform duration-300 ${isNavVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Logo on the left */}
