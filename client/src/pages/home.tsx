@@ -5,6 +5,7 @@ import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_175
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
 import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
+import headerBg from '@assets/header-bg_1757621255964.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -235,8 +236,19 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-background text-foreground min-h-screen">
-      {/* Top Navigation Bar */}
+    <div className="bg-background text-foreground min-h-screen relative">
+      {/* Fixed Background Image */}
+      <div 
+        className="header-background"
+        style={{ 
+          backgroundImage: `linear-gradient(135deg, rgba(255, 215, 61, 0.3) 0%, rgba(255, 107, 107, 0.2) 50%, rgba(78, 205, 196, 0.3) 100%), url(${headerBg})`
+        }}
+        data-testid="header-background"
+      />
+      
+      {/* Main Content Wrapper */}
+      <div className="relative z-10">
+        {/* Top Navigation Bar */}
       <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
@@ -565,6 +577,7 @@ export default function Home() {
           <p className="text-white font-friendly">© 2024 Arabella Harris Voice Over</p>
         </div>
       </footer>
+      </div> {/* Close main content wrapper */}
     </div>
   );
 }

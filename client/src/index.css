@@ -515,3 +515,48 @@
     height: 2rem; /* Even smaller on very small screens */
   }
 }
+
+/* Fixed Background Styling */
+.header-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: -10;
+  will-change: transform;
+}
+
+/* Enhanced performance for mobile devices */
+@media (max-width: 768px) {
+  .header-background {
+    background-attachment: scroll; /* Fixed attachment can cause performance issues on mobile */
+    background-size: cover;
+    transform: translateZ(0); /* Hardware acceleration */
+  }
+}
+
+/* Prevent background from interfering with interactions */
+.header-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+}
+
+/* Content layer enhancement */
+.content-layer {
+  position: relative;
+  z-index: 10;
+  background: rgba(248, 250, 252, 0.02); /* Very subtle content backing */
+}
