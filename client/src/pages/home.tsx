@@ -140,7 +140,7 @@ const TestimonialsCarousel = () => {
   }, [isAutoPlaying, nextTestimonial]);
 
   return (
-    <section className="mb-12" data-testid="testimonials-section">
+    <section className="mb-12 pb-8" data-testid="testimonials-section">
       <div className="text-center mb-8">
         <Quote className="text-mickey-red text-4xl mb-4 floating-icon mx-auto" data-testid="testimonials-icon" />
         <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-red">What Clients Say!</h3>
