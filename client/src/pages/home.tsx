@@ -23,7 +23,7 @@ const FloatingIcon = ({ icon: Icon, className = "", delay = 0, position }: Float
       }`}
       style={{ animationDelay: `${delay}s` }}
       onClick={handleClick}
-      data-testid={`floating-icon-${Icon.name?.toLowerCase()}`}
+      data-testid={`floating-icon-${position.replace(/\s+/g, '-')}`}
     />
   );
 };
@@ -111,7 +111,7 @@ const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: Rea
       data-testid={`soundcloud-item-${index}`}
     >
       <div className="flex items-center mb-3">
-        <Icon className="text-toontown-red text-xl mr-2" data-testid={`soundcloud-icon-${index}`} />
+        <Icon className="text-mickey-red text-xl mr-2" data-testid={`soundcloud-icon-${index}`} />
         <span className="font-friendly font-bold text-toontown-darkbrown">{title}</span>
       </div>
       <iframe
@@ -177,23 +177,23 @@ export default function Home() {
 
         {/* Main Sign */}
         <div className="max-w-4xl mx-auto text-center">
-          <div className="wooden-sign rounded-3xl px-8 py-12 mx-4 relative bounce-in" data-testid="main-sign">
+          <div className="wooden-sign px-8 py-12 mx-4 relative bounce-in" data-testid="main-sign">
             {/* Decorative screws */}
             <div className="absolute top-4 left-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-tl"></div>
             <div className="absolute top-4 right-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-tr"></div>
             <div className="absolute bottom-4 left-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-bl"></div>
             <div className="absolute bottom-4 right-4 w-6 h-6 bg-toontown-brown rounded-full shadow-inner" data-testid="screw-br"></div>
 
-            <h1 className="cartoon-text text-4xl md:text-6xl lg:text-7xl text-toontown-yellow mb-6" data-testid="presenting-text">
+            <h1 className="cartoon-text text-4xl md:text-6xl lg:text-7xl text-mickey-yellow mb-6" data-testid="presenting-text">
               Presenting...
             </h1>
-            <h2 className="cartoon-text text-5xl md:text-7xl lg:text-8xl text-white mb-8" data-testid="name-text">
+            <h2 className="cartoon-text-glow text-5xl md:text-7xl lg:text-8xl text-white mb-8" data-testid="name-text">
               Arabella Harris!
             </h2>
 
             {/* Animated Counter */}
-            <div className="bg-toontown-red rounded-2xl px-6 py-4 inline-block cartoon-border" data-testid="age-counter-container">
-              <span className="cartoon-text text-2xl md:text-3xl text-white">
+            <div className="bg-mickey-red rounded-2xl px-6 py-4 inline-block cartoon-border" data-testid="age-counter-container">
+              <span className="cartoon-text-glow text-2xl md:text-3xl text-white">
                 Aged... <AnimatedCounter />
               </span>
             </div>
@@ -206,8 +206,8 @@ export default function Home() {
         {/* Bio Section */}
         <section className="bg-white rounded-3xl p-8 mb-12 shadow-lg cartoon-border" data-testid="bio-section">
           <div className="flex items-center mb-6">
-            <Mic className="text-toontown-orange text-3xl mr-4 floating-icon" data-testid="bio-icon" />
-            <h3 className="cartoon-text text-3xl md:text-4xl text-toontown-orange">Meet Arabella!</h3>
+            <Mic className="text-mickey-orange text-3xl mr-4 floating-icon" data-testid="bio-icon" />
+            <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-orange">Meet Arabella!</h3>
           </div>
 
           <div className="prose prose-lg max-w-none">
@@ -215,9 +215,9 @@ export default function Home() {
               Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
             </p>
 
-            <div className="bg-toontown-yellow rounded-2xl p-6 text-center" data-testid="disclaimer-box">
-              <GraduationCap className="text-toontown-blue text-2xl mb-3 floating-icon mx-auto" data-testid="graduation-icon" />
-              <p className="cartoon-text text-xl md:text-2xl text-toontown-brown" data-testid="disclaimer-text">
+            <div className="bg-mickey-yellow rounded-2xl p-6 text-center cartoon-border" data-testid="disclaimer-box">
+              <GraduationCap className="text-disney-blue text-2xl mb-3 floating-icon mx-auto" data-testid="graduation-icon" />
+              <p className="cartoon-text text-xl md:text-2xl text-toontown-darkbrown" data-testid="disclaimer-text">
                 Note: Arabella is not available during school hours or when homework is due! 📚✏️
               </p>
             </div>
@@ -227,13 +227,13 @@ export default function Home() {
         {/* YouTube Section */}
         <section className="mb-12" data-testid="youtube-section">
           <div className="text-center mb-8">
-            <Play className="text-toontown-red text-4xl mb-4 floating-icon mx-auto" data-testid="youtube-icon" />
-            <h3 className="cartoon-text text-3xl md:text-4xl text-toontown-red">Watch Arabella in Action!</h3>
+            <Play className="text-mickey-red text-4xl mb-4 floating-icon mx-auto" data-testid="youtube-icon" />
+            <h3 className="cartoon-text text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Video 1 */}
-            <div className="video-container bg-toontown-blue p-4 cartoon-border" data-testid="video-container-1">
+            <div className="video-container bg-disney-blue p-4 cartoon-border" data-testid="video-container-1">
               <div className="bg-white rounded-lg p-2">
                 <iframe
                   width="100%"
@@ -250,7 +250,7 @@ export default function Home() {
             </div>
 
             {/* Video 2 */}
-            <div className="video-container bg-toontown-orange p-4 cartoon-border" data-testid="video-container-2">
+            <div className="video-container bg-mickey-orange p-4 cartoon-border" data-testid="video-container-2">
               <div className="bg-white rounded-lg p-2">
                 <iframe
                   width="100%"
@@ -271,8 +271,8 @@ export default function Home() {
         {/* SoundCloud Section */}
         <section className="mb-12" data-testid="soundcloud-section">
           <div className="text-center mb-8">
-            <Volume2 className="text-toontown-blue text-4xl mb-4 floating-icon mx-auto" data-testid="soundcloud-header-icon" />
-            <h3 className="cartoon-text text-3xl md:text-4xl text-toontown-blue">Listen to Arabella's Voice Reels!</h3>
+            <Volume2 className="text-disney-blue text-4xl mb-4 floating-icon mx-auto" data-testid="soundcloud-header-icon" />
+            <h3 className="cartoon-text text-3xl md:text-4xl text-disney-blue">Listen to Arabella's Voice Reels!</h3>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6" data-testid="soundcloud-grid">
@@ -289,19 +289,19 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-toontown-orange py-8 px-4 mt-12" data-testid="footer-section">
+      <footer className="bg-mickey-orange py-8 px-4 mt-12" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="wooden-sign rounded-3xl px-6 py-8 mx-4" data-testid="footer-sign">
-            <h4 className="cartoon-text text-2xl md:text-3xl text-white mb-4" data-testid="footer-title">
+          <div className="wooden-sign px-6 py-8 mx-4" data-testid="footer-sign">
+            <h4 className="cartoon-text-glow text-2xl md:text-3xl text-white mb-4" data-testid="footer-title">
               Ready to Work with Arabella?
             </h4>
             <p className="text-lg text-toontown-cream font-friendly font-semibold mb-4" data-testid="footer-text">
               Contact her representation for bookings and inquiries!
             </p>
             <div className="flex justify-center space-x-6">
-              <Mail className="text-toontown-yellow text-2xl floating-icon cursor-pointer" data-testid="contact-email" />
-              <Phone className="text-toontown-yellow text-2xl floating-icon cursor-pointer" style={{ animationDelay: '0.5s' }} data-testid="contact-phone" />
-              <GlobeIcon className="text-toontown-yellow text-2xl floating-icon cursor-pointer" style={{ animationDelay: '1s' }} data-testid="contact-website" />
+              <Mail className="text-mickey-yellow text-2xl floating-icon cursor-pointer" data-testid="contact-email" />
+              <Phone className="text-mickey-yellow text-2xl floating-icon cursor-pointer" style={{ animationDelay: '0.5s' }} data-testid="contact-phone" />
+              <GlobeIcon className="text-mickey-yellow text-2xl floating-icon cursor-pointer" style={{ animationDelay: '1s' }} data-testid="contact-website" />
             </div>
           </div>
         </div>

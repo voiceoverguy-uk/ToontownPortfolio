@@ -66,9 +66,20 @@ export default {
           yellow: "var(--toontown-yellow)", 
           red: "var(--toontown-red)",
           blue: "var(--toontown-blue)",
+          purple: "var(--toontown-purple)",
+          green: "var(--toontown-green)",
           cream: "var(--toontown-cream)",
           brown: "var(--toontown-brown)",
           darkbrown: "var(--toontown-darkbrown)",
+        },
+        mickey: {
+          red: "var(--mickey-red)",
+          yellow: "var(--mickey-yellow)",
+          orange: "var(--mickey-orange)",
+        },
+        disney: {
+          blue: "var(--disney-blue)",
+          purple: "var(--disney-purple)",
         }
       },
       fontFamily: {
@@ -76,6 +87,8 @@ export default {
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
         cartoon: ["var(--font-cartoon)"],
+        friendly: ["var(--font-friendly)"],
+        bold: ["var(--font-bold)"],
       },
       keyframes: {
         "accordion-down": {
