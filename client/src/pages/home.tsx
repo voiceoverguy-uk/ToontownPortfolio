@@ -212,6 +212,22 @@ export default function Home() {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
+  // Calculate Arabella's current age (birthday: June 4th)
+  const calculateAge = () => {
+    const today = new Date();
+    const currentYear = today.getFullYear();
+    const birthday = new Date(currentYear, 5, 4); // June 4th (month is 0-indexed)
+    
+    // If today is before June 4th this year, she's still the previous age
+    if (today < birthday) {
+      return currentYear - 2016; // Born in 2016, so she'll be current year - 2016 after June 4th
+    } else {
+      return currentYear - 2015; // She's already had her birthday this year
+    }
+  };
+  
+  const arabellaAge = calculateAge();
+  
   // Smooth scroll to sections
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -412,7 +428,7 @@ export default function Home() {
                     <div className="flex items-center justify-center space-x-3 font-mono text-yellow-400">
                       <span className="text-sm font-bold tracking-wider">AGE:</span>
                       <div className="relative overflow-hidden h-7 w-7 bg-black border border-yellow-400 rounded-sm flex items-center justify-center shadow-inner">
-                        <div className="departure-board-digit text-xl font-bold animate-bounce-subtle" data-testid="age-display">9</div>
+                        <div className="departure-board-digit text-xl font-bold animate-bounce-subtle" data-testid="age-display">{arabellaAge}</div>
                       </div>
                     </div>
                   </div>
@@ -586,7 +602,7 @@ export default function Home() {
       {/* Simplified Footer */}
       <footer className="bg-mickey-orange py-4 px-4 mt-8" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white font-bold">© 2024 Arabella Harris Voice Over</p>
+          <p className="text-white font-bold">© 2025 Arabella Harris Voice Over</p>
         </div>
       </footer>
       </div> {/* Close main content wrapper */}
