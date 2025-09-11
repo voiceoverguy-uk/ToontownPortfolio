@@ -393,8 +393,8 @@ export default function Home() {
           {/* Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Arabella's Image */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative transform rotate-3 hover:rotate-6 transition-transform duration-300">
+            <div className="flex flex-col items-center lg:items-start">
+              <div className="relative transform -rotate-3 hover:-rotate-6 transition-transform duration-300 mb-6">
                 <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
                   <img 
                     src={arabellaImage} 
@@ -402,6 +402,18 @@ export default function Home() {
                     className="w-full max-w-md rounded-lg"
                     data-testid="arabella-hero-image"
                   />
+                </div>
+              </div>
+              
+              {/* Airport Style Age Reveal */}
+              <div className="relative">
+                <div className="bg-black/90 px-6 py-3 rounded-lg border-2 border-yellow-400 shadow-lg">
+                  <div className="flex items-center justify-center space-x-2 font-mono text-yellow-400">
+                    <span className="text-lg font-bold">AGE:</span>
+                    <div className="relative overflow-hidden h-8 w-8 bg-black border border-yellow-400 rounded flex items-center justify-center">
+                      <div className="departure-board-digit text-2xl font-bold" data-testid="age-display">9</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
