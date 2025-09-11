@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote, Menu, X } from 'lucide-react';
 import { useLocation, Link } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
+import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -208,12 +209,18 @@ const TestimonialsCarousel = () => {
 
 export default function Home() {
   const [location, setLocation] = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Get current page for active menu styling
   const isActive = (path: string) => {
     if (path === '/' && location === '/') return true;
     if (path !== '/' && location === path) return true;
     return false;
+  };
+
+  // Close mobile menu when clicking a link
+  const handleMobileLinkClick = () => {
+    setIsMobileMenuOpen(false);
   };
 
   const soundCloudItems = [
@@ -229,7 +236,129 @@ export default function Home() {
 
   return (
     <div className="bg-background text-foreground min-h-screen">
-      {/* Header with Banner */}
+      {/* Top Navigation Bar */}
+      <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            {/* Logo on the left */}
+            <div className="flex-shrink-0" data-testid="nav-logo">
+              <Link href="/" className="block">
+                <img 
+                  src={arabellaNavLogo} 
+                  alt="Arabella Harris - Professional Voiceover Artist"
+                  className="h-12 md:h-16 w-auto logo transition-transform duration-300 hover:scale-105"
+                  data-testid="arabella-nav-logo"
+                />
+              </Link>
+            </div>
+
+            {/* Desktop Navigation Links - Right Side */}
+            <div className="hidden md:flex items-center space-x-2 lg:space-x-4" data-testid="desktop-nav">
+              <Link 
+                href="/" 
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 font-friendly ${
+                  isActive('/') 
+                    ? 'bg-mickey-yellow text-toontown-darkbrown shadow-lg transform scale-105' 
+                    : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md'
+                }`}
+                data-testid="link-audio"
+                aria-current={isActive('/') ? 'page' : undefined}
+              >
+                🎵 Audio Showreel
+              </Link>
+              <Link 
+                href="/video" 
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 font-friendly ${
+                  isActive('/video') 
+                    ? 'bg-disney-blue text-white shadow-lg transform scale-105' 
+                    : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md'
+                }`}
+                data-testid="link-video"
+                aria-current={isActive('/video') ? 'page' : undefined}
+              >
+                🎬 Video Showreel
+              </Link>
+              <Link 
+                href="/contact" 
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 font-friendly ${
+                  isActive('/contact') 
+                    ? 'bg-mickey-red text-white shadow-lg transform scale-105' 
+                    : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md'
+                }`}
+                data-testid="link-contact"
+                aria-current={isActive('/contact') ? 'page' : undefined}
+              >
+                📧 Contact
+              </Link>
+            </div>
+
+            {/* Mobile Hamburger Menu */}
+            <div className="md:hidden" data-testid="mobile-menu-toggle">
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="inline-flex items-center justify-center p-2 rounded-xl bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-200 text-toontown-darkbrown shadow-lg hover:shadow-xl"
+                data-testid="hamburger-button"
+                aria-expanded={isMobileMenuOpen}
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile Menu Dropdown */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 bg-white/95 border-4 border-mickey-yellow rounded-2xl p-4 shadow-xl animate-in slide-in-from-top-2 duration-300" data-testid="mobile-menu">
+              <div className="space-y-3">
+                <Link 
+                  href="/" 
+                  onClick={handleMobileLinkClick}
+                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 font-friendly ${
+                    isActive('/') 
+                      ? 'bg-mickey-yellow text-toontown-darkbrown shadow-md' 
+                      : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
+                  }`}
+                  data-testid="mobile-link-audio"
+                  aria-current={isActive('/') ? 'page' : undefined}
+                >
+                  🎵 Audio Showreel
+                </Link>
+                <Link 
+                  href="/video" 
+                  onClick={handleMobileLinkClick}
+                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 font-friendly ${
+                    isActive('/video') 
+                      ? 'bg-disney-blue text-white shadow-md' 
+                      : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
+                  }`}
+                  data-testid="mobile-link-video"
+                  aria-current={isActive('/video') ? 'page' : undefined}
+                >
+                  🎬 Video Showreel
+                </Link>
+                <Link 
+                  href="/contact" 
+                  onClick={handleMobileLinkClick}
+                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 font-friendly ${
+                    isActive('/contact') 
+                      ? 'bg-mickey-red text-white shadow-md' 
+                      : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
+                  }`}
+                  data-testid="mobile-link-contact"
+                  aria-current={isActive('/contact') ? 'page' : undefined}
+                >
+                  📧 Contact
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </nav>
+
+      {/* Header with Banner - Now below navigation */}
       <header className="relative py-8 px-4" data-testid="header-section">
         <div className="max-w-6xl mx-auto text-center">
           <div className="relative mb-8" data-testid="main-logo">
@@ -240,53 +369,8 @@ export default function Home() {
               data-testid="arabella-banner"
             />
           </div>
-          
         </div>
       </header>
-
-      {/* Traditional Navigation Menu */}
-      <nav role="navigation" aria-label="Primary" className="sticky top-0 z-50 bg-white border-b-8 border-toontown-darkbrown shadow-lg">
-        <div className="max-w-4xl mx-auto px-4 py-4">
-          <div className="grid grid-cols-3 gap-4 bg-white border-4 border-mickey-yellow rounded-2xl p-2">
-            <Link 
-              href="/" 
-              className={`font-bold text-lg py-3 px-6 rounded-xl text-center transition-all duration-200 ${
-                isActive('/') 
-                  ? 'bg-mickey-yellow text-toontown-darkbrown' 
-                  : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
-              }`}
-              data-testid="link-audio"
-              aria-current={isActive('/') ? 'page' : undefined}
-            >
-              🎵 Audio Showreel
-            </Link>
-            <Link 
-              href="/video" 
-              className={`font-bold text-lg py-3 px-6 rounded-xl text-center transition-all duration-200 ${
-                isActive('/video') 
-                  ? 'bg-disney-blue text-white' 
-                  : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
-              }`}
-              data-testid="link-video"
-              aria-current={isActive('/video') ? 'page' : undefined}
-            >
-              🎬 Video Showreel
-            </Link>
-            <Link 
-              href="/contact" 
-              className={`font-bold text-lg py-3 px-6 rounded-xl text-center transition-all duration-200 ${
-                isActive('/contact') 
-                  ? 'bg-mickey-red text-white' 
-                  : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
-              }`}
-              data-testid="link-contact"
-              aria-current={isActive('/contact') ? 'page' : undefined}
-            >
-              📧 Contact
-            </Link>
-          </div>
-        </div>
-      </nav>
 
         {/* Main Content */}
         <main className="max-w-6xl mx-auto px-4 py-8">
