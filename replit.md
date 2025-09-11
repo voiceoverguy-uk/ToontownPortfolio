@@ -2,9 +2,20 @@
 
 This is a full-stack web application for Arabella Harris, a young voiceover artist. The application serves as a portfolio and marketing website showcasing her professional voice services for major brands like Tesco, Sainsbury's, Asda, and Uber. The site features a modern, animated interface with a cartoon-like aesthetic designed to appeal to both children and adults, reflecting Arabella's youthful energy while maintaining professional credibility.
 
+# Recent Changes
+
+**September 11, 2025**: Enhanced design with vibrant Disney-style Toontown aesthetics
+- Updated color scheme to use deeper, richer colors: Mickey red, Mickey yellow, Disney blue, Mickey orange
+- Added bold cartoon fonts: Luckiest Guy for main headers, Fredoka One for friendly text, Bungee for accents
+- Enhanced wooden banner design with realistic wood grain textures, multi-layered shadows, and cartoon borders
+- Improved overall visual excitement with vibrant rainbow background gradients
+- Enhanced cartoon borders with multi-color rings and glow effects
+- Upgraded from pastel, child-like styling to bold, professional cartoon branding suitable for broader audience appeal
+
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preferences: Bold, vibrant Disney/Pixar-style cartoon aesthetics; avoid washed-out or overly childish pastel colors; prefers rich, deep colors that feel exciting and professional while maintaining playful cartoon charm.
 
 # System Architecture
 
