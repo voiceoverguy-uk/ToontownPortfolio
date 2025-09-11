@@ -164,7 +164,7 @@
   }
   
   .cartoon-text {
-    font-family: var(--font-cartoon);
+    font-family: var(--font-heading);
     text-shadow: 
       4px 4px 0px hsl(25, 90%, 20%),
       -2px -2px 0px hsl(25, 90%, 20%),
@@ -178,7 +178,7 @@
   }
   
   .cartoon-text-glow {
-    font-family: var(--font-cartoon);
+    font-family: var(--font-heading);
     text-shadow: 
       3px 3px 0px hsl(25, 90%, 20%),
       -1px -1px 0px hsl(25, 90%, 20%),
@@ -206,33 +206,13 @@
   }
   
   .cartoon-border {
-    border: 6px solid var(--mickey-red);
+    border: 6px solid var(--disney-blue);
     border-radius: 25px;
-    box-shadow: 
-      0 0 0 4px var(--mickey-yellow),
-      0 0 0 8px var(--disney-blue),
-      0 12px 24px rgba(0, 0, 0, 0.25),
-      inset 0 2px 4px rgba(255, 255, 255, 0.3);
-    position: relative;
+    background: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   }
   
-  .cartoon-border::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    background: linear-gradient(45deg, 
-      var(--mickey-red) 0%, 
-      var(--mickey-yellow) 25%, 
-      var(--disney-blue) 50%, 
-      var(--disney-purple) 75%, 
-      var(--mickey-red) 100%);
-    border-radius: 25px;
-    z-index: -1;
-    filter: blur(1px);
-  }
+  /* Removed old rainbow border styling for cleaner pre-teen design */
   
   .video-container {
     position: relative;

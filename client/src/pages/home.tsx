@@ -30,59 +30,7 @@ const FloatingIcon = ({ icon: Icon, className = "", delay = 0, position }: Float
   );
 };
 
-const AnimatedCounter = () => {
-  const [displayAge, setDisplayAge] = useState(9);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const counterRef = useRef<HTMLSpanElement>(null);
-
-  const animateCounter = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-
-    const finalAge = 9;
-    const animationDuration = 2000;
-    const frameRate = 100;
-    const totalFrames = animationDuration / frameRate;
-    let frame = 0;
-
-    const interval = setInterval(() => {
-      const randomNum = Math.floor(Math.random() * 21);
-      setDisplayAge(randomNum);
-      
-      if (counterRef.current) {
-        counterRef.current.style.transform = `rotateY(${frame * 18}deg) scale(${1 + Math.sin(frame * 0.3) * 0.1})`;
-      }
-
-      frame++;
-
-      if (frame >= totalFrames) {
-        clearInterval(interval);
-        setDisplayAge(finalAge);
-        if (counterRef.current) {
-          counterRef.current.style.transform = 'rotateY(0deg) scale(1)';
-          counterRef.current.style.color = '#FFD700';
-        }
-        setIsAnimating(false);
-      }
-    }, frameRate);
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(animateCounter, 1000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <span
-      ref={counterRef}
-      className="counter-digit text-toontown-yellow cursor-pointer"
-      onClick={animateCounter}
-      data-testid="age-counter"
-    >
-      {displayAge}
-    </span>
-  );
-};
+// AnimatedCounter component removed - no longer needed for mature pre-teen design
 
 const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: React.ElementType; index: number }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -288,19 +236,10 @@ export default function Home() {
           <div className="relative" data-testid="main-logo">
             <img 
               src={arabellaLogo} 
-              alt="Presenting Arabella Harris - Professional Young Voiceover Artist"
+              alt="Arabella Harris - Professional Young Voiceover Artist"
               className="w-full max-w-2xl mx-auto h-auto"
               data-testid="arabella-logo"
             />
-            
-            {/* Animated Counter */}
-            <div className="mt-6">
-              <div className="bg-mickey-red border-4 border-toontown-darkbrown rounded-2xl px-6 py-4 inline-block shadow-lg" data-testid="age-counter-container">
-                <span className="font-bold text-2xl md:text-3xl text-white">
-                  Aged... <AnimatedCounter />
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </header>
@@ -438,7 +377,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-mickey-orange py-8 px-4 mt-12" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white border-6 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg" data-testid="footer-sign">
+          <div className="bg-white border-8 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg" data-testid="footer-sign">
             <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-4" data-testid="footer-title">
               Ready to Work with Arabella?
             </h4>
