@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useLocation } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/Banner_1757598439390.jpg';
@@ -218,6 +220,23 @@ const TestimonialsCarousel = () => {
 };
 
 export default function Home() {
+  const [location, setLocation] = useLocation();
+  
+  // Tab routing logic
+  const getActiveTab = () => {
+    if (location === '/video') return 'video';
+    if (location === '/contact') return 'contact';
+    return 'audio'; // default to audio tab
+  };
+  
+  const handleTabChange = (value: string) => {
+    if (value === 'audio') {
+      setLocation('/');
+    } else {
+      setLocation(`/${value}`);
+    }
+  };
+
   const soundCloudItems = [
     { title: "Commercial Demo", icon: Music },
     { title: "Character Voices", icon: Mic },
@@ -233,12 +252,12 @@ export default function Home() {
     <div className="bg-background text-foreground min-h-screen">
       {/* Header */}
       <header className="relative py-8 px-4" data-testid="header-section">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="relative" data-testid="main-logo">
             <img 
               src={arabellaBanner} 
               alt="Presenting Arabella Harris - Professional Young Voiceover Artist Aged 09"
-              className="w-full max-w-2xl mx-auto h-auto"
+              className="w-full h-auto"
               data-testid="arabella-banner"
             />
           </div>
@@ -247,7 +266,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-6xl mx-auto px-4 py-8">
-        {/* Bio Section */}
+        {/* Bio Section - Always Visible */}
         <section className="bg-white rounded-3xl p-8 mb-12 shadow-lg cartoon-border" data-testid="bio-section">
           <div className="flex items-center mb-6">
             <Mic className="text-mickey-orange text-3xl mr-4" data-testid="bio-icon" />
@@ -283,26 +302,70 @@ export default function Home() {
           </div>
         </section>
 
-        {/* YouTube Section */}
-        <section className="mb-12" data-testid="youtube-section">
-          <div className="text-center mb-8">
-            <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
-            <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
-          </div>
+        {/* Testimonials Section - Always Visible */}
+        <TestimonialsCarousel />
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Video 1 */}
-            <div className="bg-white border-8 border-disney-blue rounded-2xl p-4 shadow-lg" data-testid="video-container-1">
-              <iframe
-                width="100%"
-                height="315"
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-                title="Arabella Harris Voiceover Demo 1"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="rounded-lg"
-                data-testid="youtube-iframe-1"
+        {/* Navigation Tabs */}
+        <Tabs value={getActiveTab()} onValueChange={handleTabChange} className="w-full" data-testid="main-tabs">
+          <TabsList className="grid w-full grid-cols-3 mb-8" data-testid="tabs-list">
+            <TabsTrigger value="audio" data-testid="tab-audio">🎵 Audio Showreel</TabsTrigger>
+            <TabsTrigger value="video" data-testid="tab-video">🎬 Video Showreel</TabsTrigger>
+            <TabsTrigger value="contact" data-testid="tab-contact">📧 Contact</TabsTrigger>
+          </TabsList>
+
+          {/* Audio Showreel Tab */}
+          <TabsContent value="audio" data-testid="audio-content">
+            <section className="mb-12" data-testid="soundcloud-section">
+              <div className="text-center mb-8">
+                <Volume2 className="text-mickey-yellow text-4xl mb-4 mx-auto" data-testid="soundcloud-icon" />
+                <h3 className="font-bold text-3xl md:text-4xl text-mickey-yellow">Listen to Arabella's Voice!</h3>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {soundCloudItems.map((item, index) => (
+                  <SoundCloudItem key={index} title={item.title} icon={item.icon} index={index} />
+                ))}
+              </div>
+
+              {/* Real SoundCloud Embed */}
+              <div className="mt-12 bg-white border-8 border-mickey-yellow rounded-2xl p-6 shadow-lg" data-testid="featured-soundcloud">
+                <h4 className="font-bold text-2xl text-toontown-darkbrown mb-4 text-center">🎤 Featured Voice Demo</h4>
+                <iframe
+                  width="100%"
+                  height="166"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2123619891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
+                  title="Arabella Harris Featured Voice Demo"
+                  className="rounded-lg"
+                  data-testid="featured-soundcloud-iframe"
+                />
+              </div>
+            </section>
+          </TabsContent>
+
+          {/* Video Showreel Tab */}
+          <TabsContent value="video" data-testid="video-content">
+            <section className="mb-12" data-testid="youtube-section">
+              <div className="text-center mb-8">
+                <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
+                <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Watch Arabella in Action!</h3>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Video 1 */}
+                <div className="bg-white border-8 border-disney-blue rounded-2xl p-4 shadow-lg" data-testid="video-container-1">
+                  <iframe
+                    width="100%"
+                    height="315"
+                    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                    title="Arabella Harris Voiceover Demo 1"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="rounded-lg"
+                    data-testid="youtube-iframe-1"
               />
             </div>
 
@@ -322,28 +385,44 @@ export default function Home() {
             </div>
           </div>
         </section>
+      </TabsContent>
 
-        {/* Testimonials Section */}
-        <TestimonialsCarousel />
-
-        {/* SoundCloud Section */}
-        <section className="mb-12" data-testid="soundcloud-section">
+      {/* Contact Tab */}
+      <TabsContent value="contact" data-testid="contact-content">
+        <section className="mb-12" data-testid="contact-section">
           <div className="text-center mb-8">
-            <Volume2 className="text-disney-blue text-4xl mb-4 mx-auto" data-testid="soundcloud-header-icon" />
-            <h3 className="font-bold text-3xl md:text-4xl text-disney-blue">Listen to Arabella's Voice Reels!</h3>
+            <Mail className="text-disney-blue text-4xl mb-4 mx-auto" data-testid="contact-icon" />
+            <h3 className="font-bold text-3xl md:text-4xl text-disney-blue">Get in Touch!</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6" data-testid="soundcloud-grid">
-            {soundCloudItems.map((item, index) => (
-              <SoundCloudItem
-                key={index}
-                title={item.title}
-                icon={item.icon}
-                index={index}
-              />
-            ))}
+          <div className="bg-white border-8 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg max-w-2xl mx-auto" data-testid="contact-info">
+            <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-4" data-testid="contact-title">
+              Ready to Work with Arabella?
+            </h4>
+            <p className="text-lg text-toontown-darkbrown font-friendly font-semibold mb-6" data-testid="contact-text">
+              Contact her representation for bookings and inquiries!
+            </p>
+            
+            {/* Book Now Button */}
+            <div className="mb-6">
+              <a 
+                href="mailto:arabella@voiceoverguy.co.uk"
+                className="book-now-button"
+                data-testid="book-now-button"
+              >
+                📧 Book Now!
+              </a>
+            </div>
+            
+            <div className="flex justify-center space-x-6">
+              <Mail className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-email" />
+              <Phone className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-phone" />
+              <GlobeIcon className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-website" />
+            </div>
           </div>
         </section>
+      </TabsContent>
+    </Tabs>
       </main>
 
       {/* Footer Note */}
@@ -375,34 +454,10 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Footer */}
-      <footer className="bg-mickey-orange py-8 px-4 mt-12" data-testid="footer-section">
+      {/* Simplified Footer */}
+      <footer className="bg-mickey-orange py-4 px-4 mt-8" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white border-8 border-toontown-darkbrown rounded-3xl px-6 py-8 mx-4 shadow-lg" data-testid="footer-sign">
-            <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-4" data-testid="footer-title">
-              Ready to Work with Arabella?
-            </h4>
-            <p className="text-lg text-toontown-darkbrown font-friendly font-semibold mb-6" data-testid="footer-text">
-              Contact her representation for bookings and inquiries!
-            </p>
-            
-            {/* Book Now Button */}
-            <div className="mb-6">
-              <a 
-                href="mailto:arabella@voiceoverguy.co.uk"
-                className="book-now-button"
-                data-testid="book-now-button"
-              >
-                📧 Book Now!
-              </a>
-            </div>
-            
-            <div className="flex justify-center space-x-6">
-              <Mail className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-email" />
-              <Phone className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-phone" />
-              <GlobeIcon className="text-mickey-yellow text-2xl cursor-pointer" data-testid="contact-website" />
-            </div>
-          </div>
+          <p className="text-white font-friendly">© 2024 Arabella Harris Voice Over</p>
         </div>
       </footer>
     </div>
