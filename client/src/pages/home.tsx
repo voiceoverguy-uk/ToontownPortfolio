@@ -159,14 +159,14 @@ const TestimonialsCarousel = () => {
             >
               <div className="testimonial-bubble max-w-2xl mx-auto">
                 <Quote className="text-disney-blue text-2xl mb-4 floating-icon" data-testid={`quote-icon-${index}`} />
-                <blockquote className="text-lg md:text-xl font-friendly font-semibold text-toontown-darkbrown mb-4 leading-relaxed" data-testid={`testimonial-quote-${index}`}>
+                <blockquote className="text-lg md:text-xl font-bold font-semibold text-toontown-darkbrown mb-4 leading-relaxed" data-testid={`testimonial-quote-${index}`}>
                   "{testimonial.quote}"
                 </blockquote>
                 <footer className="text-right">
                   <cite className="font-bold text-lg text-mickey-red not-italic" data-testid={`testimonial-author-${index}`}>
                     – {testimonial.author}
                   </cite>
-                  <p className="text-sm font-friendly font-bold text-disney-blue mt-1" data-testid={`testimonial-company-${index}`}>
+                  <p className="text-sm font-bold text-disney-blue mt-1" data-testid={`testimonial-company-${index}`}>
                     {testimonial.role}, {testimonial.company}
                   </p>
                 </footer>
@@ -271,7 +271,7 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-2 lg:space-x-4" data-testid="desktop-nav">
               <Link 
                 href="/" 
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 font-friendly ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                   isActive('/') 
                     ? 'bg-mickey-yellow text-toontown-darkbrown shadow-lg transform scale-105' 
                     : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md'
@@ -283,7 +283,7 @@ export default function Home() {
               </Link>
               <Link 
                 href="/video" 
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 font-friendly ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                   isActive('/video') 
                     ? 'bg-disney-blue text-white shadow-lg transform scale-105' 
                     : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md'
@@ -295,7 +295,7 @@ export default function Home() {
               </Link>
               <Link 
                 href="/contact" 
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 font-friendly ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                   isActive('/contact') 
                     ? 'bg-mickey-red text-white shadow-lg transform scale-105' 
                     : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md'
@@ -331,7 +331,7 @@ export default function Home() {
                 <Link 
                   href="/" 
                   onClick={handleMobileLinkClick}
-                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 font-friendly ${
+                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
                     isActive('/') 
                       ? 'bg-mickey-yellow text-toontown-darkbrown shadow-md' 
                       : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
@@ -344,7 +344,7 @@ export default function Home() {
                 <Link 
                   href="/video" 
                   onClick={handleMobileLinkClick}
-                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 font-friendly ${
+                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
                     isActive('/video') 
                       ? 'bg-disney-blue text-white shadow-md' 
                       : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
@@ -357,7 +357,7 @@ export default function Home() {
                 <Link 
                   href="/contact" 
                   onClick={handleMobileLinkClick}
-                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 font-friendly ${
+                  className={`block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
                     isActive('/contact') 
                       ? 'bg-mickey-red text-white shadow-md' 
                       : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
@@ -385,7 +385,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Main Heading */}
           <div className="text-center mb-12">
-            <h1 className="font-bold text-4xl md:text-6xl text-red-600 font-heading mb-4" data-testid="meet-arabella-heading">
+            <h1 className="font-bold text-4xl md:text-6xl text-red-600 mb-4" data-testid="meet-arabella-heading">
               MEET ARABELLA!
             </h1>
           </div>
@@ -420,7 +420,7 @@ export default function Home() {
             
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
-              <p className="text-lg md:text-xl text-white font-bold leading-relaxed font-friendly" data-testid="hero-bio-text">
+              <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
                 Arabella is an award-winning young voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
               
@@ -532,7 +532,7 @@ export default function Home() {
             <h4 className="font-bold text-2xl md:text-3xl text-toontown-darkbrown mb-4" data-testid="contact-title">
               Ready to Work with Arabella?
             </h4>
-            <p className="text-lg text-toontown-darkbrown font-friendly font-semibold mb-6" data-testid="contact-text">
+            <p className="text-lg text-toontown-darkbrown font-bold font-semibold mb-6" data-testid="contact-text">
               Contact her representation for bookings and inquiries!
             </p>
             
@@ -579,7 +579,7 @@ export default function Home() {
               <p className="font-bold text-xl md:text-2xl text-white leading-relaxed" data-testid="footer-note-text">
                 She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
               </p>
-              <p className="font-friendly text-lg text-toontown-cream mt-2 opacity-90">
+              <p className="font-bold text-lg text-toontown-cream mt-2 opacity-90">
                 🎤 Talent runs in the family! 🎆
               </p>
             </div>
@@ -590,7 +590,7 @@ export default function Home() {
       {/* Simplified Footer */}
       <footer className="bg-mickey-orange py-4 px-4 mt-8" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white font-friendly">© 2024 Arabella Harris Voice Over</p>
+          <p className="text-white font-bold">© 2024 Arabella Harris Voice Over</p>
         </div>
       </footer>
       </div> {/* Close main content wrapper */}
