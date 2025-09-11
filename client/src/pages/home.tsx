@@ -494,9 +494,6 @@ export default function Home() {
         {/* Main Content */}
         <main className="max-w-6xl mx-auto px-4 py-8">
 
-          {/* Testimonials Section - Always Visible */}
-          <TestimonialsCarousel />
-
           {/* Audio Showreel Section - Always Visible */}
           <div data-testid="audio-content">
             <section id="audio-showreel" className="mb-12 scroll-mt-24" data-testid="soundcloud-section">
@@ -572,6 +569,9 @@ export default function Home() {
           </div>
         </section>
             </div>
+
+          {/* Testimonials Section - Always Visible */}
+          <TestimonialsCarousel />
 
           {/* Contact Section - Always Visible */}
           <div data-testid="contact-content">
