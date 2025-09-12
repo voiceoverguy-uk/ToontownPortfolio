@@ -86,13 +86,13 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
   };
 
   return (
-    <div className="flex items-center gap-2 w-56 bg-gray-600/90 rounded-full px-3 py-2" data-testid={testId}>
+    <div className="flex items-center gap-2 w-56" data-testid={testId}>
       <audio ref={audioRef} src={audioSrc} preload="metadata" />
       
       {/* Play/Pause Button */}
       <button
         onClick={togglePlay}
-        className="flex-shrink-0 w-6 h-6 bg-white text-gray-600 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
+        className="flex-shrink-0 w-6 h-6 bg-gray-600 text-white rounded-sm flex items-center justify-center hover:bg-gray-500 transition-colors"
         data-testid={`${testId}-play-button`}
       >
         {isPlaying ? (
@@ -107,20 +107,20 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
       </button>
 
       {/* Current Time */}
-      <span className="text-xs text-white font-medium">
+      <span className="text-xs text-gray-600 font-medium">
         {formatTime(currentTime)}
       </span>
 
       {/* Progress Bar */}
-      <div className="flex-1 bg-gray-400 rounded-full h-1">
+      <div className="flex-1 bg-gray-300 rounded-full h-1">
         <div 
-          className="bg-white h-1 rounded-full transition-all duration-100"
+          className="bg-gray-600 h-1 rounded-full transition-all duration-100"
           style={{ width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' }}
         />
       </div>
 
       {/* Total Duration */}
-      <span className="text-xs text-white font-medium">
+      <span className="text-xs text-gray-600 font-medium">
         {formatTime(duration)}
       </span>
     </div>
