@@ -474,7 +474,7 @@ export default function Home() {
 
               {/* Real SoundCloud Embed */}
               <div className="mt-12 bg-white border-8 border-mickey-yellow rounded-2xl p-6 shadow-lg" data-testid="featured-soundcloud">
-                <h4 className="font-bold text-2xl text-toontown-darkbrown mb-4 text-center">🎤 Featured Voice Demo</h4>
+                <h4 className="font-bold text-2xl text-toontown-darkbrown mb-4 text-center">🎤 Arabella Harris - Showreel {new Date().getFullYear()}</h4>
                 <iframe
                   width="100%"
                   height="166"
