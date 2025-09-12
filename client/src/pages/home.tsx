@@ -586,7 +586,7 @@ export default function Home() {
                 She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
               </p>
               <p className="font-bold text-lg text-toontown-cream mt-2 opacity-90">
-                🎤 Talent runs in the family! 🎆
+                🎤 Takes after her Dad! 🎆
               </p>
             </div>
           </div>
