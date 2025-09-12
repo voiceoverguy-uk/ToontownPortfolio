@@ -211,6 +211,8 @@ const TestimonialsCarousel = () => {
 export default function Home() {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [heartClicked, setHeartClicked] = useState(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   
   // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
@@ -245,6 +247,22 @@ export default function Home() {
   // Get current active section (no default active state - buttons light up when selected)
   const isActive = (sectionId: string) => {
     return false; // No default active state - buttons will light up when clicked/selected
+  };
+
+  // Handle heart click
+  const handleHeartClick = () => {
+    setHeartClicked(true);
+    setShowThankYou(true);
+    
+    // Hide thank you message after 3 seconds
+    setTimeout(() => {
+      setShowThankYou(false);
+    }, 3000);
+    
+    // Reset heart color after 5 seconds
+    setTimeout(() => {
+      setHeartClicked(false);
+    }, 5000);
   };
 
   const soundCloudItems = [
@@ -577,7 +595,20 @@ export default function Home() {
                   data-testid="arabella-footer-image"
                 />
                 <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg">
-                  <Heart className="text-mickey-red text-lg floating-icon" data-testid="footer-heart-icon" />
+                  <Heart 
+                    className={`text-lg floating-icon cursor-pointer transition-all duration-300 hover:scale-110 ${
+                      heartClicked ? 'text-red-600' : 'text-mickey-red'
+                    }`}
+                    onClick={handleHeartClick}
+                    data-testid="footer-heart-icon" 
+                  />
+                  
+                  {/* Thank You Message */}
+                  {showThankYou && (
+                    <div className="absolute -top-12 -left-8 bg-mickey-yellow text-toontown-darkbrown px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-bounce z-10 whitespace-nowrap">
+                      Thank you! 💕
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
