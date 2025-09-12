@@ -36,6 +36,92 @@ const FloatingIcon = ({ icon: Icon, className = "", delay = 0, position }: Float
 
 // AnimatedCounter component removed - no longer needed for mature pre-teen design
 
+// Simple Audio Player Component
+function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateTime = () => setCurrentTime(audio.currentTime);
+    const updateDuration = () => setDuration(audio.duration);
+    const handleEnded = () => setIsPlaying(false);
+
+    audio.addEventListener('timeupdate', updateTime);
+    audio.addEventListener('loadedmetadata', updateDuration);
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('timeupdate', updateTime);
+      audio.removeEventListener('loadedmetadata', updateDuration);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, []);
+
+  const togglePlay = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    try {
+      if (isPlaying) {
+        audio.pause();
+        setIsPlaying(false);
+      } else {
+        await audio.play();
+        setIsPlaying(true);
+      }
+    } catch (error) {
+      console.error('Audio playback failed:', error);
+    }
+  };
+
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  return (
+    <div className="flex items-center gap-3 w-80" data-testid={testId}>
+      <audio ref={audioRef} src={audioSrc} preload="metadata" />
+      
+      {/* Play/Pause Button */}
+      <button
+        onClick={togglePlay}
+        className="flex-shrink-0 w-10 h-10 bg-mickey-red text-white rounded-full flex items-center justify-center hover:bg-mickey-red/80 transition-colors"
+        data-testid={`${testId}-play-button`}
+      >
+        {isPlaying ? (
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M6 4h2v12H6V4zm6 0h2v12h-2V4z" clipRule="evenodd" />
+          </svg>
+        ) : (
+          <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M6 4l8 6-8 6V4z" clipRule="evenodd" />
+          </svg>
+        )}
+      </button>
+
+      {/* Progress Bar */}
+      <div className="flex-1 flex items-center gap-2">
+        <div className="flex-1 bg-gray-200 rounded-full h-2">
+          <div 
+            className="bg-mickey-red h-2 rounded-full transition-all duration-100"
+            style={{ width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' }}
+          />
+        </div>
+        <span className="text-xs text-gray-600 font-medium min-w-12">
+          {formatTime(currentTime)}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: React.ElementType; index: number }) => {
   const [isVisible, setIsVisible] = useState(false);
   const itemRef = useRef<HTMLDivElement>(null);
@@ -451,17 +537,13 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Audio Player - Rotates with Image */}
+                {/* Custom Audio Player - Rotates with Image */}
                 <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
                   <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-4 py-2 shadow-lg">
-                    <audio 
-                      controls 
-                      className="h-12 w-80"
-                      data-testid="arabella-voice-player"
-                    >
-                      <source src="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3" type="audio/mpeg" />
-                      Your browser does not support the audio element.
-                    </audio>
+                    <SimpleAudioPlayer 
+                      audioSrc="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3"
+                      testId="arabella-voice-player"
+                    />
                   </div>
                 </div>
               </div>
