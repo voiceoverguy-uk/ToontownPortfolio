@@ -213,7 +213,6 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [heartClicked, setHeartClicked] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
-  const [heartClickCount, setHeartClickCount] = useState(0);
   
   // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
@@ -254,17 +253,16 @@ export default function Home() {
   const handleHeartClick = () => {
     setHeartClicked(true);
     setShowThankYou(true);
-    setHeartClickCount(prev => prev + 1); // Increment counter
     
     // Hide thank you message after 3 seconds
     setTimeout(() => {
       setShowThankYou(false);
     }, 3000);
     
-    // Reset heart color after 5 seconds
+    // Reset heart to default after 3 seconds
     setTimeout(() => {
       setHeartClicked(false);
-    }, 5000);
+    }, 3000);
   };
 
   const soundCloudItems = [
@@ -598,19 +596,12 @@ export default function Home() {
                 />
                 <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg">
                   <Heart 
-                    className={`text-lg floating-icon cursor-pointer transition-all duration-300 hover:scale-110 ${
-                      heartClicked ? 'text-red-600' : 'text-mickey-red'
+                    className={`text-lg floating-icon cursor-pointer transition-all duration-500 hover:scale-110 ${
+                      heartClicked ? 'text-red-600 fill-red-600' : 'text-mickey-red'
                     }`}
                     onClick={handleHeartClick}
                     data-testid="footer-heart-icon" 
                   />
-                  
-                  {/* Click Counter */}
-                  {heartClickCount > 0 && (
-                    <div className="absolute -top-2 -right-2 bg-mickey-red text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-md animate-pulse">
-                      {heartClickCount}
-                    </div>
-                  )}
                   
                   {/* Thank You Message */}
                   {showThankYou && (
