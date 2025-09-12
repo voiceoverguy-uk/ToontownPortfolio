@@ -86,38 +86,43 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
   };
 
   return (
-    <div className="flex items-center gap-3 w-80" data-testid={testId}>
+    <div className="flex items-center gap-2 w-56 bg-gray-600/90 rounded-full px-3 py-2" data-testid={testId}>
       <audio ref={audioRef} src={audioSrc} preload="metadata" />
       
       {/* Play/Pause Button */}
       <button
         onClick={togglePlay}
-        className="flex-shrink-0 w-10 h-10 bg-mickey-red text-white rounded-full flex items-center justify-center hover:bg-mickey-red/80 transition-colors"
+        className="flex-shrink-0 w-6 h-6 bg-white text-gray-600 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors"
         data-testid={`${testId}-play-button`}
       >
         {isPlaying ? (
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M6 4h2v12H6V4zm6 0h2v12h-2V4z" clipRule="evenodd" />
           </svg>
         ) : (
-          <svg className="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
+          <svg className="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M6 4l8 6-8 6V4z" clipRule="evenodd" />
           </svg>
         )}
       </button>
 
+      {/* Current Time */}
+      <span className="text-xs text-white font-medium">
+        {formatTime(currentTime)}
+      </span>
+
       {/* Progress Bar */}
-      <div className="flex-1 flex items-center gap-2">
-        <div className="flex-1 bg-gray-200 rounded-full h-2">
-          <div 
-            className="bg-mickey-red h-2 rounded-full transition-all duration-100"
-            style={{ width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' }}
-          />
-        </div>
-        <span className="text-xs text-gray-600 font-medium min-w-12">
-          {formatTime(currentTime)}
-        </span>
+      <div className="flex-1 bg-gray-400 rounded-full h-1">
+        <div 
+          className="bg-white h-1 rounded-full transition-all duration-100"
+          style={{ width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' }}
+        />
       </div>
+
+      {/* Total Duration */}
+      <span className="text-xs text-white font-medium">
+        {formatTime(duration)}
+      </span>
     </div>
   );
 }
