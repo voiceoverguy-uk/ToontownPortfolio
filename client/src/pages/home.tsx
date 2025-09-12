@@ -348,7 +348,7 @@ export default function Home() {
                 data-testid="link-contact"
                 aria-current={isActive('contact') ? 'page' : undefined}
               >
-                📧 Contact
+                📞 Contact
               </button>
             </div>
 
@@ -407,7 +407,7 @@ export default function Home() {
                   data-testid="mobile-link-contact"
                   aria-current={isActive('contact') ? 'page' : undefined}
                 >
-                  📧 Contact
+                  📞 Contact
                 </button>
               </div>
             </div>
