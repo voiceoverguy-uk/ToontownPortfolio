@@ -86,7 +86,7 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
   };
 
   return (
-    <div className="flex items-center gap-2 w-56" data-testid={testId}>
+    <div className="flex items-center gap-2 w-48 md:w-56" data-testid={testId}>
       <audio ref={audioRef} src={audioSrc} preload="metadata" />
       
       {/* Play/Pause Button */}
@@ -542,9 +542,9 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Custom Audio Player - Rotates with Image */}
-                <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
-                  <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-4 py-2 shadow-lg">
+                {/* Custom Audio Player - Responsive positioning */}
+                <div className="absolute -bottom-16 md:-bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1 z-10">
+                  <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-2 md:px-4 py-1 md:py-2 shadow-lg">
                     <SimpleAudioPlayer 
                       audioSrc="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3"
                       testId="arabella-voice-player"
