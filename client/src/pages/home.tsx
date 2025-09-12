@@ -242,9 +242,9 @@ export default function Home() {
     setIsMobileMenuOpen(false); // Close mobile menu after clicking
   };
 
-  // Get current active section (simplified - always show first item as active for now)
+  // Get current active section (no default active state - buttons light up when selected)
   const isActive = (sectionId: string) => {
-    return sectionId === 'audio-showreel'; // Default to audio showreel as active
+    return false; // No default active state - buttons will light up when clicked/selected
   };
 
   const soundCloudItems = [
@@ -353,7 +353,7 @@ export default function Home() {
 
           {/* Mobile Menu Dropdown */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 bg-white/95 border-4 border-mickey-yellow rounded-2xl p-4 shadow-xl animate-in slide-in-from-top-2 duration-300" data-testid="mobile-menu">
+            <div className="md:hidden mt-4 bg-white/85 border-4 border-mickey-yellow rounded-2xl p-4 shadow-xl animate-in slide-in-from-top-2 duration-300" data-testid="mobile-menu">
               <div className="space-y-3">
                 <button 
                   onClick={() => scrollToSection('audio-showreel')}
@@ -437,7 +437,7 @@ export default function Home() {
             
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" data-testid="meet-arabella-heading">
+              <h2 className="text-2xl md:text-3xl font-bold text-mickey-red mb-4" data-testid="meet-arabella-heading">
                 Meet Arabella Harris
               </h2>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
