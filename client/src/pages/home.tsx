@@ -520,7 +520,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Arabella's Image */}
             <div className="flex justify-center lg:justify-start">
-              <div className="relative transform -rotate-3 hover:-rotate-6 transition-all duration-500 hover:scale-105 group">
+              <div className="relative transform -rotate-3 hover:-rotate-6 transition-all duration-500 hover:scale-105 group pb-16 md:pb-0">
                 <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
                   <img 
                     src={arabellaImage} 
@@ -542,8 +542,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Custom Audio Player - Responsive positioning */}
-                <div className="absolute -bottom-16 md:-bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1 z-10">
+                {/* Custom Audio Player - Mobile static, desktop absolute */}
+                <div className="mt-4 flex justify-center z-10 md:absolute md:-bottom-20 md:left-1/2 md:transform md:-translate-x-1/2 md:transition-all md:duration-500 md:group-hover:scale-110 md:group-hover:-translate-y-1">
                   <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-2 md:px-4 py-1 md:py-2 shadow-lg">
                     <SimpleAudioPlayer 
                       audioSrc="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3"
