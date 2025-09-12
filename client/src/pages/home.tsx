@@ -213,6 +213,7 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [heartClicked, setHeartClicked] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
+  const [heartClickCount, setHeartClickCount] = useState(0);
   
   // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
@@ -253,6 +254,7 @@ export default function Home() {
   const handleHeartClick = () => {
     setHeartClicked(true);
     setShowThankYou(true);
+    setHeartClickCount(prev => prev + 1); // Increment counter
     
     // Hide thank you message after 3 seconds
     setTimeout(() => {
@@ -602,6 +604,13 @@ export default function Home() {
                     onClick={handleHeartClick}
                     data-testid="footer-heart-icon" 
                   />
+                  
+                  {/* Click Counter */}
+                  {heartClickCount > 0 && (
+                    <div className="absolute -top-1 -right-1 bg-mickey-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-md animate-pulse">
+                      {heartClickCount}
+                    </div>
+                  )}
                   
                   {/* Thank You Message */}
                   {showThankYou && (
