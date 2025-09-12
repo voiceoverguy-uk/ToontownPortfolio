@@ -447,7 +447,7 @@ export default function Home() {
               <div className="bg-white/90 border-4 border-red-500 rounded-2xl p-6 shadow-lg" data-testid="hero-disclaimer-box">
                 <GraduationCap className="text-blue-600 text-2xl mb-3 mx-auto" data-testid="hero-graduation-icon" />
                 <p className="font-bold text-lg md:text-xl text-gray-800 text-center" data-testid="hero-disclaimer-text">
-                  Note: Arabella is not available during school hours or when homework is due! 📚✏️
+                  Note: Arabella is not available during school hours, cleaning duties or when homework is due! 📚✏️
                 </p>
               </div>
             </div>
