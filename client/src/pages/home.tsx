@@ -452,7 +452,7 @@ export default function Home() {
                 </div>
 
                 {/* Audio Player - Rotates with Image */}
-                <div className="absolute -bottom-28 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
+                <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
                   <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-4 py-2 shadow-lg">
                     <audio 
                       controls 
