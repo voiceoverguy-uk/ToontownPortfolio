@@ -607,7 +607,7 @@ export default function Home() {
                   
                   {/* Click Counter */}
                   {heartClickCount > 0 && (
-                    <div className="absolute -top-1 -right-1 bg-mickey-red text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center shadow-md animate-pulse">
+                    <div className="absolute -top-2 -right-2 bg-mickey-red text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center shadow-md animate-pulse">
                       {heartClickCount}
                     </div>
                   )}
