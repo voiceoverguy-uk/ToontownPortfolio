@@ -178,7 +178,7 @@ const TestimonialsCarousel = () => {
         {/* Navigation Arrows */}
         <button
           onClick={prevTestimonial}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-300 rounded-full p-3 shadow-lg cartoon-border"
+          className="absolute left-4 top-[40%] transform -translate-y-1/2 bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-300 rounded-full p-3 shadow-lg cartoon-border"
           data-testid="testimonial-prev"
         >
           <ChevronLeft className="text-toontown-darkbrown text-xl" />
@@ -186,7 +186,7 @@ const TestimonialsCarousel = () => {
         
         <button
           onClick={nextTestimonial}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-300 rounded-full p-3 shadow-lg cartoon-border"
+          className="absolute right-4 top-[40%] transform -translate-y-1/2 bg-mickey-yellow hover:bg-mickey-orange transition-colors duration-300 rounded-full p-3 shadow-lg cartoon-border"
           data-testid="testimonial-next"
         >
           <ChevronRight className="text-toontown-darkbrown text-xl" />
