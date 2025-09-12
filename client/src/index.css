@@ -99,7 +99,7 @@
     min-height: 100vh;
     overflow-x: hidden; /* Prevent horizontal scrolling/wobbling on mobile */
   }
-
+}
 
 @layer components {
   .wooden-sign {
