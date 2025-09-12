@@ -456,7 +456,7 @@ export default function Home() {
                   <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-4 py-2 shadow-lg">
                     <audio 
                       controls 
-                      className="h-8 w-64"
+                      className="h-8 w-80"
                       data-testid="arabella-voice-player"
                     >
                       <source src="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3" type="audio/mpeg" />
