@@ -658,7 +658,7 @@ export default function Home() {
                 className="book-now-button"
                 data-testid="book-now-button"
               >
-                📧 Book Now!
+                Book Now!
               </a>
             </div>
           </div>
