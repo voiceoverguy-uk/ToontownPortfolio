@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, createContext, useContext } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote, Menu, X } from 'lucide-react';
 import { useLocation, Link } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
@@ -6,6 +6,25 @@ import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
 import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
 import headerBg from '@assets/header-bg_1757622267624.jpg';
+
+// Audio Context for managing currently playing audio
+const AudioContext = createContext<{
+  currentlyPlaying: string | null;
+  setCurrentlyPlaying: (id: string | null) => void;
+}>({
+  currentlyPlaying: null,
+  setCurrentlyPlaying: () => {},
+});
+
+const AudioProvider = ({ children }: { children: React.ReactNode }) => {
+  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
+  
+  return (
+    <AudioContext.Provider value={{ currentlyPlaying, setCurrentlyPlaying }}>
+      {children}
+    </AudioContext.Provider>
+  );
+};
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -38,10 +57,22 @@ const FloatingIcon = ({ icon: Icon, className = "", delay = 0, position }: Float
 
 // Simple Audio Player Component
 function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: string }) {
+  const { currentlyPlaying, setCurrentlyPlaying } = useContext(AudioContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Stop this player if another one starts playing
+  useEffect(() => {
+    if (currentlyPlaying !== testId && isPlaying) {
+      const audio = audioRef.current;
+      if (audio) {
+        audio.pause();
+        setIsPlaying(false);
+      }
+    }
+  }, [currentlyPlaying, testId, isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -49,7 +80,10 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
 
     const updateTime = () => setCurrentTime(audio.currentTime);
     const updateDuration = () => setDuration(audio.duration);
-    const handleEnded = () => setIsPlaying(false);
+    const handleEnded = () => {
+      setIsPlaying(false);
+      setCurrentlyPlaying(null);
+    };
 
     audio.addEventListener('timeupdate', updateTime);
     audio.addEventListener('loadedmetadata', updateDuration);
@@ -70,7 +104,10 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
       if (isPlaying) {
         audio.pause();
         setIsPlaying(false);
+        setCurrentlyPlaying(null);
       } else {
+        // Stop any other currently playing audio
+        setCurrentlyPlaying(testId);
         await audio.play();
         setIsPlaying(true);
       }
@@ -373,21 +410,22 @@ export default function Home() {
   ];
 
   return (
-    <div className="bg-transparent text-foreground min-h-screen relative z-10 overflow-x-hidden">
-      {/* Fixed Background Image */}
-      <div 
-        className="header-background"
-        style={{ 
-          backgroundImage: `url(${headerBg})`
-        }}
-        data-testid="header-background"
-      />
-      
-      {/* Subtle overlay for content readability */}
-      <div className="fixed inset-0 bg-white/40 z-[1] pointer-events-none" data-testid="bg-overlay" />
-      
-      {/* Main Content Wrapper */}
-      <div className="relative z-10">
+    <AudioProvider>
+      <div className="bg-transparent text-foreground min-h-screen relative z-10 overflow-x-hidden">
+        {/* Fixed Background Image */}
+        <div 
+          className="header-background"
+          style={{ 
+            backgroundImage: `url(${headerBg})`
+          }}
+          data-testid="header-background"
+        />
+        
+        {/* Subtle overlay for content readability */}
+        <div className="fixed inset-0 bg-white/40 z-[1] pointer-events-none" data-testid="bg-overlay" />
+        
+        {/* Main Content Wrapper */}
+        <div className="relative z-10">
         {/* Top Navigation Bar */}
       <nav role="navigation" aria-label="Primary" className="fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
@@ -719,8 +757,9 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-white font-bold">(c) 2025 Arabella Voiceover Kid</p>
         </div>
-      </footer>
-      </div> {/* Close main content wrapper */}
-    </div>
+        </footer>
+        </div> {/* Close main content wrapper */}
+      </div> {/* Close main background div */}
+    </AudioProvider>
   );
 }
