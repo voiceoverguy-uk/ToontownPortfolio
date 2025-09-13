@@ -200,7 +200,7 @@ const TestimonialsCarousel = () => {
       role: "Producer"
     },
     {
-      quote: "Arabella is a joy to work with, welcome anytime at the North Pole",
+      quote: "Arabella is a joy to work with, welcome anytime at the North Pole to help the elves",
       author: "Guy Harris",
       company: "North Pole",
       role: "Voice of Santa"
