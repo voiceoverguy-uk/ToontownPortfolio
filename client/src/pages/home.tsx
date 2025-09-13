@@ -483,7 +483,7 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => scrollToSection('video-showreel')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-2 border-transparent ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent ${
                     isActive('video-showreel') 
                       ? 'bg-disney-blue text-white shadow-md' 
                       : 'hover:bg-disney-blue/20 text-toontown-darkbrown hover:border-yellow-400'
@@ -495,7 +495,7 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-2 border-transparent ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent ${
                     isActive('contact') 
                       ? 'bg-mickey-red text-white shadow-md' 
                       : 'hover:bg-mickey-red/20 text-toontown-darkbrown hover:border-yellow-400'
