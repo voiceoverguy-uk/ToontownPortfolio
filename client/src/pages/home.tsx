@@ -674,7 +674,7 @@ export default function Home() {
                 className="rounded-lg"
                 data-testid="youtube-iframe-2"
               />
-              <p className="text-center font-bold text-xl text-mickey-orange mt-3" data-testid="video-label-2">Dad</p>
+              <p className="text-center font-bold text-xl text-mickey-orange mt-3" data-testid="video-label-2">Daddy</p>
             </div>
           </div>
         </section>
@@ -745,7 +745,7 @@ export default function Home() {
                 She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
               </p>
               <p className="font-bold text-lg text-toontown-cream mt-2 opacity-90">
-                🎤 Takes after her Dad!
+                🎤 Takes after her Daddy!
               </p>
             </div>
           </div>
