@@ -127,7 +127,7 @@ function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: str
   );
 }
 
-const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: React.ElementType; index: number }) => {
+const AudioTrackItem = ({ title, icon: Icon, index, url }: { title: string; icon: React.ElementType; index: number; url: string }) => {
   const [isVisible, setIsVisible] = useState(false);
   const itemRef = useRef<HTMLDivElement>(null);
 
@@ -153,23 +153,18 @@ const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: Rea
       ref={itemRef}
       className={`soundcloud-item transition-all duration-700 ${isVisible ? 'animate-in' : ''}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
-      data-testid={`soundcloud-item-${index}`}
+      data-testid={`audio-track-item-${index}`}
     >
-      <div className="flex items-center mb-3">
-        <Icon className="text-mickey-red text-xl mr-2" data-testid={`soundcloud-icon-${index}`} />
-        <span className="font-bold text-toontown-darkbrown">{title}</span>
+      <div className="bg-white border-4 border-mickey-yellow rounded-2xl p-4 shadow-lg">
+        <div className="flex items-center mb-3">
+          <Icon className="text-mickey-red text-xl mr-2" data-testid={`audio-track-icon-${index}`} />
+          <span className="font-bold text-toontown-darkbrown">{title}</span>
+        </div>
+        <SimpleAudioPlayer 
+          audioSrc={url}
+          testId={`audio-track-player-${index}`}
+        />
       </div>
-      <iframe
-        width="100%"
-        height="166"
-        scrolling="no"
-        frameBorder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2123619891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-        title={`${title} - Arabella Harris Voice Demo`}
-        className="rounded-lg"
-        data-testid={`soundcloud-iframe-${index}`}
-      />
     </div>
   );
 };
@@ -356,15 +351,19 @@ export default function Home() {
     }, 3000);
   };
 
-  const soundCloudItems = [
-    { title: "Commercial Demo", icon: Music },
-    { title: "Character Voices", icon: Mic },
-    { title: "Radio Spots", icon: Radio },
-    { title: "TV Commercials", icon: Tv },
-    { title: "Narration", icon: Book },
-    { title: "Gaming", icon: Gamepad2 },
-    { title: "Kids Content", icon: Baby },
-    { title: "International", icon: Globe },
+  const audioTracks = [
+    { title: "Nickelodeon", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/pleasure-beach-resort-nickelodeon-arabella-harris.mp3" },
+    { title: "Skoda", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/skoda-arabella-harris.mp3" },
+    { title: "Narration Showreel", icon: Book, url: "https://www.voiceoverguy.co.uk/assets/audio/narration-demo-arabella-harris.mp3" },
+    { title: "Barnardos", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/barnardos-arabella-harris.mp3" },
+    { title: "Sainsburys", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/sainsburys-tu-arabella-harris.mp3" },
+    { title: "Cherry Blossom", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/cherry-blossom-arabella-harris.mp3" },
+    { title: "Reem Mall Dubai", icon: Globe, url: "https://www.voiceoverguy.co.uk/assets/audio/reem-mall-madagascar-arabella-harris.mp3" },
+    { title: "Sketchers", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/sketchers-back-to-school-usa-accent-arabella-harris.mp3" },
+    { title: "Wicksteed Park", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/wicksteed-park-arabella-harris.mp3" },
+    { title: "Rainbow Allotment", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/rainbow-allotment-arabella-harris.mp3" },
+    { title: "Dear Santa", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/dear-santa-arabella-harris.mp3" },
+    { title: "Isle of White Ice Cream", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/isle-of-wight-ice-cream-arabella-harris.mp3" },
   ];
 
   return (
@@ -585,26 +584,10 @@ export default function Home() {
                 <h3 className="font-bold text-3xl md:text-4xl text-mickey-yellow">Listen to Arabella's Voice!</h3>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {soundCloudItems.map((item, index) => (
-                  <SoundCloudItem key={index} title={item.title} icon={item.icon} index={index} />
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {audioTracks.map((item, index) => (
+                  <AudioTrackItem key={index} title={item.title} icon={item.icon} index={index} url={item.url} />
                 ))}
-              </div>
-
-              {/* Real SoundCloud Embed */}
-              <div className="mt-12 bg-white border-8 border-mickey-yellow rounded-2xl p-6 shadow-lg" data-testid="featured-soundcloud">
-                <h4 className="font-bold text-2xl text-toontown-darkbrown mb-4 text-center">🎤 Arabella Harris - Showreel {new Date().getFullYear()}</h4>
-                <iframe
-                  width="100%"
-                  height="166"
-                  scrolling="no"
-                  frameBorder="no"
-                  allow="autoplay"
-                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2123619891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
-                  title="Arabella Harris Featured Voice Demo"
-                  className="rounded-lg"
-                  data-testid="featured-soundcloud-iframe"
-                />
               </div>
             </section>
             </div>
