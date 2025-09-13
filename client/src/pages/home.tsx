@@ -407,10 +407,10 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-2 lg:space-x-4" data-testid="desktop-nav">
               <button 
                 onClick={() => scrollToSection('audio-showreel')}
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-2 border-transparent ${
                   isActive('audio-showreel') 
                     ? 'bg-mickey-yellow text-toontown-darkbrown shadow-lg transform scale-105' 
-                    : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md'
+                    : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
                 }`}
                 data-testid="link-audio"
                 aria-current={isActive('audio-showreel') ? 'page' : undefined}
@@ -419,10 +419,10 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => scrollToSection('video-showreel')}
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-2 border-transparent ${
                   isActive('video-showreel') 
                     ? 'bg-disney-blue text-white shadow-lg transform scale-105' 
-                    : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md'
+                    : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
                 }`}
                 data-testid="link-video"
                 aria-current={isActive('video-showreel') ? 'page' : undefined}
@@ -431,10 +431,10 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-2 border-transparent ${
                   isActive('contact') 
                     ? 'bg-mickey-red text-white shadow-lg transform scale-105' 
-                    : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md'
+                    : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
                 }`}
                 data-testid="link-contact"
                 aria-current={isActive('contact') ? 'page' : undefined}
@@ -466,10 +466,10 @@ export default function Home() {
               <div className="space-y-3">
                 <button 
                   onClick={() => scrollToSection('audio-showreel')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-2 border-transparent ${
                     isActive('audio-showreel') 
                       ? 'bg-mickey-yellow text-toontown-darkbrown shadow-md' 
-                      : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
+                      : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown hover:border-yellow-400'
                   }`}
                   data-testid="mobile-link-audio"
                   aria-current={isActive('audio-showreel') ? 'page' : undefined}
@@ -478,10 +478,10 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => scrollToSection('video-showreel')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-2 border-transparent ${
                     isActive('video-showreel') 
                       ? 'bg-disney-blue text-white shadow-md' 
-                      : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
+                      : 'hover:bg-disney-blue/20 text-toontown-darkbrown hover:border-yellow-400'
                   }`}
                   data-testid="mobile-link-video"
                   aria-current={isActive('video-showreel') ? 'page' : undefined}
@@ -490,10 +490,10 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-2 border-transparent ${
                     isActive('contact') 
                       ? 'bg-mickey-red text-white shadow-md' 
-                      : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
+                      : 'hover:bg-mickey-red/20 text-toontown-darkbrown hover:border-yellow-400'
                   }`}
                   data-testid="mobile-link-contact"
                   aria-current={isActive('contact') ? 'page' : undefined}
