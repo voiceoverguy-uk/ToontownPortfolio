@@ -241,6 +241,12 @@ const TestimonialsCarousel = () => {
       author: "Guy Harris",
       company: "North Pole",
       role: "Voice of Santa"
+    },
+    {
+      quote: "I first used Arabella's voice when she was just a few months old. Now she's a talented young voiceover who keeps getting better every time. By the time you read this, she'll probably be even better still!",
+      author: "Gavin",
+      company: "MORE Radio",
+      role: "Producer"
     }
   ];
 
