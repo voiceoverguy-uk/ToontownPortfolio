@@ -247,6 +247,18 @@ const TestimonialsCarousel = () => {
       author: "Gavin Harris",
       company: "MORE Radio",
       role: "Producer"
+    },
+    {
+      quote: "Working with Arabella has been a joy. As Production Manager at Arabian Radio Network in Dubai, I've worked with many voiceover talents, and her voice always brings scripts to life – fun, fresh, exciting, upbeat, and full of personality. Even working with her remotely, her recordings make production smooth and spots get approved quickly. I would happily work with her again.",
+      author: "Russell Featherstone",
+      company: "ARN Dubai",
+      role: "Production Manager"
+    },
+    {
+      quote: "Arabella's voice adds warmth, character, and energy to every project. She has an impressive tonal range and always hits the right expression. A reliable talent who makes the whole process effortless.",
+      author: "Josh Wray",
+      company: "Imagesound",
+      role: "Audio Producer"
     }
   ];
 
