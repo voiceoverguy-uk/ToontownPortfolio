@@ -12,8 +12,12 @@
     "server:start": "NODE_ENV=production node server-dist/index.js",
     "check": "tsc",
     "db:push": "drizzle-kit push"
-  }   <--- ✅ This line must NOT have a trailing comma after "push"
+  },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@jridgewell/trace-mapping": "^0.3.25"
+  }
+}
     "@hookform/resolvers": "^3.10.0",
     "@jridgewell/trace-mapping": "^0.3.25",
     "@neondatabase/serverless": "^0.10.4",
