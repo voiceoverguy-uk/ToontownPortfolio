@@ -30,7 +30,7 @@ export function FAQSection() {
     },
     {
       question: "What is Arabella's voiceover experience and training?",
-      answer: "Arabella is Yorkshire born Voiceover. Daughter of well established Male Voiceover Artist Guy Harris whose voice is already heard worldwide. Arabella is winner of a Marketing Week Award. Despite her young age, she has professional recording experience with major national brands and understands studio direction, timing, and client requirements. She's a reliable, professional young talent who takes direction well."
+      answer: "Arabella is a Yorkshire born Voiceover. Daughter of established Male Voiceover Artist Guy Harris whose voice is heard worldwide on TV, Radio, Websites, Games and betond. Arabella is winner of a Marketing Week Award. Despite her young age, she has professional recording experience with major national brands and understands studio direction, timing, and client requirements. She's a reliable, professional young talent who takes direction well."
     }
   ];
 
