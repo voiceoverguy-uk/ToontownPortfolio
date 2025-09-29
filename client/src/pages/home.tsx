@@ -292,7 +292,7 @@ export default function Home() {
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
               <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4" data-testid="main-heading">
-                <span className="block">Arabella Harris</span>
+                <span className="block text-mickey-red">Arabella Harris</span>
                 <span className="block">British Child Voiceover Artist</span>
               </h1>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
