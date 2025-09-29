@@ -131,7 +131,7 @@ export default function Home() {
               >
                 <img 
                   src={arabellaNavLogo} 
-                  alt="Arabella Harris - Professional Voiceover Artist"
+                  alt="Arabella Harris - British Child Voiceover Artist Logo"
                   className="h-12 md:h-16 w-auto logo transition-transform duration-300 hover:scale-105"
                   data-testid="arabella-nav-logo"
                 />
@@ -259,7 +259,7 @@ export default function Home() {
                 <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
                   <img 
                     src={arabellaImage} 
-                    alt="Arabella Harris in recording studio with headphones and microphone"
+                    alt="Arabella Harris - British Child Voiceover Artist in Recording Studio with Professional Microphone"
                     className="w-full max-w-md rounded-lg"
                     data-testid="arabella-hero-image"
                   />
@@ -397,7 +397,7 @@ export default function Home() {
               <div className="relative">
                 <img 
                   src={arabellaImage} 
-                  alt="Arabella Harris - Professional Young Voiceover Artist"
+                  alt="Arabella Harris - Award-Winning British Child Voice Talent"
                   className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg transform hover:scale-110 transition-transform duration-300"
                   data-testid="arabella-footer-image"
                 />
