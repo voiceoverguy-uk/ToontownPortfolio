@@ -5,6 +5,7 @@ import { AudioProvider } from '@/components/AudioContext';
 import { SimpleAudioPlayer } from '@/components/SimpleAudioPlayer';
 import { AudioTrackItem } from '@/components/AudioTrackItem';
 import { TestimonialsCarousel } from '@/components/TestimonialsCarousel';
+import { YouTubeVideo } from '@/components/YouTubeVideo';
 import { audioTracks } from '@/data/constants';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
@@ -335,38 +336,19 @@ export default function Home() {
               </div>
 
               <div className="grid md:grid-cols-2 gap-8">
-                {/* Video 1 */}
-                <div className="bg-white border-8 border-disney-blue rounded-2xl p-4 shadow-lg" data-testid="video-container-1">
-                  <iframe
-                    width="100%"
-                    height="315"
-                    src="https://www.youtube.com/embed/XUJm7iRZ8FI"
-                    title="Arabella Showreel 2025"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    className="rounded-lg"
-                    data-testid="youtube-iframe-1"
-              />
-              <p className="text-center font-bold text-xl text-disney-blue mt-3" data-testid="video-label-1">Arabella</p>
-            </div>
-
-            {/* Video 2 */}
-            <div className="bg-white border-8 border-mickey-orange rounded-2xl p-4 shadow-lg" data-testid="video-container-2">
-              <iframe
-                width="100%"
-                height="315"
-                src="https://www.youtube.com/embed/TqkdBK8mBW8"
-                title="Arabella's Dad, Guy"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="rounded-lg"
-                data-testid="youtube-iframe-2"
-              />
-              <p className="text-center font-bold text-xl text-mickey-orange mt-3" data-testid="video-label-2">Daddy</p>
-            </div>
-          </div>
+                <YouTubeVideo
+                  videoId="XUJm7iRZ8FI"
+                  title="Arabella Showreel 2025"
+                  label="Arabella"
+                  testId="1"
+                />
+                <YouTubeVideo
+                  videoId="TqkdBK8mBW8"
+                  title="Arabella's Dad, Guy"
+                  label="Daddy"
+                  testId="2"
+                />
+              </div>
         </section>
             </div>
 
