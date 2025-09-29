@@ -12,9 +12,37 @@ declare global {
   interface Window {
     YT: any;
     onYouTubeIframeAPIReady: () => void;
-    ytApiReady?: boolean;
+    ytApiReadyCallbacks?: (() => void)[];
   }
 }
+
+// Shared YouTube API loader
+const loadYouTubeAPI = (callback: () => void) => {
+  if (!window.ytApiReadyCallbacks) {
+    window.ytApiReadyCallbacks = [];
+  }
+
+  window.ytApiReadyCallbacks.push(callback);
+
+  if (window.YT && window.YT.Player) {
+    // API already loaded
+    window.ytApiReadyCallbacks.forEach(cb => cb());
+    window.ytApiReadyCallbacks = [];
+  } else if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+    // Load API for the first time
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+    window.onYouTubeIframeAPIReady = () => {
+      if (window.ytApiReadyCallbacks) {
+        window.ytApiReadyCallbacks.forEach(cb => cb());
+        window.ytApiReadyCallbacks = [];
+      }
+    };
+  }
+};
 
 export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProps) {
   const { currentlyPlaying, setCurrentlyPlaying } = useContext(AudioContext);
@@ -24,7 +52,7 @@ export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProp
 
   useEffect(() => {
     const initPlayer = () => {
-      if (!playerRef.current && window.YT && window.YT.Player) {
+      if (!playerRef.current && document.getElementById(divId)) {
         playerRef.current = new window.YT.Player(divId, {
           videoId: videoId,
           width: '100%',
@@ -48,34 +76,15 @@ export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProp
       }
     };
 
-    if (!window.YT) {
-      // Load YouTube API
-      const tag = document.createElement('script');
-      tag.src = 'https://www.youtube.com/iframe_api';
-      const firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-
-      window.onYouTubeIframeAPIReady = () => {
-        window.ytApiReady = true;
-        initPlayer();
-      };
-    } else if (window.ytApiReady || (window.YT && window.YT.Player)) {
-      initPlayer();
-    } else {
-      // API script loaded but not ready yet
-      const checkReady = setInterval(() => {
-        if (window.YT && window.YT.Player) {
-          clearInterval(checkReady);
-          initPlayer();
-        }
-      }, 100);
-
-      return () => clearInterval(checkReady);
-    }
+    loadYouTubeAPI(initPlayer);
 
     return () => {
       if (playerRef.current && playerRef.current.destroy) {
-        playerRef.current.destroy();
+        try {
+          playerRef.current.destroy();
+        } catch (e) {
+          // Ignore errors during cleanup
+        }
         playerRef.current = null;
       }
     };
@@ -83,8 +92,12 @@ export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProp
 
   useEffect(() => {
     if (currentlyPlaying !== `youtube-${testId}` && isPlaying && playerRef.current && playerRef.current.pauseVideo) {
-      playerRef.current.pauseVideo();
-      setIsPlaying(false);
+      try {
+        playerRef.current.pauseVideo();
+        setIsPlaying(false);
+      } catch (e) {
+        // Ignore errors
+      }
     }
   }, [currentlyPlaying, testId, isPlaying]);
 
