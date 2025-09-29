@@ -290,11 +290,14 @@ export default function Home() {
             
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-mickey-red mb-4" data-testid="meet-arabella-heading">
-                Meet Arabella Harris
-              </h2>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2" data-testid="main-heading">
+                Arabella Harris
+              </h1>
+              <p className="text-xl md:text-2xl font-bold text-mickey-red mb-4" data-testid="sub-heading">
+                British Child Voiceover Artist | Young Girl Voice Talent
+              </p>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
-                Arabella is an award-winning {arabellaAge} year old talented voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
+                Arabella is an award-winning {arabellaAge} year old talented British voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
               
               <div className="bg-white/90 border-4 border-red-500 rounded-2xl p-6 shadow-lg" data-testid="hero-disclaimer-box">
