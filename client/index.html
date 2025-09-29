@@ -26,45 +26,91 @@
     
     <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Arabella Harris",
-      "jobTitle": "Professional Child Voiceover Artist",
-      "description": "Award-winning British child voiceover artist specializing in commercials, animation, and educational content",
-      "birthDate": "2016-06-04",
-      "nationality": "British",
-      "knowsLanguage": "en-GB",
-      "gender": "Female",
-      "alumniOf": "Belltree School of Theatre Arts",
-      "award": "Voice of the Year Awards Winner - Best New Voice 2024",
-      "workExample": [
-        {
-          "@type": "CreativeWork",
-          "name": "Commercial Voiceover for Tesco",
-          "description": "Professional voiceover work for major UK retailer"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "#arabella-harris",
+        "name": "Arabella Harris",
+        "jobTitle": "Professional Child Voiceover Artist",
+        "description": "Yorkshire born British child voiceover artist specializing in commercials, animation, and educational content. Daughter of established voiceover artist Guy Harris.",
+        "birthDate": "2016-06-04",
+        "birthPlace": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "Yorkshire",
+            "addressCountry": "GB"
+          }
         },
-        {
-          "@type": "CreativeWork",
-          "name": "Commercial Voiceover for Sainsbury's",
-          "description": "Professional voiceover work for major UK retailer"
+        "nationality": "British",
+        "knowsLanguage": "en-GB",
+        "gender": "Female",
+        "award": "Marketing Week Award Winner",
+        "relatedTo": {
+          "@type": "Person",
+          "name": "Guy Harris",
+          "jobTitle": "Male Voiceover Artist"
+        },
+        "workExample": [
+          {
+            "@type": "CreativeWork",
+            "name": "Commercial Voiceover for Tesco",
+            "description": "Professional voiceover work for major UK retailer"
+          },
+          {
+            "@type": "CreativeWork",
+            "name": "Commercial Voiceover for Sainsbury's",
+            "description": "Professional voiceover work for major UK retailer"
+          }
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Voiceover Artist",
+          "occupationLocation": {
+            "@type": "Country",
+            "name": "United Kingdom"
+          },
+          "skills": "Child voiceover, British accent, commercial voiceover, animation voiceover, character voices"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "arabella@voiceoverguy.co.uk",
+          "contactType": "Booking Inquiry"
         }
-      ],
-      "hasOccupation": {
-        "@type": "Occupation",
-        "name": "Voiceover Artist",
-        "occupationLocation": {
-          "@type": "Country",
-          "name": "United Kingdom"
-        },
-        "skills": "Child voiceover, British accent, commercial voiceover, animation voiceover, character voices"
       },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "email": "arabella@voiceoverguy.co.uk",
-        "contactType": "Booking Inquiry"
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Child Voiceover Services",
+        "name": "Professional British Child Voiceover",
+        "description": "Professional child voiceover services for commercials, animation, educational content, and international projects. Award-winning young British voice talent.",
+        "provider": {
+          "@id": "#arabella-harris"
+        },
+        "areaServed": [
+          {
+            "@type": "Country",
+            "name": "United Kingdom"
+          },
+          {
+            "@type": "Place",
+            "name": "Europe"
+          },
+          {
+            "@type": "Place",
+            "name": "Middle East"
+          }
+        ],
+        "availableLanguage": "en-GB",
+        "category": ["Child Voiceover", "Commercial Voiceover", "Animation Voiceover", "Educational Content Voiceover"],
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "availabilityStarts": "2024-01-01"
+        }
       }
-    }
+    ]
     </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />

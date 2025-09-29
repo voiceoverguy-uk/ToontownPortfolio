@@ -291,12 +291,10 @@ export default function Home() {
             
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2" data-testid="main-heading">
-                Arabella Harris
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4" data-testid="main-heading">
+                <span className="block">British Child Voiceover Artist</span>
+                <span className="block text-mickey-yellow">Arabella Harris</span>
               </h1>
-              <p className="text-xl md:text-2xl font-bold text-mickey-red mb-4" data-testid="sub-heading">
-                British Child Voiceover Artist | Young Girl Voice Talent
-              </p>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
                 Arabella is an award-winning {arabellaAge} year old talented British voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
@@ -320,7 +318,7 @@ export default function Home() {
             <section id="audio-showreel" className="mb-12 scroll-mt-24" data-testid="soundcloud-section">
               <div className="text-center mb-8">
                 <Volume2 className="text-mickey-yellow text-4xl mb-4 mx-auto" data-testid="soundcloud-icon" />
-                <h3 className="font-bold text-3xl md:text-4xl text-mickey-yellow">Listen to Arabella's Voice!</h3>
+                <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Listen to Arabella's Voice!</h3>
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -435,6 +433,9 @@ export default function Home() {
       <footer className="bg-mickey-orange py-4 px-4 mt-8" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-white font-bold">(c) 2025 Arabella Voiceover Kid</p>
+          <p className="text-white font-bold mt-2">
+            Website by <a href="https://www.voiceoverguy.co.uk/" target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-300 transition-colors">VoiceoverGuy Media</a> (c)2025
+          </p>
         </div>
         </footer>
         </div> {/* Close main content wrapper */}
