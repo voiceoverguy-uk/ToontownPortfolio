@@ -8,40 +8,82 @@ interface YouTubeVideoProps {
   testId: string;
 }
 
+declare global {
+  interface Window {
+    YT: any;
+    onYouTubeIframeAPIReady: () => void;
+    ytApiReady?: boolean;
+  }
+}
+
 export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProps) {
   const { currentlyPlaying, setCurrentlyPlaying } = useContext(AudioContext);
   const [isPlaying, setIsPlaying] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const playerRef = useRef<any>(null);
+  const divId = `youtube-player-${testId}`;
 
   useEffect(() => {
-    const handleMessage = (event: MessageEvent) => {
-      if (event.origin !== 'https://www.youtube.com') return;
-      
-      try {
-        const data = JSON.parse(event.data);
-        if (data.event === 'onStateChange') {
-          if (data.info === 1) {
-            setIsPlaying(true);
-            setCurrentlyPlaying(`youtube-${testId}`);
-          } else if (data.info === 2 || data.info === 0) {
-            setIsPlaying(false);
-            if (currentlyPlaying === `youtube-${testId}`) {
-              setCurrentlyPlaying(null);
-            }
-          }
-        }
-      } catch (e) {
-        // Ignore non-JSON messages
+    const initPlayer = () => {
+      if (!playerRef.current && window.YT && window.YT.Player) {
+        playerRef.current = new window.YT.Player(divId, {
+          videoId: videoId,
+          width: '100%',
+          height: '315',
+          events: {
+            onStateChange: (event: any) => {
+              if (event.data === 1) {
+                // Playing
+                setIsPlaying(true);
+                setCurrentlyPlaying(`youtube-${testId}`);
+              } else if (event.data === 2 || event.data === 0) {
+                // Paused or Ended
+                setIsPlaying(false);
+                if (currentlyPlaying === `youtube-${testId}`) {
+                  setCurrentlyPlaying(null);
+                }
+              }
+            },
+          },
+        });
       }
     };
 
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
-  }, [testId, currentlyPlaying, setCurrentlyPlaying]);
+    if (!window.YT) {
+      // Load YouTube API
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      const firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+      window.onYouTubeIframeAPIReady = () => {
+        window.ytApiReady = true;
+        initPlayer();
+      };
+    } else if (window.ytApiReady || (window.YT && window.YT.Player)) {
+      initPlayer();
+    } else {
+      // API script loaded but not ready yet
+      const checkReady = setInterval(() => {
+        if (window.YT && window.YT.Player) {
+          clearInterval(checkReady);
+          initPlayer();
+        }
+      }, 100);
+
+      return () => clearInterval(checkReady);
+    }
+
+    return () => {
+      if (playerRef.current && playerRef.current.destroy) {
+        playerRef.current.destroy();
+        playerRef.current = null;
+      }
+    };
+  }, [videoId, testId, setCurrentlyPlaying]);
 
   useEffect(() => {
-    if (currentlyPlaying !== `youtube-${testId}` && isPlaying && iframeRef.current) {
-      iframeRef.current.contentWindow?.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    if (currentlyPlaying !== `youtube-${testId}` && isPlaying && playerRef.current && playerRef.current.pauseVideo) {
+      playerRef.current.pauseVideo();
       setIsPlaying(false);
     }
   }, [currentlyPlaying, testId, isPlaying]);
@@ -53,18 +95,7 @@ export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProp
       }`}
       data-testid={`video-container-${testId}`}
     >
-      <iframe
-        ref={iframeRef}
-        width="100%"
-        height="315"
-        src={`https://www.youtube.com/embed/${videoId}?enablejsapi=1`}
-        title={title}
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="rounded-lg"
-        data-testid={`youtube-iframe-${testId}`}
-      />
+      <div id={divId} className="rounded-lg overflow-hidden" style={{ width: '100%', height: '315px' }} />
       <p
         className={`text-center font-bold text-xl mt-3 transition-colors duration-300 ${
           isPlaying ? 'text-mickey-red' : 'text-mickey-yellow'
