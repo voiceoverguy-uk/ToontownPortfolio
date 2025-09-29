@@ -57,6 +57,10 @@ export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProp
           videoId: videoId,
           width: '100%',
           height: '315',
+          playerVars: {
+            rel: 0,
+            modestbranding: 1,
+          },
           events: {
             onStateChange: (event: any) => {
               if (event.data === 1) {
