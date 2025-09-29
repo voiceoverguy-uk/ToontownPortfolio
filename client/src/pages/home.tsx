@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, createContext, useContext } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Star, Music, Mic, Heart, Volume2, Play, Radio, Tv, Book, Gamepad2, Baby, Globe, ShoppingCart, GraduationCap, Mail, Phone, Globe as GlobeIcon, ChevronLeft, ChevronRight, Quote, Menu, X } from 'lucide-react';
 import { useLocation, Link } from 'wouter';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
@@ -6,25 +6,6 @@ import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
 import arabellaBanner from '@assets/arabella-harris-logo-top_1757606004670.jpg';
 import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
 import headerBg from '@assets/header-bg_1757622267624.jpg';
-
-// Audio Context for managing currently playing audio
-const AudioContext = createContext<{
-  currentlyPlaying: string | null;
-  setCurrentlyPlaying: (id: string | null) => void;
-}>({
-  currentlyPlaying: null,
-  setCurrentlyPlaying: () => {},
-});
-
-const AudioProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentlyPlaying, setCurrentlyPlaying] = useState<string | null>(null);
-  
-  return (
-    <AudioContext.Provider value={{ currentlyPlaying, setCurrentlyPlaying }}>
-      {children}
-    </AudioContext.Provider>
-  );
-};
 
 interface FloatingIconProps {
   icon: React.ElementType;
@@ -55,116 +36,7 @@ const FloatingIcon = ({ icon: Icon, className = "", delay = 0, position }: Float
 
 // AnimatedCounter component removed - no longer needed for mature pre-teen design
 
-// Simple Audio Player Component
-function SimpleAudioPlayer({ audioSrc, testId }: { audioSrc: string, testId: string }) {
-  const { currentlyPlaying, setCurrentlyPlaying } = useContext(AudioContext);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const audioRef = useRef<HTMLAudioElement>(null);
-
-  // Stop this player if another one starts playing
-  useEffect(() => {
-    if (currentlyPlaying !== testId && isPlaying) {
-      const audio = audioRef.current;
-      if (audio) {
-        audio.pause();
-        setIsPlaying(false);
-      }
-    }
-  }, [currentlyPlaying, testId, isPlaying]);
-
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const updateTime = () => setCurrentTime(audio.currentTime);
-    const updateDuration = () => setDuration(audio.duration);
-    const handleEnded = () => {
-      setIsPlaying(false);
-      setCurrentlyPlaying(null);
-    };
-
-    audio.addEventListener('timeupdate', updateTime);
-    audio.addEventListener('loadedmetadata', updateDuration);
-    audio.addEventListener('ended', handleEnded);
-
-    return () => {
-      audio.removeEventListener('timeupdate', updateTime);
-      audio.removeEventListener('loadedmetadata', updateDuration);
-      audio.removeEventListener('ended', handleEnded);
-    };
-  }, []);
-
-  const togglePlay = async () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    try {
-      if (isPlaying) {
-        audio.pause();
-        setIsPlaying(false);
-        setCurrentlyPlaying(null);
-      } else {
-        // Stop any other currently playing audio
-        setCurrentlyPlaying(testId);
-        await audio.play();
-        setIsPlaying(true);
-      }
-    } catch (error) {
-      console.error('Audio playback failed:', error);
-    }
-  };
-
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60);
-    const seconds = Math.floor(time % 60);
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  };
-
-  return (
-    <div className="flex items-center gap-2 w-48 md:w-56" data-testid={testId}>
-      <audio ref={audioRef} src={audioSrc} preload="metadata" />
-      
-      {/* Play/Pause Button */}
-      <button
-        onClick={togglePlay}
-        className="flex-shrink-0 w-6 h-6 bg-gray-600 text-white rounded-sm flex items-center justify-center hover:bg-gray-500 transition-colors"
-        data-testid={`${testId}-play-button`}
-      >
-        {isPlaying ? (
-          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M6 4h2v12H6V4zm6 0h2v12h-2V4z" clipRule="evenodd" />
-          </svg>
-        ) : (
-          <svg className="w-3 h-3 ml-0.5" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M6 4l8 6-8 6V4z" clipRule="evenodd" />
-          </svg>
-        )}
-      </button>
-
-      {/* Current Time */}
-      <span className="text-xs text-gray-600 font-medium">
-        {formatTime(currentTime)}
-      </span>
-
-      {/* Progress Bar */}
-      <div className="flex-1 bg-gray-300 rounded-full h-1">
-        <div 
-          className="bg-gray-600 h-1 rounded-full transition-all duration-100"
-          style={{ width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' }}
-        />
-      </div>
-
-      {/* Total Duration */}
-      <span className="text-xs text-gray-600 font-medium">
-        {formatTime(duration)}
-      </span>
-    </div>
-  );
-}
-
-const AudioTrackItem = ({ title, icon: Icon, index, url }: { title: string; icon: React.ElementType; index: number; url: string }) => {
+const SoundCloudItem = ({ title, icon: Icon, index }: { title: string; icon: React.ElementType; index: number }) => {
   const [isVisible, setIsVisible] = useState(false);
   const itemRef = useRef<HTMLDivElement>(null);
 
@@ -190,18 +62,23 @@ const AudioTrackItem = ({ title, icon: Icon, index, url }: { title: string; icon
       ref={itemRef}
       className={`soundcloud-item transition-all duration-700 ${isVisible ? 'animate-in' : ''}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
-      data-testid={`audio-track-item-${index}`}
+      data-testid={`soundcloud-item-${index}`}
     >
-      <div className="bg-white border-4 border-mickey-yellow rounded-2xl p-4 shadow-lg">
-        <div className="flex items-center mb-3">
-          <Icon className="text-mickey-red text-xl mr-2" data-testid={`audio-track-icon-${index}`} />
-          <span className="font-bold text-toontown-darkbrown">{title}</span>
-        </div>
-        <SimpleAudioPlayer 
-          audioSrc={url}
-          testId={`audio-track-player-${index}`}
-        />
+      <div className="flex items-center mb-3">
+        <Icon className="text-mickey-red text-xl mr-2" data-testid={`soundcloud-icon-${index}`} />
+        <span className="font-bold text-toontown-darkbrown">{title}</span>
       </div>
+      <iframe
+        width="100%"
+        height="166"
+        scrolling="no"
+        frameBorder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2123619891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
+        title={`${title} - Arabella Harris Voice Demo`}
+        className="rounded-lg"
+        data-testid={`soundcloud-iframe-${index}`}
+      />
     </div>
   );
 };
@@ -235,30 +112,6 @@ const TestimonialsCarousel = () => {
       author: "Tom Hammond",
       company: "Bauer Media",
       role: "Producer"
-    },
-    {
-      quote: "Arabella is a joy to work with, welcome anytime at the North Pole to help the elves",
-      author: "Guy Harris",
-      company: "North Pole",
-      role: "Voice of Santa"
-    },
-    {
-      quote: "I first used Arabella's voice when she was just a few months old. Now she's a talented young voiceover who keeps getting better every time. By the time you read this, she'll probably be even better still!",
-      author: "Gavin Harris",
-      company: "MORE Radio",
-      role: "Producer"
-    },
-    {
-      quote: "Working with Arabella has been a joy. As Production Manager at Arabian Radio Network in Dubai, I've worked with many voiceover talents, and her voice always brings scripts to life – fun, fresh, exciting, upbeat, and full of personality. Even working with her remotely, her recordings make production smooth and spots get approved quickly. I would happily work with her again.",
-      author: "Russell Featherstone",
-      company: "ARN Dubai",
-      role: "Production Manager"
-    },
-    {
-      quote: "Arabella's voice adds warmth, character, and energy to every project. She has an impressive tonal range and always hits the right expression. A reliable talent who makes the whole process effortless.",
-      author: "Josh Wray",
-      company: "Imagesound",
-      role: "Audio Producer"
     }
   ];
 
@@ -358,8 +211,6 @@ const TestimonialsCarousel = () => {
 export default function Home() {
   const [location, setLocation] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [heartClicked, setHeartClicked] = useState(false);
-  const [showThankYou, setShowThankYou] = useState(false);
   
   // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
@@ -391,59 +242,38 @@ export default function Home() {
     setIsMobileMenuOpen(false); // Close mobile menu after clicking
   };
 
-  // Get current active section (no default active state - buttons light up when selected)
+  // Get current active section (simplified - always show first item as active for now)
   const isActive = (sectionId: string) => {
-    return false; // No default active state - buttons will light up when clicked/selected
+    return sectionId === 'audio-showreel'; // Default to audio showreel as active
   };
 
-  // Handle heart click
-  const handleHeartClick = () => {
-    setHeartClicked(true);
-    setShowThankYou(true);
-    
-    // Hide thank you message after 3 seconds
-    setTimeout(() => {
-      setShowThankYou(false);
-    }, 3000);
-    
-    // Reset heart to default after 3 seconds
-    setTimeout(() => {
-      setHeartClicked(false);
-    }, 3000);
-  };
-
-  const audioTracks = [
-    { title: "Tesco Fruit and Veg", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/tesco-fruit-and-veg-arabella-harris.mp3" },
-    { title: "Nickelodeon", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/pleasure-beach-resort-nickelodeon-arabella-harris.mp3" },
-    { title: "Skoda National Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/skoda-arabella-harris.mp3" },
-    { title: "Narration Showreel", icon: Book, url: "https://www.voiceoverguy.co.uk/assets/audio/narration-demo-arabella-harris.mp3" },
-    { title: "Barnardos", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/barnardos-arabella-harris.mp3" },
-    { title: "Sainsburys", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/sainsburys-tu-arabella-harris.mp3" },
-    { title: "Cherry Blossom National Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/cherry-blossom-arabella-harris.mp3" },
-    { title: "Reem Mall - Dubai", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/reem-mall-madagascar-arabella-harris.mp3" },
-    { title: "Sketchers", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/sketchers-back-to-school-usa-accent-arabella-harris.mp3" },
-    { title: "Wickstead Park Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/wicksteed-park-arabella-harris.mp3" },
-    { title: "Dear Santa", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/dear-santa-arabella-harris.mp3" },
-    { title: "Isle of White Ice Cream", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/isle-of-wight-ice-cream-arabella-harris.mp3" },
+  const soundCloudItems = [
+    { title: "Commercial Demo", icon: Music },
+    { title: "Character Voices", icon: Mic },
+    { title: "Radio Spots", icon: Radio },
+    { title: "TV Commercials", icon: Tv },
+    { title: "Narration", icon: Book },
+    { title: "Gaming", icon: Gamepad2 },
+    { title: "Kids Content", icon: Baby },
+    { title: "International", icon: Globe },
   ];
 
   return (
-    <AudioProvider>
-      <div className="bg-transparent text-foreground min-h-screen relative z-10 overflow-x-hidden">
-        {/* Fixed Background Image */}
-        <div 
-          className="header-background"
-          style={{ 
-            backgroundImage: `url(${headerBg})`
-          }}
-          data-testid="header-background"
-        />
-        
-        {/* Subtle overlay for content readability */}
-        <div className="fixed inset-0 bg-white/40 z-[1] pointer-events-none" data-testid="bg-overlay" />
-        
-        {/* Main Content Wrapper */}
-        <div className="relative z-10">
+    <div className="bg-transparent text-foreground min-h-screen relative z-10 overflow-x-hidden">
+      {/* Fixed Background Image */}
+      <div 
+        className="header-background"
+        style={{ 
+          backgroundImage: `url(${headerBg})`
+        }}
+        data-testid="header-background"
+      />
+      
+      {/* Subtle overlay for content readability */}
+      <div className="fixed inset-0 bg-white/40 z-[1] pointer-events-none" data-testid="bg-overlay" />
+      
+      {/* Main Content Wrapper */}
+      <div className="relative z-10">
         {/* Top Navigation Bar */}
       <nav role="navigation" aria-label="Primary" className="fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-3">
@@ -468,10 +298,10 @@ export default function Home() {
             <div className="hidden md:flex items-center space-x-2 lg:space-x-4" data-testid="desktop-nav">
               <button 
                 onClick={() => scrollToSection('audio-showreel')}
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                   isActive('audio-showreel') 
                     ? 'bg-mickey-yellow text-toontown-darkbrown shadow-lg transform scale-105' 
-                    : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
+                    : 'hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:shadow-md'
                 }`}
                 data-testid="link-audio"
                 aria-current={isActive('audio-showreel') ? 'page' : undefined}
@@ -480,10 +310,10 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => scrollToSection('video-showreel')}
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                   isActive('video-showreel') 
                     ? 'bg-disney-blue text-white shadow-lg transform scale-105' 
-                    : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
+                    : 'hover:bg-disney-blue/30 text-toontown-darkbrown hover:shadow-md'
                 }`}
                 data-testid="link-video"
                 aria-current={isActive('video-showreel') ? 'page' : undefined}
@@ -492,15 +322,15 @@ export default function Home() {
               </button>
               <button 
                 onClick={() => scrollToSection('contact')}
-                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent ${
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 ${
                   isActive('contact') 
                     ? 'bg-mickey-red text-white shadow-lg transform scale-105' 
-                    : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
+                    : 'hover:bg-mickey-red/30 text-toontown-darkbrown hover:shadow-md'
                 }`}
                 data-testid="link-contact"
                 aria-current={isActive('contact') ? 'page' : undefined}
               >
-                📞 Contact
+                📧 Contact
               </button>
             </div>
 
@@ -523,14 +353,14 @@ export default function Home() {
 
           {/* Mobile Menu Dropdown */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 bg-white/85 border-4 border-mickey-yellow rounded-2xl p-4 shadow-xl animate-in slide-in-from-top-2 duration-300" data-testid="mobile-menu">
+            <div className="md:hidden mt-4 bg-white/95 border-4 border-mickey-yellow rounded-2xl p-4 shadow-xl animate-in slide-in-from-top-2 duration-300" data-testid="mobile-menu">
               <div className="space-y-3">
                 <button 
                   onClick={() => scrollToSection('audio-showreel')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
                     isActive('audio-showreel') 
                       ? 'bg-mickey-yellow text-toontown-darkbrown shadow-md' 
-                      : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown hover:border-yellow-400'
+                      : 'hover:bg-mickey-yellow/20 text-toontown-darkbrown'
                   }`}
                   data-testid="mobile-link-audio"
                   aria-current={isActive('audio-showreel') ? 'page' : undefined}
@@ -539,10 +369,10 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => scrollToSection('video-showreel')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
                     isActive('video-showreel') 
                       ? 'bg-disney-blue text-white shadow-md' 
-                      : 'hover:bg-disney-blue/20 text-toontown-darkbrown hover:border-yellow-400'
+                      : 'hover:bg-disney-blue/20 text-toontown-darkbrown'
                   }`}
                   data-testid="mobile-link-video"
                   aria-current={isActive('video-showreel') ? 'page' : undefined}
@@ -551,15 +381,15 @@ export default function Home() {
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
-                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent ${
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 ${
                     isActive('contact') 
                       ? 'bg-mickey-red text-white shadow-md' 
-                      : 'hover:bg-mickey-red/20 text-toontown-darkbrown hover:border-yellow-400'
+                      : 'hover:bg-mickey-red/20 text-toontown-darkbrown'
                   }`}
                   data-testid="mobile-link-contact"
                   aria-current={isActive('contact') ? 'page' : undefined}
                 >
-                  📞 Contact
+                  📧 Contact
                 </button>
               </div>
             </div>
@@ -581,7 +411,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Arabella's Image */}
             <div className="flex justify-center lg:justify-start">
-              <div className="relative transform -rotate-3 hover:-rotate-6 transition-all duration-500 hover:scale-105 group pb-16 md:pb-0">
+              <div className="relative transform -rotate-3 hover:-rotate-6 transition-all duration-500 hover:scale-105 group">
                 <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
                   <img 
                     src={arabellaImage} 
@@ -591,8 +421,8 @@ export default function Home() {
                   />
                 </div>
                 
-                {/* Airport Style Age Reveal - Above Audio Player */}
-                <div className="mt-2 flex justify-center md:absolute md:-bottom-12 md:left-1/2 md:transform md:-translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
+                {/* Airport Style Age Reveal - Attached to Image */}
+                <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
                   <div className="bg-gradient-to-r from-black via-gray-900 to-black px-4 py-2 rounded-full border-2 border-yellow-400 shadow-xl animate-pulse-slow">
                     <div className="flex items-center justify-center space-x-3 font-mono text-yellow-400">
                       <span className="text-sm font-bold tracking-wider">AGE:</span>
@@ -602,32 +432,22 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
-                {/* Custom Audio Player - Below Age */}
-                <div className="mt-6 flex justify-center z-10 md:absolute md:-bottom-24 md:left-1/2 md:transform md:-translate-x-1/2 md:transition-all md:duration-500 md:group-hover:scale-110 md:group-hover:-translate-y-1">
-                  <div className="bg-white/95 backdrop-blur-sm border-2 border-mickey-red rounded-full px-2 md:px-4 py-1 md:py-2 shadow-lg">
-                    <SimpleAudioPlayer 
-                      audioSrc="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3"
-                      testId="arabella-voice-player"
-                    />
-                  </div>
-                </div>
               </div>
             </div>
             
             {/* Right Side - Bio Text */}
             <div className="space-y-6">
-              <h2 className="text-2xl md:text-3xl font-bold text-mickey-red mb-4" data-testid="meet-arabella-heading">
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4" data-testid="meet-arabella-heading">
                 Meet Arabella Harris
               </h2>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
-                Arabella is an award-winning {arabellaAge} year old talented voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
+                Arabella is an award-winning young talented voiceover artist whose clients include household names such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Panasonic</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio and TV campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
               
               <div className="bg-white/90 border-4 border-red-500 rounded-2xl p-6 shadow-lg" data-testid="hero-disclaimer-box">
                 <GraduationCap className="text-blue-600 text-2xl mb-3 mx-auto" data-testid="hero-graduation-icon" />
                 <p className="font-bold text-lg md:text-xl text-gray-800 text-center" data-testid="hero-disclaimer-text">
-                  Note: Arabella is not available during school hours, cleaning duties or when homework is due! 📚
+                  Note: Arabella is not available during school hours, cleaning duties or when homework is due! 📚✏️
                 </p>
               </div>
             </div>
@@ -646,10 +466,26 @@ export default function Home() {
                 <h3 className="font-bold text-3xl md:text-4xl text-mickey-yellow">Listen to Arabella's Voice!</h3>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {audioTracks.map((item, index) => (
-                  <AudioTrackItem key={index} title={item.title} icon={item.icon} index={index} url={item.url} />
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {soundCloudItems.map((item, index) => (
+                  <SoundCloudItem key={index} title={item.title} icon={item.icon} index={index} />
                 ))}
+              </div>
+
+              {/* Real SoundCloud Embed */}
+              <div className="mt-12 bg-white border-8 border-mickey-yellow rounded-2xl p-6 shadow-lg" data-testid="featured-soundcloud">
+                <h4 className="font-bold text-2xl text-toontown-darkbrown mb-4 text-center">🎤 Featured Voice Demo</h4>
+                <iframe
+                  width="100%"
+                  height="166"
+                  scrolling="no"
+                  frameBorder="no"
+                  allow="autoplay"
+                  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2123619891&color=%23ff5500&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true"
+                  title="Arabella Harris Featured Voice Demo"
+                  className="rounded-lg"
+                  data-testid="featured-soundcloud-iframe"
+                />
               </div>
             </section>
             </div>
@@ -692,7 +528,7 @@ export default function Home() {
                 className="rounded-lg"
                 data-testid="youtube-iframe-2"
               />
-              <p className="text-center font-bold text-xl text-mickey-orange mt-3" data-testid="video-label-2">Daddy</p>
+              <p className="text-center font-bold text-xl text-mickey-orange mt-3" data-testid="video-label-2">Dad</p>
             </div>
           </div>
         </section>
@@ -720,7 +556,7 @@ export default function Home() {
                 className="book-now-button"
                 data-testid="book-now-button"
               >
-                Book Now!
+                📧 Book Now!
               </a>
             </div>
           </div>
@@ -741,20 +577,7 @@ export default function Home() {
                   data-testid="arabella-footer-image"
                 />
                 <div className="absolute -bottom-2 -right-2 bg-white rounded-full p-2 shadow-lg">
-                  <Heart 
-                    className={`text-lg floating-icon cursor-pointer transition-all duration-500 hover:scale-110 ${
-                      heartClicked ? 'text-red-600 fill-red-600' : 'text-mickey-red'
-                    }`}
-                    onClick={handleHeartClick}
-                    data-testid="footer-heart-icon" 
-                  />
-                  
-                  {/* Thank You Message */}
-                  {showThankYou && (
-                    <div className="absolute -top-12 -left-8 bg-mickey-yellow text-toontown-darkbrown px-3 py-1 rounded-full text-sm font-bold shadow-lg animate-bounce z-10 whitespace-nowrap">
-                      Thank you! 💕
-                    </div>
-                  )}
+                  <Heart className="text-mickey-red text-lg floating-icon" data-testid="footer-heart-icon" />
                 </div>
               </div>
             </div>
@@ -763,7 +586,7 @@ export default function Home() {
                 She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
               </p>
               <p className="font-bold text-lg text-toontown-cream mt-2 opacity-90">
-                🎤 Takes after her Daddy!
+                🎤 Takes after her Dad! 🎆
               </p>
             </div>
           </div>
@@ -773,11 +596,10 @@ export default function Home() {
       {/* Simplified Footer */}
       <footer className="bg-mickey-orange py-4 px-4 mt-8" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white font-bold">(c) 2025 Arabella Voiceover Kid</p>
+          <p className="text-white font-bold">© 2025 Arabella Harris Voice Over</p>
         </div>
-        </footer>
-        </div> {/* Close main content wrapper */}
-      </div> {/* Close main background div */}
-    </AudioProvider>
+      </footer>
+      </div> {/* Close main content wrapper */}
+    </div>
   );
 }

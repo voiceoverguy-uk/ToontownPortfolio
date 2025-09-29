@@ -117,30 +117,6 @@ app.use((req, res, next) => {
     
     log("Vite middleware attached successfully", "vite");
   } else {
-    // Production: ensure client assets are available in server-dist/public
-    const fs = await import("fs");
-    const path = await import("path");
-    
-    const publicDir = path.resolve(import.meta.dirname, "public");
-    const clientDist = path.resolve(import.meta.dirname, "..", "client", "dist");
-    
-    // Create public directory with client assets if it doesn't exist
-    if (!fs.existsSync(publicDir) && fs.existsSync(clientDist)) {
-      try {
-        // Try symlink first (faster)
-        fs.symlinkSync(clientDist, publicDir, 'dir');
-        log("Created symlink from client/dist to server-dist/public");
-      } catch (symlinkError) {
-        // Fallback to copying if symlink fails
-        try {
-          fs.cpSync(clientDist, publicDir, { recursive: true });
-          log("Copied client assets from client/dist to server-dist/public");
-        } catch (copyError) {
-          log(`Failed to create public directory: ${copyError}`);
-        }
-      }
-    }
-    
     // Dynamically import serveStatic for production
     const { serveStatic } = await import("./vite");
     serveStatic(app);
