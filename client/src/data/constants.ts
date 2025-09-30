@@ -11,6 +11,7 @@ export interface AudioTrack {
   title: string;
   icon: React.ElementType;
   url: string;
+  description?: string;
 }
 
 export const testimonials: Testimonial[] = [
@@ -63,7 +64,7 @@ export const audioTracks: AudioTrack[] = [
   { title: "Nickelodeon Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/pleasure-beach-resort-nickelodeon-arabella-harris.mp3" },
   { title: "Skoda National Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/skoda-arabella-harris.mp3" },
   { title: "Narration Showreel", icon: Book, url: "https://www.voiceoverguy.co.uk/assets/audio/narration-demo-arabella-harris.mp3" },
-  { title: "Barnardos Radio", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/barnardos-arabella-harris.mp3" },
+  { title: "Barnardos Radio", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/barnardos-arabella-harris.mp3", description: "a nice compassionate read" },
   { title: "Sainsburys Instore", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/sainsburys-tu-arabella-harris.mp3" },
   { title: "Cherry Blossom National Advert", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/cherry-blossom-arabella-harris.mp3" },
   { title: "Reem Mall - Dubai", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/reem-mall-madagascar-arabella-harris.mp3" },

@@ -325,7 +325,7 @@ export default function Home() {
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {audioTracks.map((item, index) => (
-                  <AudioTrackItem key={index} title={item.title} icon={item.icon} index={index} url={item.url} />
+                  <AudioTrackItem key={index} title={item.title} icon={item.icon} index={index} url={item.url} description={item.description} />
                 ))}
               </div>
             </section>
