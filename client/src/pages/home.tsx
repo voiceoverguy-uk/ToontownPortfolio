@@ -131,7 +131,7 @@ export default function Home() {
               >
                 <img 
                   src={arabellaNavLogo} 
-                  alt="Arabella Harris - British Child Voiceover Artist Logo"
+                  alt="Arabella Harris Logo - Professional British Child Voiceover Artist - Kids Voice Talent for Commercials, Animation and Educational Content"
                   className="h-12 md:h-16 w-auto logo transition-transform duration-300 hover:scale-105"
                   data-testid="arabella-nav-logo"
                 />
@@ -283,7 +283,7 @@ export default function Home() {
                 <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
                   <img 
                     src={arabellaImage} 
-                    alt="Arabella Harris - British Child Voiceover Artist in Recording Studio with Professional Microphone"
+                    alt="Arabella Harris - 9-year-old Award-Winning British Child Voiceover Artist from Yorkshire in Professional Recording Studio with Microphone - Commercial Voice Talent for Tesco, Sainsburys, Peppa Pig"
                     className="w-full max-w-md rounded-lg"
                     data-testid="arabella-hero-image"
                   />
@@ -415,7 +415,7 @@ export default function Home() {
               <div className="relative">
                 <img 
                   src={arabellaImage} 
-                  alt="Arabella Harris - Award-Winning British Child Voice Talent"
+                  alt="Arabella Harris - Marketing Week Award Winner - Professional British Child Voiceover Artist Age 9 - Daughter of Guy Harris Male Voiceover Artist"
                   className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white shadow-lg transform hover:scale-110 transition-transform duration-300"
                   data-testid="arabella-footer-image"
                 />
