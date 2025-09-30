@@ -428,9 +428,9 @@ export default function Home() {
       {/* Simplified Footer */}
       <footer className="bg-mickey-orange py-4 px-4 mt-8" data-testid="footer-section">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-white font-bold">(c) 2025 Arabella Voiceover Kid</p>
+          <p className="text-white font-bold">© 2025 Arabella Voiceover Kid</p>
           <p className="text-white font-bold mt-2">
-            Website by <a href="https://www.voiceoverguy.co.uk/" target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-300 transition-colors">VoiceoverGuy Media</a> (c)2025
+            Website by <a href="https://www.voiceoverguy.co.uk/" target="_blank" rel="noopener noreferrer" className="underline hover:text-yellow-300 transition-colors">VoiceoverGuy Media</a> © 2025
           </p>
         </div>
         </footer>
