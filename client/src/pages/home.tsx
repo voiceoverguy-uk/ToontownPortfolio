@@ -266,7 +266,7 @@ export default function Home() {
                 </div>
                 
                 {/* Airport Style Age Reveal - Above Audio Player */}
-                <div className="mt-2 flex justify-center z-20 md:absolute md:-bottom-12 md:left-1/2 md:transform md:-translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
+                <div className="mt-1 flex justify-center z-20 md:absolute md:-bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
                   <div className="bg-gradient-to-r from-black via-gray-900 to-black px-4 py-2 rounded-full border-2 border-yellow-400 shadow-xl animate-pulse-slow">
                     <div className="flex items-center justify-center space-x-3 font-mono text-yellow-400">
                       <span className="text-sm font-bold tracking-wider">AGE:</span>
@@ -278,7 +278,7 @@ export default function Home() {
                 </div>
 
                 {/* Custom Audio Player - Below Age */}
-                <div className="mt-6 flex justify-center z-10 md:absolute md:-bottom-24 md:left-1/2 md:transform md:-translate-x-1/2 md:transition-all md:duration-500 md:group-hover:scale-110 md:group-hover:-translate-y-1">
+                <div className="mt-2 flex justify-center z-10 md:absolute md:-bottom-10 md:left-1/2 md:transform md:-translate-x-1/2 md:transition-all md:duration-500 md:group-hover:scale-110 md:group-hover:-translate-y-1">
                   <div className="bg-white/95 backdrop-blur-sm border-4 border-mickey-red rounded-full px-6 md:px-8 py-3 md:py-4 shadow-xl min-w-[280px] md:min-w-[350px]">
                     <SimpleAudioPlayer 
                       audioSrc="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3"
