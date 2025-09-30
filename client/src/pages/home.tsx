@@ -343,12 +343,9 @@ export default function Home() {
                 <YouTubeVideo
                   videoId="TqkdBK8mBW8"
                   title="Arabella's Dad, Guy"
-                  label="Daddy"
+                  label="Daddy, borrowing some free advertising space"
                   testId="2"
                 />
-                <p className="text-center text-mickey-red font-bold text-lg mt-4" data-testid="video-caption">
-                  Daddy, borrowing some free advertising space
-                </p>
               </div>
         </section>
             </div>
