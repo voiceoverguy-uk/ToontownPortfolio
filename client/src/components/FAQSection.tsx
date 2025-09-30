@@ -14,7 +14,7 @@ export function FAQSection() {
     },
     {
       question: "What types of projects has Arabella worked on?",
-      answer: "Arabella has voiced national radio campaigns, TV commercials, animation characters, educational content, and international brand projects. Her portfolio includes work for household names like Uber, AXA, TK Maxx, Clarks, Kinder, and Superdrug. She's experienced in delivering both playful character voices and professional commercial reads for UK, European, and Middle East markets."
+      answer: "Arabella has voiced national radio campaigns, TV commercials, animation characters, educational content, and international brand projects. Her portfolio includes work for household names like Uber, AXA, TK Maxx, Clarks, Kinder, Superdrug, Geely, and Heinz. She's experienced in delivering both playful character voices and professional commercial reads for UK, European, and Middle East markets."
     },
     {
       question: "How do I book Arabella for my voiceover project?",
