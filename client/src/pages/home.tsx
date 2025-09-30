@@ -336,16 +336,10 @@ export default function Home() {
             <section id="video-showreel" className="mb-12 scroll-mt-24" data-testid="youtube-section">
               <div className="text-center mb-8">
                 <Play className="text-mickey-red text-4xl mb-4 mx-auto" data-testid="youtube-icon" />
-                <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Hear Arabella in Action!</h3>
+                <h3 className="font-bold text-3xl md:text-4xl text-mickey-red">Hear Arabella's Dad in Action!</h3>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <YouTubeVideo
-                  videoId="XUJm7iRZ8FI"
-                  title="Arabella Showreel 2025"
-                  label="Arabella"
-                  testId="1"
-                />
+              <div className="max-w-3xl mx-auto">
                 <YouTubeVideo
                   videoId="TqkdBK8mBW8"
                   title="Arabella's Dad, Guy"
