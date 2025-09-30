@@ -150,7 +150,7 @@ export default function Home() {
                 data-testid="link-audio"
                 aria-current={isActive('audio-showreel') ? 'page' : undefined}
               >
-                🎵 Audio Showreel
+                🎵 Arabella's Showreels
               </button>
               <button 
                 onClick={() => scrollToSection('video-showreel')}
@@ -221,7 +221,7 @@ export default function Home() {
                   data-testid="mobile-link-audio"
                   aria-current={isActive('audio-showreel') ? 'page' : undefined}
                 >
-                  🎵 Audio Showreel
+                  🎵 Arabella's Showreels
                 </button>
                 <button 
                   onClick={() => scrollToSection('video-showreel')}
