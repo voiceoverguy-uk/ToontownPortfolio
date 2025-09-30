@@ -296,7 +296,9 @@ export default function Home() {
                 <span className="block">British Child Voiceover Artist</span>
               </h1>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
-                Arabella is an award-winning {arabellaAge} year old talented British voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, and <strong>Ring</strong>. She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
+                Arabella is an award-winning {arabellaAge} year old talented British voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Kwik Fit</strong>, <strong>Roblox</strong> and <strong>RING</strong>. 
+                <br />
+                She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief.
               </p>
               
               <div className="bg-white/90 border-4 border-red-500 rounded-2xl p-6 shadow-lg" data-testid="hero-disclaimer-box">
