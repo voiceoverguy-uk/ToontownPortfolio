@@ -114,9 +114,7 @@ export function YouTubeVideo({ videoId, title, label, testId }: YouTubeVideoProp
     >
       <div id={divId} className="rounded-lg overflow-hidden" style={{ width: '100%', height: '315px' }} />
       <p
-        className={`text-center font-bold text-xl mt-3 transition-colors duration-300 ${
-          isPlaying ? 'text-mickey-red' : 'text-mickey-yellow'
-        }`}
+        className="text-center font-bold text-xl mt-3 text-mickey-red"
         data-testid={`video-label-${testId}`}
       >
         {label}

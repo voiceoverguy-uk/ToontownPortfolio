@@ -346,6 +346,9 @@ export default function Home() {
                   label="Daddy"
                   testId="2"
                 />
+                <p className="text-center text-mickey-red font-bold text-lg mt-4" data-testid="video-caption">
+                  Daddy, borrowing some free advertising space
+                </p>
               </div>
         </section>
             </div>
