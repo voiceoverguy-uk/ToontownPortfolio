@@ -278,7 +278,7 @@ export default function Home() {
                 </div>
 
                 {/* Custom Audio Player - Below Age */}
-                <div className="mt-2 flex justify-center z-10 md:absolute md:-bottom-16 md:left-1/2 md:transform md:-translate-x-1/2 md:transition-all md:duration-500 md:group-hover:scale-110 md:group-hover:-translate-y-1">
+                <div className="mt-2 flex justify-center z-10 md:absolute md:-bottom-18 md:left-1/2 md:transform md:-translate-x-1/2 md:transition-all md:duration-500 md:group-hover:scale-110 md:group-hover:-translate-y-1">
                   <div className="bg-white/95 backdrop-blur-sm border-4 border-mickey-red rounded-full px-6 md:px-8 py-3 md:py-4 shadow-xl min-w-[280px] md:min-w-[350px]">
                     <SimpleAudioPlayer 
                       audioSrc="https://www.voiceoverguy.co.uk/assets/audio/arabella-harris-age-9-showreel-2025.mp3"
