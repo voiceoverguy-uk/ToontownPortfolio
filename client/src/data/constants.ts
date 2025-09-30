@@ -56,6 +56,12 @@ export const testimonials: Testimonial[] = [
     author: "Josh Wray",
     company: "Imagesound",
     role: "Audio Producer"
+  },
+  {
+    quote: "A young voice, fantastic with direction and able to communicate a range of emotions with wonderful energy. Arabella is a gem.",
+    author: "Ally Lang",
+    company: "Maple Street Creative",
+    role: "Head"
   }
 ];
 
