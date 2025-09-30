@@ -112,8 +112,18 @@ export default function Home() {
     setHeartClicked(true);
     setShowThankYou(true);
     
-    // Play thank you audio
-    const audio = new Audio('https://www.voiceoverguy.co.uk/assets/audio/thank-you.mp3');
+    // Array of thank you audio files
+    const thankYouAudios = [
+      'https://www.voiceoverguy.co.uk/assets/audio/thank-you-1.mp3',
+      'https://www.voiceoverguy.co.uk/assets/audio/thank-you-2.mp3',
+      'https://www.voiceoverguy.co.uk/assets/audio/thank-you-3.mp3',
+      'https://www.voiceoverguy.co.uk/assets/audio/thank-you-4.mp3',
+      'https://www.voiceoverguy.co.uk/assets/audio/thank-you-5.mp3'
+    ];
+    
+    // Play random thank you audio
+    const randomIndex = Math.floor(Math.random() * thankYouAudios.length);
+    const audio = new Audio(thankYouAudios[randomIndex]);
     audio.play().catch(err => console.log('Audio play failed:', err));
     
     // Hide thank you message after 3 seconds
