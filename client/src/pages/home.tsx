@@ -353,6 +353,9 @@ export default function Home() {
         </section>
             </div>
 
+          {/* FAQ Section - Always Visible */}
+          <FAQSection />
+
           {/* Contact Section - Always Visible */}
           <div data-testid="contact-content">
         <section id="contact" className="mb-12 scroll-mt-24" data-testid="contact-section">
@@ -378,9 +381,6 @@ export default function Home() {
           </div>
         </section>
             </div>
-
-          {/* FAQ Section - Always Visible */}
-          <FAQSection />
         </main>
 
       {/* Footer Note */}
