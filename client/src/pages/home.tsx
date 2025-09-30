@@ -49,6 +49,29 @@ export default function Home() {
   const [heartClicked, setHeartClicked] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
   
+  // Animated counter for jobs voiced
+  useEffect(() => {
+    const targetNumber = 93; // Edit this number as needed
+    const duration = 2000; // Animation duration in milliseconds
+    const increment = targetNumber / (duration / 16); // ~60fps
+    let currentNumber = 0;
+    
+    const counterElement = document.getElementById('jobsCounter');
+    if (!counterElement) return;
+    
+    const timer = setInterval(() => {
+      currentNumber += increment;
+      if (currentNumber >= targetNumber) {
+        counterElement.textContent = targetNumber.toString();
+        clearInterval(timer);
+      } else {
+        counterElement.textContent = Math.floor(currentNumber).toString();
+      }
+    }, 16);
+    
+    return () => clearInterval(timer);
+  }, []);
+  
   // Calculate Arabella's current age (birthday: June 4th, 2016)
   const calculateAge = () => {
     const today = new Date();
@@ -353,6 +376,35 @@ export default function Home() {
                 ))}
               </div>
             </section>
+
+            {/* Jobs Counter Badge */}
+            <div className="flex justify-center mb-12">
+              <div 
+                style={{
+                  backgroundColor: '#FFF8DC',
+                  border: '6px solid #FFD700',
+                  borderRadius: '20px',
+                  padding: '20px 40px',
+                  boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+                  textAlign: 'center',
+                  display: 'inline-block'
+                }}
+                data-testid="jobs-counter-badge"
+              >
+                <p 
+                  style={{
+                    fontSize: '2rem',
+                    fontWeight: 'bold',
+                    color: '#8B4513',
+                    margin: 0,
+                    fontFamily: '"Fredoka One", cursive'
+                  }}
+                  data-testid="jobs-counter-text"
+                >
+                  🎙️ Jobs Voiced: <span id="jobsCounter" data-testid="jobs-counter-number">0</span> and counting!
+                </p>
+              </div>
+            </div>
             </div>
 
           {/* Testimonials Section - Always Visible */}
