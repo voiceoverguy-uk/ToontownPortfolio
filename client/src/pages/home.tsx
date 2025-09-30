@@ -331,6 +331,9 @@ export default function Home() {
             </section>
             </div>
 
+          {/* Testimonials Section - Always Visible */}
+          <TestimonialsCarousel />
+
           {/* Video Showreel Section - Always Visible */}
           <div data-testid="video-content">
             <section id="video-showreel" className="mb-12 scroll-mt-24" data-testid="youtube-section">
@@ -349,9 +352,6 @@ export default function Home() {
               </div>
         </section>
             </div>
-
-          {/* Testimonials Section - Always Visible */}
-          <TestimonialsCarousel />
 
           {/* Contact Section - Always Visible */}
           <div data-testid="contact-content">
