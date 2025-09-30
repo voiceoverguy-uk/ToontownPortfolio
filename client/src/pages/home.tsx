@@ -266,7 +266,7 @@ export default function Home() {
                 </div>
                 
                 {/* Airport Style Age Reveal - Above Audio Player */}
-                <div className="mt-1 flex justify-center z-20 md:absolute md:-bottom-8 md:left-1/2 md:transform md:-translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
+                <div className="mt-1 flex justify-center z-20 md:absolute md:-bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 transition-all duration-500 group-hover:scale-110 group-hover:-translate-y-1">
                   <div className="bg-gradient-to-r from-black via-gray-900 to-black px-4 py-2 rounded-full border-2 border-yellow-400 shadow-xl animate-pulse-slow">
                     <div className="flex items-center justify-center space-x-3 font-mono text-yellow-400">
                       <span className="text-sm font-bold tracking-wider">AGE:</span>
