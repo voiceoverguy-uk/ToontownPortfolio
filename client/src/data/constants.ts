@@ -60,16 +60,16 @@ export const testimonials: Testimonial[] = [
 ];
 
 export const audioTracks: AudioTrack[] = [
-  { title: "Tesco Fruit and Veg", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/tesco-fruit-and-veg-arabella-harris.mp3" },
-  { title: "Nickelodeon Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/pleasure-beach-resort-nickelodeon-arabella-harris.mp3" },
-  { title: "Skoda National Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/skoda-arabella-harris.mp3" },
-  { title: "Narration Showreel", icon: Book, url: "https://www.voiceoverguy.co.uk/assets/audio/narration-demo-arabella-harris.mp3" },
+  { title: "Tesco Fruit and Veg", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/tesco-fruit-and-veg-arabella-harris.mp3", description: "Fun and lively and solo performance" },
+  { title: "Nickelodeon Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/pleasure-beach-resort-nickelodeon-arabella-harris.mp3", description: "A little bit of Kid Acting" },
+  { title: "Skoda National Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/skoda-arabella-harris.mp3", description: "Nation radio ad with Daddy" },
+  { title: "Narration Showreel", icon: Book, url: "https://www.voiceoverguy.co.uk/assets/audio/narration-demo-arabella-harris.mp3", description: "Compassionate narration for serious topic" },
   { title: "Barnardos Radio", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/barnardos-arabella-harris.mp3", description: "a nice compassionate read" },
-  { title: "Sainsburys Instore", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/sainsburys-tu-arabella-harris.mp3" },
-  { title: "Cherry Blossom National Advert", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/cherry-blossom-arabella-harris.mp3" },
-  { title: "Reem Mall - Dubai", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/reem-mall-madagascar-arabella-harris.mp3" },
-  { title: "Skechers Dubai Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/sketchers-back-to-school-usa-accent-arabella-harris.mp3" },
-  { title: "Wickstead Park Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/wicksteed-park-arabella-harris.mp3" },
-  { title: "Dear Santa Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/dear-santa-arabella-harris.mp3" },
-  { title: "Isle of White Ice Cream", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/isle-of-wight-ice-cream-arabella-harris.mp3" },
+  { title: "Sainsburys Instore", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/sainsburys-tu-arabella-harris.mp3", description: "Heard in store across the UK with Dad" },
+  { title: "Cherry Blossom National Advert", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/cherry-blossom-arabella-harris.mp3", description: "National radio with Cheeky Edge" },
+  { title: "Reem Mall - Dubai", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/reem-mall-madagascar-arabella-harris.mp3", description: "Upbeat International ad in Dubai" },
+  { title: "Skechers Dubai Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/sketchers-back-to-school-usa-accent-arabella-harris.mp3", description: "Trying out her American Accent" },
+  { title: "Wickstead Park Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/wicksteed-park-arabella-harris.mp3", description: "Excited for the Theme Park" },
+  { title: "Dear Santa Radio Ad", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/dear-santa-arabella-harris.mp3", description: "Kid being a Kid talking to Santa" },
+  { title: "Isle of White Ice Cream", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/isle-of-wight-ice-cream-arabella-harris.mp3", description: "Arabella Singing for Ice Cream" },
 ];
