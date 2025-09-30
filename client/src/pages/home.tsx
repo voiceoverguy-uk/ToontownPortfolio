@@ -162,7 +162,7 @@ export default function Home() {
                 data-testid="link-video"
                 aria-current={isActive('video-showreel') ? 'page' : undefined}
               >
-                🎬 Video Showreel
+                🎬 Dad's Showreel
               </button>
               <button 
                 onClick={() => scrollToSection('faq')}
@@ -233,7 +233,7 @@ export default function Home() {
                   data-testid="mobile-link-video"
                   aria-current={isActive('video-showreel') ? 'page' : undefined}
                 >
-                  🎬 Video Showreel
+                  🎬 Dad's Showreel
                 </button>
                 <button 
                   onClick={() => scrollToSection('faq')}
