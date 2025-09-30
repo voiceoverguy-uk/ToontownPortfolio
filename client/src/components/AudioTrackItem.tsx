@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef, useContext } from 'react';
-import { Info } from 'lucide-react';
 import { SimpleAudioPlayer } from './SimpleAudioPlayer';
 import { AudioContext } from './AudioContext';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 interface AudioTrackItemProps {
   title: string;
@@ -50,34 +43,25 @@ export function AudioTrackItem({ title, icon: Icon, index, url, description }: A
       data-testid={`audio-track-item-${index}`}
     >
       <div className={`bg-white border-4 rounded-2xl p-4 shadow-lg transition-colors duration-300 ${isPlaying ? 'border-mickey-red' : 'border-mickey-yellow'}`}>
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center">
-            <Icon className="text-mickey-red text-xl mr-2" data-testid={`audio-track-icon-${index}`} />
-            <span className="font-bold text-toontown-darkbrown">{title}</span>
-          </div>
-          {description && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button 
-                    className="text-mickey-red hover:text-mickey-yellow transition-colors"
-                    data-testid={`audio-track-info-${index}`}
-                  >
-                    <Info className="w-5 h-5" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent side="top" className="bg-mickey-yellow text-toontown-darkbrown font-bold border-2 border-mickey-red z-[9999]">
-                  <p>{description}</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )}
+        <div className="flex items-center mb-3">
+          <Icon className="text-mickey-red text-xl mr-2" data-testid={`audio-track-icon-${index}`} />
+          <span className="font-bold text-toontown-darkbrown">{title}</span>
         </div>
         <SimpleAudioPlayer 
           audioSrc={url}
           testId={testId}
         />
       </div>
+      {description && (
+        <div className="mt-2 flex justify-center">
+          <div 
+            className="px-4 py-1 border-3 border-mickey-red rounded-full text-center"
+            data-testid={`audio-track-description-${index}`}
+          >
+            <span className="text-sm font-bold text-mickey-red">{description}</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
