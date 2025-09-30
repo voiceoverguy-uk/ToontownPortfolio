@@ -112,6 +112,10 @@ export default function Home() {
     setHeartClicked(true);
     setShowThankYou(true);
     
+    // Play thank you audio
+    const audio = new Audio('https://www.voiceoverguy.co.uk/assets/audio/thank-you.mp3');
+    audio.play().catch(err => console.log('Audio play failed:', err));
+    
     // Hide thank you message after 3 seconds
     setTimeout(() => {
       setShowThankYou(false);
