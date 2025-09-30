@@ -394,10 +394,10 @@ export default function Home() {
                 <p 
                   style={{
                     fontSize: '2rem',
-                    fontWeight: 'bold',
+                    fontWeight: '900',
                     color: '#8B4513',
                     margin: 0,
-                    fontFamily: '"Fredoka One", cursive'
+                    fontFamily: '"Luckiest Guy", cursive'
                   }}
                   data-testid="jobs-counter-text"
                 >
