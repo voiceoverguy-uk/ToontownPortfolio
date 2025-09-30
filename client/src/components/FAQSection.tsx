@@ -39,7 +39,7 @@ export function FAQSection() {
   ];
 
   return (
-    <section className="mb-12 scroll-mt-24" data-testid="faq-section">
+    <section id="faq" className="mb-12 scroll-mt-24" data-testid="faq-section">
       <div className="text-center mb-8">
         <HelpCircle className="text-disney-purple text-4xl mb-4 mx-auto" data-testid="faq-icon" />
         <h2 className="font-bold text-3xl md:text-4xl text-disney-purple">Frequently Asked Questions</h2>

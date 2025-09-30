@@ -165,6 +165,18 @@ export default function Home() {
                 🎬 Video Showreel
               </button>
               <button 
+                onClick={() => scrollToSection('faq')}
+                className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent ${
+                  isActive('faq') 
+                    ? 'bg-disney-purple text-white shadow-lg transform scale-105' 
+                    : 'hover:bg-disney-purple/30 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400'
+                }`}
+                data-testid="link-faq"
+                aria-current={isActive('faq') ? 'page' : undefined}
+              >
+                ❓ FAQ's
+              </button>
+              <button 
                 onClick={() => scrollToSection('contact')}
                 className={`font-bold text-lg px-4 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent ${
                   isActive('contact') 
@@ -222,6 +234,18 @@ export default function Home() {
                   aria-current={isActive('video-showreel') ? 'page' : undefined}
                 >
                   🎬 Video Showreel
+                </button>
+                <button 
+                  onClick={() => scrollToSection('faq')}
+                  className={`w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent ${
+                    isActive('faq') 
+                      ? 'bg-disney-purple text-white shadow-md' 
+                      : 'hover:bg-disney-purple/20 text-toontown-darkbrown hover:border-yellow-400'
+                  }`}
+                  data-testid="mobile-link-faq"
+                  aria-current={isActive('faq') ? 'page' : undefined}
+                >
+                  ❓ FAQ's
                 </button>
                 <button 
                   onClick={() => scrollToSection('contact')}
