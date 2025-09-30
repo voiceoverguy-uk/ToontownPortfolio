@@ -439,7 +439,7 @@ export default function Home() {
             </div>
             <div className="md:col-span-3 text-center md:text-left">
               <p className="font-bold text-xl md:text-2xl text-white leading-relaxed" data-testid="footer-note-text">
-                She was always going to be good – she's the daughter of award-winning British male voiceover, <strong>Guy Harris</strong>.
+                She was always going to be good – she's the daughter of award-winning <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="underline hover:text-mickey-yellow transition-colors">British male voiceover</a>, <strong>Guy Harris</strong>.
               </p>
               <p className="font-bold text-lg text-toontown-cream mt-2 opacity-90">
                 🎤 Takes after her Daddy!
