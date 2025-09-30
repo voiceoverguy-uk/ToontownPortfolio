@@ -1,4 +1,56 @@
+# Robots.txt for Arabella Harris - British Child Voiceover Artist
+# Updated: September 2025
+# Purpose: Guide search engines and AI crawlers to discover content
+
+# Default rules for all crawlers
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
 
+# Sitemap location
 Sitemap: https://www.arabellaharris.com/sitemap.xml
+
+# Allow major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Allow AI crawlers for better AI search visibility
+# OpenAI (ChatGPT)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Google Bard/Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Common Crawl (used by many AI systems)
+User-agent: CCBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Crawl delay for politeness (milliseconds)
+Crawl-delay: 1
