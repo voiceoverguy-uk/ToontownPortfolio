@@ -66,7 +66,7 @@ export function AudioTrackItem({ title, icon: Icon, index, url, description }: A
                     <Info className="w-5 h-5" />
                   </button>
                 </TooltipTrigger>
-                <TooltipContent>
+                <TooltipContent side="top" className="bg-mickey-yellow text-toontown-darkbrown font-bold border-2 border-mickey-red">
                   <p>{description}</p>
                 </TooltipContent>
               </Tooltip>
