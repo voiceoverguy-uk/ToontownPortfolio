@@ -65,7 +65,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote: "Omgeeeeeee she's soooooooo good. Soooo talented. Wowzers. But then she is your daughter 🙌🙌🤩🤩 Lordy … she's off the scale good. And that American accent 😍 Great fresh unique fun website. Nice one ! 🫶",
-    author: "Gina Mellott",
+    author: "Gina Mellotte",
     company: "Voice Talent",
     role: "Professional Female Voice God"
   }
