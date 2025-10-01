@@ -62,6 +62,12 @@ export const testimonials: Testimonial[] = [
     author: "Ally Lang",
     company: "Maple Street Creative",
     role: "Head"
+  },
+  {
+    quote: "Omgeeeeeee she's soooooooo good. Soooo talented. Wowzers. But then she is your daughter 🙌🙌🤩🤩 Lordy … she's off the scale good. And that American accent 😍 Great fresh unique fun website. Nice one ! 🫶",
+    author: "Gina Mellott",
+    company: "Voice Talent",
+    role: "Professional Female Voice God"
   }
 ];
 
