@@ -461,7 +461,7 @@ export default function Home() {
             
             <div className="text-center">
               <a 
-                href="mailto:arabella@voiceoverguy.co.uk"
+                href="mailto:arabella@voiceoverguy.co.uk?subject=ArabellaHarris.com%20-%20Voice%20Enquiry"
                 className="book-now-button"
                 data-testid="book-now-button"
               >
