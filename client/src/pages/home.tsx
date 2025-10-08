@@ -51,7 +51,7 @@ export default function Home() {
   
   // Animated counter for jobs voiced
   useEffect(() => {
-    const targetNumber = 94; // Edit this number as needed
+    const targetNumber = 96; // Edit this number as needed
     const duration = 2000; // Animation duration in milliseconds
     const increment = targetNumber / (duration / 16); // ~60fps
     let currentNumber = 0;
