@@ -35,6 +35,14 @@ export function FAQSection() {
           Arabella is a Yorkshire born Voiceover. Daughter of established <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="text-mickey-red hover:text-mickey-yellow underline transition-colors">Male Voiceover Artist</a> Guy Harris whose voice is heard worldwide on TV, Radio, Websites, Games and betond. Arabella is winner of a Marketing Week Award. Despite her young age, she has professional recording experience with major national brands and understands studio direction, timing, and client requirements. She's a reliable, professional young talent who takes direction well.
         </>
       )
+    },
+    {
+      question: "Do you offer English speaking child voiceover services?",
+      answer: "Yes! Arabella is a native English speaking child voiceover artist from Yorkshire, UK. She delivers authentic British English voiceovers with a natural young girl voice perfect for international audiences. As a professional English speaking child voice talent, she's worked on projects across the UK, Europe, and Middle East markets."
+    },
+    {
+      question: "What makes Arabella a great British young girl voiceover artist?",
+      answer: "As a British young girl voiceover artist, Arabella brings an authentic, energetic voice that connects with audiences. Her natural Yorkshire accent combined with professional training makes her perfect for brands seeking a genuine UK child voice. She's voiced major campaigns for Tesco, Sainsbury's, Peppa Pig, and many other household names, proving she's a trusted British young girl voice artist."
     }
   ];
 
