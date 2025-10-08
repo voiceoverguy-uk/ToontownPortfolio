@@ -84,4 +84,7 @@ export const audioTracks: AudioTrack[] = [
   { title: "Wickstead Park - Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/wicksteed-park-arabella-harris.mp3", description: "Excited to go to the Theme Park" },
   { title: "Experience Wakefield - Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/dear-santa-arabella-harris.mp3", description: "Just a kid being a kid talking to Santa" },
   { title: "Isle of White Ice Cream - Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/isle-of-wight-ice-cream-arabella-harris.mp3", description: "Arabella Singing for (dairy free) Ice Cream" },
+  { title: "KISS/VOXI/Mobil - Scary Voice", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/kiss-voxi-mobil-scary-child-voice-arabella-harris.mp3", description: "Need a scary child voice?" },
+  { title: "Geely Road Rave - Radio", icon: Music, url: "https://www.voiceoverguy.co.uk/assets/audio/geely-road-rave-arabella-harris.mp3", description: "Demanding Kid in a car Voice?" },
+  { title: "Heinz Beanz - Radio", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/heinz-beanz-arabella-harris.mp3", description: "A little Northern needd for a Heinz Ad" },
 ];
