@@ -68,6 +68,12 @@ export const testimonials: Testimonial[] = [
     author: "Gina Mellotte",
     company: "Voice Talent",
     role: "Professional Female Voice God"
+  },
+  {
+    quote: "Arabella was incredibly professional and brought a really positive and enthusiastic energy to the booth! Our engineers loved working with her, and the clients were so pleased with the outcome. Thank you Arabella!",
+    author: "Martha Clarke",
+    company: "Voiceover Gallery",
+    role: ""
   }
 ];
 

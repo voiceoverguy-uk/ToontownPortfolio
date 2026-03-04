@@ -58,7 +58,7 @@ export function TestimonialsCarousel() {
                     – {testimonial.author}
                   </cite>
                   <p className="text-sm font-bold text-disney-blue mt-1" data-testid={`testimonial-company-${index}`}>
-                    {testimonial.role}, {testimonial.company}
+                    {testimonial.role ? `${testimonial.role}, ` : ''}{testimonial.company}
                   </p>
                 </footer>
               </div>
