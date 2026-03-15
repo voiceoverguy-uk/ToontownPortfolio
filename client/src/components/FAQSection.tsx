@@ -10,7 +10,7 @@ export function FAQSection() {
   const faqs = [
     {
       question: "What makes Arabella perfect for child voiceover work?",
-      answer: "Arabella brings natural warmth, energy, and authenticity to every project. As a professionally trained 9-year-old British voice artist, she delivers genuine, age-appropriate performances that resonate with audiences. Her award-winning talent and experience with major brands like Tesco, Sainsbury's, and Peppa Pig make her ideal for commercials, animation, and educational content."
+      answer: "Arabella brings natural warmth, energy, and authenticity to every project. As a professionally trained young British voice artist, she delivers genuine, age-appropriate performances that resonate with audiences. Her award-winning talent and experience with major brands like Tesco, Sainsbury's, and Peppa Pig make her ideal for commercials, animation, and educational content."
     },
     {
       question: "What types of projects has Arabella worked on?",

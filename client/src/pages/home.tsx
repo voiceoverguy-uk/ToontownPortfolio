@@ -320,7 +320,7 @@ export default function Home() {
                 <div className="bg-red-500 p-2 rounded-xl shadow-2xl">
                   <img 
                     src={arabellaImage} 
-                    alt="Arabella Harris - 9-year-old Award-Winning British Child Voiceover Artist from Yorkshire in Professional Recording Studio with Microphone - Commercial Voice Talent for Tesco, Sainsburys, Peppa Pig"
+                    alt="Arabella Harris - Award-Winning British Child Voiceover Artist from Yorkshire in Professional Recording Studio with Microphone - Commercial Voice Talent for Tesco, Sainsburys, Peppa Pig"
                     className="w-full max-w-md rounded-lg"
                     data-testid="arabella-hero-image"
                   />
@@ -357,7 +357,7 @@ export default function Home() {
                 <span className="block">British Child Voiceover Artist</span>
               </h1>
               <p className="text-lg md:text-xl text-white font-bold leading-relaxed" data-testid="hero-bio-text">
-                Arabella is an award-winning {arabellaAge} year old talented UK based British child voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Skoda</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Barnardos</strong>, <strong>KISS FM</strong>, <strong>Cherry Blossom</strong>, <strong>Flaming Grill</strong>, <strong>B&M</strong>, <strong>Morrisons</strong>, <strong>Roblox</strong>, <strong>Geely</strong>, <strong>Heinz</strong> and <strong>RING</strong>. 
+                Arabella is an award-winning {arabellaAge} year old talented UK based British child voiceover artist whose clients include brands such as <strong>Tesco</strong>, <strong>Sainsbury's</strong>, <strong>Asda</strong>, <strong>Uber</strong>, <strong>AXA</strong>, <strong>TK Maxx</strong>, <strong>Skoda</strong>, <strong>Clarks</strong>, <strong>Peppa Pig</strong>, <strong>Kinder</strong>, <strong>Cherry Blossom</strong>, <strong>Superdrug</strong>, <strong>Barnardos</strong>, <strong>KISS FM</strong>, <strong>Flaming Grill</strong>, <strong>B&M</strong>, <strong>Morrisons</strong>, <strong>Roblox</strong>, <strong>Geely</strong>, <strong>Heinz</strong> and <strong>RING</strong>. 
                 <br />
                 She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief. Human First! Not AI.
               </p>
