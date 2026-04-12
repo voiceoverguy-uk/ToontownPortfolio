@@ -104,7 +104,7 @@ export function PageShell({ children }: PageShellProps) {
         {/* Footer */}
         <footer className="bg-mickey-orange py-4 px-4 mt-8">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-white font-bold">© 2025 Arabella Voiceover Kid</p>
+            <p className="text-white font-bold">© {new Date().getFullYear()} Arabella Voiceover Kid</p>
             <p className="text-white font-bold mt-2">
               Website by{' '}
               <a
@@ -115,7 +115,7 @@ export function PageShell({ children }: PageShellProps) {
               >
                 VoiceoverGuy Media
               </a>{' '}
-              © 2025
+              © {new Date().getFullYear()}
             </p>
           </div>
         </footer>
