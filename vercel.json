@@ -1,7 +1,4 @@
 {
-  "functions": {
-    "api/enquiry.ts": { "runtime": "@vercel/node@5" }
-  },
   "headers": [
     {
       "source": "/sitemap.xml",

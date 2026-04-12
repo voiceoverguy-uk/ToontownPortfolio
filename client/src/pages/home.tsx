@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Star, Heart, Volume2, Play, GraduationCap, Mail, Phone, Globe as GlobeIcon, Menu, X } from 'lucide-react';
-import { useLocation } from 'wouter';
+import { useLocation, Link } from 'wouter';
 import { AudioProvider } from '@/components/AudioContext';
 import { SimpleAudioPlayer } from '@/components/SimpleAudioPlayer';
 import { AudioTrackItem } from '@/components/AudioTrackItem';
@@ -226,6 +226,18 @@ export default function Home() {
               >
                 📞 Contact
               </button>
+              <Link
+                href="/british-young-girl-voiceover"
+                className="font-bold text-sm px-3 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-2 border-transparent hover:bg-disney-purple/20 text-toontown-darkbrown hover:shadow-md hover:border-disney-purple"
+              >
+                🇬🇧 Girl Voiceover
+              </Link>
+              <Link
+                href="/english-speaking-child-voiceover"
+                className="font-bold text-sm px-3 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-2 border-transparent hover:bg-disney-blue/20 text-toontown-darkbrown hover:shadow-md hover:border-disney-blue"
+              >
+                🌍 English Child Voice
+              </Link>
             </div>
 
             {/* Mobile Hamburger Menu */}
@@ -297,6 +309,20 @@ export default function Home() {
                 >
                   📞 Contact
                 </button>
+                <Link
+                  href="/british-young-girl-voiceover"
+                  className="w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent hover:bg-disney-purple/20 text-toontown-darkbrown hover:border-disney-purple"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🇬🇧 British Girl Voiceover
+                </Link>
+                <Link
+                  href="/english-speaking-child-voiceover"
+                  className="w-full block font-bold text-lg py-3 px-4 rounded-xl text-center transition-all duration-200 border-4 border-transparent hover:bg-disney-blue/20 text-toontown-darkbrown hover:border-disney-blue"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  🌍 English Child Voice
+                </Link>
               </div>
             </div>
           )}
@@ -363,6 +389,18 @@ export default function Home() {
                 She's voiced national radio campaigns, high-profile brand content, and international projects for markets including the UK, Europe, and the Middle East, bringing warmth, energy, and charm to every brief. Human First! Not AI.
               </p>
               
+              <p className="text-base text-white font-semibold leading-relaxed opacity-90">
+                Looking for a{' '}
+                <Link href="/british-young-girl-voiceover" className="underline hover:text-mickey-yellow transition-colors">
+                  British young girl voiceover
+                </Link>{' '}
+                or an{' '}
+                <Link href="/english-speaking-child-voiceover" className="underline hover:text-mickey-yellow transition-colors">
+                  English speaking child voiceover
+                </Link>{' '}
+                for your international campaign? Arabella covers both.
+              </p>
+
               <div className="bg-white/90 border-4 border-red-500 rounded-2xl p-6 shadow-lg" data-testid="hero-disclaimer-box">
                 <GraduationCap className="text-blue-600 text-2xl mb-3 mx-auto" data-testid="hero-graduation-icon" />
                 <p className="font-bold text-lg md:text-xl text-gray-800 text-center" data-testid="hero-disclaimer-text">
