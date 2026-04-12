@@ -7,6 +7,7 @@ import { AudioTrackItem } from '@/components/AudioTrackItem';
 import { TestimonialsCarousel } from '@/components/TestimonialsCarousel';
 import { YouTubeVideo } from '@/components/YouTubeVideo';
 import { FAQSection } from '@/components/FAQSection';
+import { ContactForm } from '@/components/ContactForm';
 import { audioTracks } from '@/data/constants';
 import arabellaImage from '@assets/arabella-harris-voiceover-kid-website-pic_1757598263203.webp';
 import arabellaLogo from '@assets/arabella-harris-logo_1757599598657.jpg';
@@ -459,15 +460,7 @@ export default function Home() {
               Ready to Work with Arabella?
             </h4>
             
-            <div className="text-center">
-              <a 
-                href="mailto:arabella@voiceoverguy.co.uk?subject=ArabellaHarris.com%20-%20Voice%20Enquiry"
-                className="book-now-button"
-                data-testid="book-now-button"
-              >
-                Book Now!
-              </a>
-            </div>
+            <ContactForm compact />
           </div>
         </section>
             </div>
