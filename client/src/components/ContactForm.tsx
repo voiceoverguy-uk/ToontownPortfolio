@@ -72,7 +72,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
       <div className={`flex flex-col items-center justify-center gap-3 text-center ${compact ? 'py-4' : 'py-8'}`}>
         <CheckCircle className="text-toontown-green w-10 h-10" />
         <p className="font-bold text-lg text-toontown-darkbrown">Message sent!</p>
-        <p className="text-sm text-toontown-brown">Thanks for getting in touch — we'll be in contact soon!</p>
+        <p className="text-sm text-toontown-brown">Thanks for getting in touch. We'll be in contact soon!</p>
       </div>
     );
   }
@@ -129,7 +129,7 @@ export function ContactForm({ compact = false }: ContactFormProps) {
         <textarea
           id="cf-message"
           rows={compact ? 3 : 4}
-          placeholder="Tell us about your project — what type of voiceover do you need, the brand, timeline, etc."
+          placeholder="Tell us about your project: what type of voiceover do you need, the brand, timeline, etc."
           className={`${fieldClass} resize-none`}
           {...register('message')}
         />

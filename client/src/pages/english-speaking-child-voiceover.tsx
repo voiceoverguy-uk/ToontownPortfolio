@@ -51,7 +51,7 @@ export default function EnglishSpeakingChildVoiceover() {
             </h1>
             <p className="text-white font-bold text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
               Arabella Harris is a native English speaking child voiceover artist, recording 
-              from the UK for brands across Europe, the Middle East, and beyond — delivering 
+              from the UK for brands across Europe, the Middle East, and beyond, delivering 
               clear, authentic British English with professional ease.
             </p>
           </section>
@@ -66,7 +66,7 @@ export default function EnglishSpeakingChildVoiceover() {
                 <p>
                   Finding a reliable English speaking child voiceover artist for an international 
                   campaign can be challenging. Many productions need a child voice that sounds 
-                  natural and uncoached — a native British English accent that travels well across 
+                  natural and uncoached, with a native British English accent that travels well across 
                   markets, resonates with global audiences, and still sounds like a real child 
                   rather than a trained performer.
                 </p>
@@ -75,7 +75,7 @@ export default function EnglishSpeakingChildVoiceover() {
                   Arabella is a native English speaker whose clear, expressive voice has been 
                   used in campaigns for UK, European, and Middle Eastern markets. Her recordings 
                   for brands such as Reem Mall in Dubai and Skechers in the USA demonstrate her 
-                  versatility and international appeal — she can adapt her delivery to suit 
+                  versatility and international appeal. She can adapt her delivery to suit 
                   different markets while keeping her voice sounding genuine and fresh.
                 </p>
                 <p>
@@ -144,13 +144,13 @@ export default function EnglishSpeakingChildVoiceover() {
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🇬🇧</span>
                     <div>
-                      <strong>United Kingdom</strong> — National radio, in-store audio, digital campaigns, children's media, and charity advertising across the UK.
+                      <strong>United Kingdom:</strong> National radio, in-store audio, digital campaigns, children's media, and charity advertising across the UK.
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🇦🇪</span>
                     <div>
-                      <strong>Middle East</strong> — International English language advertising for brands including Reem Mall (Dubai) and Arabian Radio Network.
+                      <strong>Middle East:</strong> International English language advertising for brands including Reem Mall (Dubai) and Arabian Radio Network.
                     </div>
                   </div>
                 </div>
@@ -158,13 +158,13 @@ export default function EnglishSpeakingChildVoiceover() {
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🌍</span>
                     <div>
-                      <strong>Europe</strong> — English language campaigns for European brands seeking a genuine British child voice with international reach.
+                      <strong>Europe:</strong> English language campaigns for European brands seeking a genuine British child voice with international reach.
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-2xl">🇺🇸</span>
                     <div>
-                      <strong>USA</strong> — American accent capability (as heard on the Skechers Back to School campaign) for clients who need a flexible English speaking child voice.
+                      <strong>USA:</strong> American accent capability (as heard on the Skechers Back to School campaign) for clients who need a flexible English speaking child voice.
                     </div>
                   </div>
                 </div>

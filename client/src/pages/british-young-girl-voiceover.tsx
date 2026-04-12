@@ -51,7 +51,7 @@ export default function BritishYoungGirlVoiceover() {
             </h1>
             <p className="text-white font-bold text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
               Arabella Harris is a natural British young girl voiceover artist based in the UK, 
-              bringing warmth, energy, and authentic charm to every script — from national radio 
+              bringing warmth, energy, and authentic charm to every script, from national radio 
               campaigns to international brand spots.
             </p>
           </section>
@@ -66,7 +66,7 @@ export default function BritishYoungGirlVoiceover() {
                 <p>
                   When casting directors and producers search for a British young girl voiceover, 
                   they need more than just a child who can read words from a page. They need a 
-                  genuine, warm, and naturally engaging young voice — one that connects with 
+                  genuine, warm, and naturally engaging young voice, one that connects with 
                   audiences because it sounds real, not coached or put on.
                 </p>
                 <p>
@@ -87,7 +87,7 @@ export default function BritishYoungGirlVoiceover() {
                 <p>
                   Unlike many child voices, Arabella's reads feel spontaneous and authentic rather 
                   than rehearsed. Engineers regularly comment on how quickly she delivers clean 
-                  takes, and clients are consistently pleased with the final result — exactly what 
+                  takes, and clients are consistently pleased with the final result. Exactly what 
                   you want when booking a British young girl voiceover for your next project.
                 </p>
               </div>
@@ -105,17 +105,17 @@ export default function BritishYoungGirlVoiceover() {
                   {
                     icon: '🎙️',
                     title: 'Authentic Accent',
-                    body: 'A genuine British accent sounds natural and trustworthy to UK audiences — something that\'s impossible to fake convincingly, even with the best voice coaching.',
+                    body: 'A genuine British accent sounds natural and trustworthy to UK audiences. Something that\'s impossible to fake convincingly, even with the best voice coaching.',
                   },
                   {
                     icon: '⚡',
                     title: 'Natural Energy',
-                    body: 'Real kids bring real energy. Arabella\'s voice has the spontaneous enthusiasm and warmth that audiences respond to — especially when marketing to families.',
+                    body: 'Real kids bring real energy. Arabella\'s voice has the spontaneous enthusiasm and warmth that audiences respond to, especially when marketing to families.',
                   },
                   {
                     icon: '🏆',
                     title: 'Professional Delivery',
-                    body: 'Arabella combines a natural child voice with genuine broadcast experience — giving you the authenticity of a real young girl with the efficiency of a professional.',
+                    body: 'Arabella combines a natural child voice with genuine broadcast experience, giving you the authenticity of a real young girl with the efficiency of a professional.',
                   },
                 ].map(({ icon, title, body }) => (
                   <div key={title} className="bg-white/20 rounded-2xl p-6 text-center">
@@ -186,7 +186,7 @@ export default function BritishYoungGirlVoiceover() {
                 <Link href="/english-speaking-child-voiceover" className="text-mickey-red underline hover:text-disney-blue transition-colors">
                   English speaking child voiceover
                 </Link>{' '}
-                artist for international projects — perfect for brands targeting European, Middle Eastern, and global audiences.{' '}
+                artist for international projects, perfect for brands targeting European, Middle Eastern, and global audiences.{' '}
                 <Link href="/" className="text-mickey-red underline hover:text-disney-blue transition-colors">
                   Visit the home page
                 </Link>{' '}
