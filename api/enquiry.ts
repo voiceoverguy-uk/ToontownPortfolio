@@ -87,7 +87,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           <tr>
             <td style="padding:32px 40px 24px;">
               <h1 style="margin:0 0 8px;font-size:22px;color:#e50014;font-weight:800;">New Enquiry</h1>
-              <p style="margin:0 0 24px;font-size:13px;color:#888;">Received via <a href="${pageUrl}" style="color:#e50014;text-decoration:none;">${pageTitle}</a></p>
+              <p style="margin:0 0 24px;font-size:13px;color:#888;">Received via <a href="${escapeHtml(pageUrl)}" style="color:#e50014;text-decoration:none;">${escapeHtml(pageTitle)}</a></p>
 
               <!-- Details table -->
               <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
@@ -163,7 +163,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       from: fromEmail,
       to: toEmail,
       replyTo: email,
-      subject: `[ArabellaHarris.com] — Enquiry from ${pageTitle}`,
+      subject: `[ArabellaHarris.com] — Enquiry from ${pageTitle.replace(/[\r\n]+/g, ' ').trim()}`,
       html,
     });
 
