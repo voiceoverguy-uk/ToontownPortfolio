@@ -40,7 +40,7 @@ export function AudioTrackItem({ title, icon: Icon, index, url, description, id 
     <div
       ref={itemRef}
       id={id}
-      className={`soundcloud-item transition-all duration-700 ${isVisible ? 'animate-in' : ''}`}
+      className={`soundcloud-item scroll-mt-28 transition-all duration-700 ${isVisible ? 'animate-in' : ''}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
       data-testid={`audio-track-item-${index}`}
     >
