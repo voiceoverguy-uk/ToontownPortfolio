@@ -4,6 +4,17 @@ This is a full-stack web application for Arabella Harris, a young voiceover arti
 
 # Recent Changes
 
+**April 2026**: Comprehensive SEO enhancements
+- Twitter/X Card meta tags added to index.html (`summary_large_image` format)
+- `hreflang="en-GB"` and `hreflang="en"` link tags added to index.html
+- AudioObject schema added for all 15 showreel audio tracks (ItemList of AudioObjects)
+- Currys, Hotpoint, Zara added to Person.workExample in index.html schema
+- Both landing pages: brands arrays updated with Hotpoint, Zara, Currys
+- Both landing pages: useEffect now also updates og:title, og:description, og:url, twitter:title, twitter:description for correct social share previews per page
+- Both landing pages: FAQ sections added (visible accordion UI + FAQPage schema)
+- Both landing pages: BreadcrumbList schema added (Home → Landing Page)
+- Currys added to home page hero client list
+
 **September 11, 2025**: Enhanced design with vibrant Disney-style Toontown aesthetics
 - Updated color scheme to use deeper, richer colors: Mickey red, Mickey yellow, Disney blue, Mickey orange
 - Added bold cartoon fonts: Luckiest Guy for main headers, Fredoka One for friendly text, Bungee for accents

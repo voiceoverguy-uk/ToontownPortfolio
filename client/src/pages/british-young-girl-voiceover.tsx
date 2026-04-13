@@ -11,6 +11,7 @@ const brands = [
   'Tesco', 'Sainsbury\'s', 'Peppa Pig', 'Uber', 'AXA', 'TK Maxx',
   'Skoda', 'Clarks', 'Kinder', 'Cherry Blossom', 'Superdrug',
   'Barnardos', 'KISS FM', 'B&M', 'Morrisons', 'Roblox', 'Heinz',
+  'Hotpoint', 'Zara', 'Currys',
 ];
 
 export default function BritishYoungGirlVoiceover() {
@@ -18,19 +19,34 @@ export default function BritishYoungGirlVoiceover() {
     const prevTitle = document.title;
     const prevDesc = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
     const prevCanon = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+    const prevOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content') ?? '';
+    const prevOgDesc = document.querySelector('meta[property="og:description"]')?.getAttribute('content') ?? '';
+    const prevOgUrl = document.querySelector('meta[property="og:url"]')?.getAttribute('content') ?? '';
+    const prevTwTitle = document.querySelector('meta[name="twitter:title"]')?.getAttribute('content') ?? '';
+    const prevTwDesc = document.querySelector('meta[name="twitter:description"]')?.getAttribute('content') ?? '';
 
-    document.title = 'British Young Girl Voiceover | Arabella Harris';
+    const pageTitle = 'British Young Girl Voiceover | Arabella Harris';
+    const pageDesc = 'Looking for a British young girl voiceover artist? Arabella Harris is an award-winning natural UK child voice talent trusted by Tesco, Sainsbury\'s, Peppa Pig, and many more major brands. Book now.';
+    const pageUrl = 'https://www.arabellaharris.com/british-young-girl-voiceover';
 
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', 'Looking for a British young girl voiceover artist? Arabella Harris is an award-winning natural UK child voice talent trusted by Tesco, Sainsbury\'s, Peppa Pig, and many more major brands. Book now.');
-
-    const canon = document.querySelector('link[rel="canonical"]');
-    if (canon) canon.setAttribute('href', 'https://www.arabellaharris.com/british-young-girl-voiceover');
+    document.title = pageTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', pageDesc);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', pageUrl);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', pageDesc);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', pageUrl);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', pageDesc);
 
     return () => {
       document.title = prevTitle;
-      if (desc) desc.setAttribute('content', prevDesc);
-      if (canon) canon.setAttribute('href', prevCanon);
+      document.querySelector('meta[name="description"]')?.setAttribute('content', prevDesc);
+      document.querySelector('link[rel="canonical"]')?.setAttribute('href', prevCanon);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', prevOgTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', prevOgDesc);
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', prevOgUrl);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', prevTwTitle);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', prevTwDesc);
     };
   }, []);
 
@@ -195,6 +211,45 @@ export default function BritishYoungGirlVoiceover() {
             </div>
           </section>
 
+          {/* FAQ Section */}
+          <section className="mb-12" id="faq">
+            <div className="bg-white/80 border-4 border-disney-purple rounded-3xl p-8 shadow-lg">
+              <h2 className="font-bold text-2xl md:text-3xl text-disney-purple mb-6 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-5">
+                {[
+                  {
+                    q: 'How do I book Arabella for a British young girl voiceover?',
+                    a: 'Simply use the contact form below or email arabella@voiceoverguy.co.uk. Share details about your project including the type of content, target audience, deadline, and any voice direction notes. You\'ll receive a prompt response with availability and rates.',
+                  },
+                  {
+                    q: 'How much does a British child voiceover cost?',
+                    a: 'Rates vary depending on script length, usage rights, and turnaround time. Contact us with your brief for a personalised quote. Arabella offers competitive rates for both domestic UK campaigns and international projects.',
+                  },
+                  {
+                    q: 'Can Arabella record remotely?',
+                    a: 'Yes. Arabella records from a professional home studio and delivers broadcast-quality audio files directly to clients. She can accommodate remote directed sessions and works efficiently to client timelines.',
+                  },
+                  {
+                    q: 'What kinds of projects suit Arabella\'s voice?',
+                    a: 'Arabella\'s natural British young girl voice suits a wide range of projects including national radio commercials, in-store audio, TV and online advertising, children\'s animation, educational content, charity campaigns, and international brand spots.',
+                  },
+                ].map(({ q, a }) => (
+                  <details key={q} className="group border-2 border-disney-purple/30 rounded-2xl overflow-hidden">
+                    <summary className="cursor-pointer font-bold text-toontown-darkbrown text-lg px-6 py-4 hover:bg-disney-purple/10 transition-colors list-none flex justify-between items-center">
+                      {q}
+                      <span className="text-disney-purple ml-3 flex-shrink-0 group-open:rotate-180 transition-transform duration-200">▼</span>
+                    </summary>
+                    <div className="px-6 pb-5 pt-2 text-toontown-darkbrown font-semibold leading-relaxed border-t border-disney-purple/20">
+                      {a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Contact Form */}
           <section className="mb-12" id="contact">
             <div className="bg-gradient-to-br from-mickey-red to-orange-600 rounded-3xl p-8 border-4 border-white shadow-2xl">
@@ -210,19 +265,66 @@ export default function BritishYoungGirlVoiceover() {
             </div>
           </section>
 
-          {/* Schema.org WebPage */}
+          {/* Schema.org Structured Data */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'WebPage',
-                name: 'British Young Girl Voiceover Artist — Arabella Harris',
-                description:
-                  'Arabella Harris is an award-winning British young girl voiceover artist with a natural UK child voice. Trusted by Tesco, Sainsbury\'s, Peppa Pig, and many more.',
-                url: 'https://www.arabellaharris.com/british-young-girl-voiceover',
-                isPartOf: { '@id': 'https://www.arabellaharris.com/#arabella-harris' },
-              }),
+              __html: JSON.stringify([
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'WebPage',
+                  name: 'British Young Girl Voiceover Artist — Arabella Harris',
+                  description: 'Arabella Harris is an award-winning British young girl voiceover artist with a natural UK child voice. Trusted by Tesco, Sainsbury\'s, Peppa Pig, and many more.',
+                  url: 'https://www.arabellaharris.com/british-young-girl-voiceover',
+                  isPartOf: { '@id': 'https://www.arabellaharris.com/#arabella-harris' },
+                },
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.arabellaharris.com/' },
+                    { '@type': 'ListItem', position: 2, name: 'British Young Girl Voiceover', item: 'https://www.arabellaharris.com/british-young-girl-voiceover' },
+                  ],
+                },
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: [
+                    {
+                      '@type': 'Question',
+                      name: 'How do I book Arabella for a British young girl voiceover?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Simply use the contact form on this page or email arabella@voiceoverguy.co.uk. Share details about your project including the type of content, target audience, deadline, and any voice direction notes. You\'ll receive a prompt response with availability and rates.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'How much does a British child voiceover cost?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Rates vary depending on script length, usage rights, and turnaround time. Contact us with your brief for a personalised quote. Arabella offers competitive rates for both domestic UK campaigns and international projects.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'Can Arabella record remotely?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Yes. Arabella records from a professional home studio and delivers broadcast-quality audio files directly to clients. She can accommodate remote directed sessions and works efficiently to client timelines.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'What kinds of projects suit Arabella\'s voice?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Arabella\'s natural British young girl voice suits a wide range of projects including national radio commercials, in-store audio, TV and online advertising, children\'s animation, educational content, charity campaigns, and international brand spots.',
+                      },
+                    },
+                  ],
+                },
+              ]),
             }}
           />
         </main>

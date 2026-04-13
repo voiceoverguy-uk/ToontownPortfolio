@@ -11,6 +11,7 @@ const brands = [
   'Tesco', 'Sainsbury\'s', 'Peppa Pig', 'Uber', 'AXA', 'TK Maxx',
   'Skoda', 'Clarks', 'Kinder', 'Cherry Blossom', 'Superdrug',
   'Barnardos', 'KISS FM', 'B&M', 'Morrisons', 'Roblox', 'Heinz',
+  'Hotpoint', 'Zara', 'Currys',
 ];
 
 export default function EnglishSpeakingChildVoiceover() {
@@ -18,19 +19,34 @@ export default function EnglishSpeakingChildVoiceover() {
     const prevTitle = document.title;
     const prevDesc = document.querySelector('meta[name="description"]')?.getAttribute('content') ?? '';
     const prevCanon = document.querySelector('link[rel="canonical"]')?.getAttribute('href') ?? '';
+    const prevOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content') ?? '';
+    const prevOgDesc = document.querySelector('meta[property="og:description"]')?.getAttribute('content') ?? '';
+    const prevOgUrl = document.querySelector('meta[property="og:url"]')?.getAttribute('content') ?? '';
+    const prevTwTitle = document.querySelector('meta[name="twitter:title"]')?.getAttribute('content') ?? '';
+    const prevTwDesc = document.querySelector('meta[name="twitter:description"]')?.getAttribute('content') ?? '';
 
-    document.title = 'English Speaking Child Voiceover | Arabella Harris';
+    const pageTitle = 'English Speaking Child Voiceover | Arabella Harris';
+    const pageDesc = 'Need an English speaking child voiceover for your international campaign? Arabella Harris is a native British child voice artist trusted by global brands across the UK, Europe, and the Middle East.';
+    const pageUrl = 'https://www.arabellaharris.com/english-speaking-child-voiceover';
 
-    const desc = document.querySelector('meta[name="description"]');
-    if (desc) desc.setAttribute('content', 'Need an English speaking child voiceover for your international campaign? Arabella Harris is a native British child voice artist trusted by global brands across the UK, Europe, and the Middle East.');
-
-    const canon = document.querySelector('link[rel="canonical"]');
-    if (canon) canon.setAttribute('href', 'https://www.arabellaharris.com/english-speaking-child-voiceover');
+    document.title = pageTitle;
+    document.querySelector('meta[name="description"]')?.setAttribute('content', pageDesc);
+    document.querySelector('link[rel="canonical"]')?.setAttribute('href', pageUrl);
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', pageDesc);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', pageUrl);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', pageDesc);
 
     return () => {
       document.title = prevTitle;
-      if (desc) desc.setAttribute('content', prevDesc);
-      if (canon) canon.setAttribute('href', prevCanon);
+      document.querySelector('meta[name="description"]')?.setAttribute('content', prevDesc);
+      document.querySelector('link[rel="canonical"]')?.setAttribute('href', prevCanon);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', prevOgTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', prevOgDesc);
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', prevOgUrl);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', prevTwTitle);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', prevTwDesc);
     };
   }, []);
 
@@ -238,6 +254,45 @@ export default function EnglishSpeakingChildVoiceover() {
             </div>
           </section>
 
+          {/* FAQ Section */}
+          <section className="mb-12" id="faq">
+            <div className="bg-white/80 border-4 border-disney-blue rounded-3xl p-8 shadow-lg">
+              <h2 className="font-bold text-2xl md:text-3xl text-disney-blue mb-6 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-5">
+                {[
+                  {
+                    q: 'How do I book an English speaking child voiceover with Arabella?',
+                    a: 'Use the contact form below or email arabella@voiceoverguy.co.uk. Include details about your project, intended market, any accent requirements, and your deadline. You\'ll receive a fast response with rates and availability.',
+                  },
+                  {
+                    q: 'Can Arabella deliver an American English accent?',
+                    a: 'Yes. As heard on the Skechers Back to School campaign recorded for the US market, Arabella can adapt her delivery to an American English accent when required, making her a flexible choice for brands targeting both British and American audiences.',
+                  },
+                  {
+                    q: 'Does Arabella work with international clients?',
+                    a: 'Absolutely. Arabella has voiced campaigns for brands in the UK, UAE, and USA. She records remotely from a professional home studio and delivers broadcast-quality audio quickly, making international collaboration straightforward.',
+                  },
+                  {
+                    q: 'What audio formats does Arabella deliver in?',
+                    a: 'Arabella delivers broadcast-quality WAV files as standard, with MP3 versions available on request. Files are delivered to client specification and are ready for use across radio, TV, digital, and in-store platforms.',
+                  },
+                ].map(({ q, a }) => (
+                  <details key={q} className="group border-2 border-disney-blue/30 rounded-2xl overflow-hidden">
+                    <summary className="cursor-pointer font-bold text-toontown-darkbrown text-lg px-6 py-4 hover:bg-disney-blue/10 transition-colors list-none flex justify-between items-center">
+                      {q}
+                      <span className="text-disney-blue ml-3 flex-shrink-0 group-open:rotate-180 transition-transform duration-200">▼</span>
+                    </summary>
+                    <div className="px-6 pb-5 pt-2 text-toontown-darkbrown font-semibold leading-relaxed border-t border-disney-blue/20">
+                      {a}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* Contact Form */}
           <section className="mb-12" id="contact">
             <div className="bg-gradient-to-br from-disney-blue to-disney-purple rounded-3xl p-8 border-4 border-white shadow-2xl">
@@ -253,19 +308,66 @@ export default function EnglishSpeakingChildVoiceover() {
             </div>
           </section>
 
-          {/* Schema.org WebPage */}
+          {/* Schema.org Structured Data */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                '@context': 'https://schema.org',
-                '@type': 'WebPage',
-                name: 'English Speaking Child Voiceover Artist — Arabella Harris',
-                description:
-                  'Arabella Harris is a native English speaking child voiceover artist based in the UK, trusted by global brands across Europe, the Middle East, and beyond.',
-                url: 'https://www.arabellaharris.com/english-speaking-child-voiceover',
-                isPartOf: { '@id': 'https://www.arabellaharris.com/#arabella-harris' },
-              }),
+              __html: JSON.stringify([
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'WebPage',
+                  name: 'English Speaking Child Voiceover Artist — Arabella Harris',
+                  description: 'Arabella Harris is a native English speaking child voiceover artist based in the UK, trusted by global brands across Europe, the Middle East, and beyond.',
+                  url: 'https://www.arabellaharris.com/english-speaking-child-voiceover',
+                  isPartOf: { '@id': 'https://www.arabellaharris.com/#arabella-harris' },
+                },
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'BreadcrumbList',
+                  itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.arabellaharris.com/' },
+                    { '@type': 'ListItem', position: 2, name: 'English Speaking Child Voiceover', item: 'https://www.arabellaharris.com/english-speaking-child-voiceover' },
+                  ],
+                },
+                {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: [
+                    {
+                      '@type': 'Question',
+                      name: 'How do I book an English speaking child voiceover with Arabella?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Use the contact form on this page or email arabella@voiceoverguy.co.uk. Include details about your project, intended market, any accent requirements, and your deadline. You\'ll receive a fast response with rates and availability.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'Can Arabella deliver an American English accent?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Yes. As heard on the Skechers Back to School campaign recorded for the US market, Arabella can adapt her delivery to an American English accent when required, making her a flexible choice for brands targeting both British and American audiences.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'Does Arabella work with international clients?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Absolutely. Arabella has voiced campaigns for brands in the UK, UAE, and USA. She records remotely from a professional home studio and delivers broadcast-quality audio quickly, making international collaboration straightforward.',
+                      },
+                    },
+                    {
+                      '@type': 'Question',
+                      name: 'What audio formats does Arabella deliver in?',
+                      acceptedAnswer: {
+                        '@type': 'Answer',
+                        text: 'Arabella delivers broadcast-quality WAV files as standard, with MP3 versions available on request. Files are delivered to client specification and are ready for use across radio, TV, digital, and in-store platforms.',
+                      },
+                    },
+                  ],
+                },
+              ]),
             }}
           />
         </main>
