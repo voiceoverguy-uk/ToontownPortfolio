@@ -5,13 +5,13 @@ import { AudioProvider } from '@/components/AudioContext';
 import { AudioTrackItem } from '@/components/AudioTrackItem';
 import { ContactForm } from '@/components/ContactForm';
 import { PageShell } from '@/components/PageShell';
-import { audioTracks } from '@/data/constants';
+import { audioTracks, brandTrackMap } from '@/data/constants';
 
 const brands = [
   'Tesco', 'Sainsbury\'s', 'Peppa Pig', 'Uber', 'AXA', 'TK Maxx',
   'Skoda', 'Clarks', 'Kinder', 'Cherry Blossom', 'Superdrug',
-  'Barnardos', 'KISS FM', 'B&M', 'Morrisons', 'Roblox', 'Heinz',
-  'Hotpoint', 'Zara', 'Currys',
+  'Barnardos', 'KISS FM', 'Nickelodeon', 'B&M', 'Morrisons', 'Roblox',
+  'Heinz', 'Hotpoint', 'Zara', 'Currys', 'Skechers',
 ];
 
 export default function BritishYoungGirlVoiceover() {
@@ -157,14 +157,28 @@ export default function BritishYoungGirlVoiceover() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-3 justify-center">
-                {brands.map((brand) => (
-                  <span
-                    key={brand}
-                    className="bg-mickey-yellow text-toontown-darkbrown font-bold px-4 py-2 rounded-full border-2 border-toontown-darkbrown text-sm shadow"
-                  >
-                    {brand}
-                  </span>
-                ))}
+                {brands.map((brand) => {
+                  const trackIndex = brandTrackMap[brand];
+                  if (trackIndex !== undefined) {
+                    return (
+                      <a
+                        key={brand}
+                        href={`#track-${trackIndex}`}
+                        className="bg-mickey-yellow text-toontown-darkbrown font-bold px-4 py-2 rounded-full border-2 border-toontown-darkbrown text-sm shadow flex items-center gap-1.5 hover:bg-mickey-orange hover:scale-105 transition-all duration-200 cursor-pointer"
+                      >
+                        <span className="text-xs">▶</span>{brand}
+                      </a>
+                    );
+                  }
+                  return (
+                    <span
+                      key={brand}
+                      className="bg-mickey-yellow text-toontown-darkbrown font-bold px-4 py-2 rounded-full border-2 border-toontown-darkbrown text-sm shadow"
+                    >
+                      {brand}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </section>
@@ -184,6 +198,7 @@ export default function BritishYoungGirlVoiceover() {
               {audioTracks.map((item, index) => (
                 <AudioTrackItem
                   key={index}
+                  id={`track-${index}`}
                   title={item.title}
                   icon={item.icon}
                   index={index}

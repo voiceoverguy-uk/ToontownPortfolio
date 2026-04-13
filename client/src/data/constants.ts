@@ -77,6 +77,18 @@ export const testimonials: Testimonial[] = [
   }
 ];
 
+export const brandTrackMap: Record<string, number> = {
+  'Tesco': 0,
+  'KISS FM': 1,
+  'Skoda': 3,
+  'Heinz': 4,
+  'Nickelodeon': 5,
+  'Barnardos': 7,
+  "Sainsbury's": 8,
+  'Cherry Blossom': 9,
+  'Skechers': 11,
+};
+
 export const audioTracks: AudioTrack[] = [
   { title: "Tesco Fruit and Veg - Radio", icon: ShoppingCart, url: "https://www.voiceoverguy.co.uk/assets/audio/tesco-fruit-and-veg-arabella-harris.mp3", description: "National Radio - Broadcast across the UK" },
   { title: "VOXI Mobile - Radio Promo", icon: Mic, url: "https://www.voiceoverguy.co.uk/assets/audio/kiss-voxi-mobil-scary-child-voice-arabella-harris.mp3", description: "Need a creepy scary child voice?" },

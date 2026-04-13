@@ -8,9 +8,10 @@ interface AudioTrackItemProps {
   index: number;
   url: string;
   description?: string;
+  id?: string;
 }
 
-export function AudioTrackItem({ title, icon: Icon, index, url, description }: AudioTrackItemProps) {
+export function AudioTrackItem({ title, icon: Icon, index, url, description, id }: AudioTrackItemProps) {
   const [isVisible, setIsVisible] = useState(false);
   const itemRef = useRef<HTMLDivElement>(null);
   const { currentlyPlaying } = useContext(AudioContext);
@@ -38,6 +39,7 @@ export function AudioTrackItem({ title, icon: Icon, index, url, description }: A
   return (
     <div
       ref={itemRef}
+      id={id}
       className={`soundcloud-item transition-all duration-700 ${isVisible ? 'animate-in' : ''}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
       data-testid={`audio-track-item-${index}`}
