@@ -6,8 +6,12 @@ export function TestimonialsCarousel() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  const nextTestimonial = useCallback(() => {
+  const nextTestimonial = useCallback((resetAutoPlay = false) => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    if (resetAutoPlay) {
+      setIsAutoPlaying(false);
+      setTimeout(() => setIsAutoPlaying(true), 5000);
+    }
   }, []);
 
   const prevTestimonial = useCallback(() => {
@@ -48,7 +52,11 @@ export function TestimonialsCarousel() {
               }`}
               data-testid={`testimonial-${index}`}
             >
-              <div className="testimonial-bubble max-w-2xl mx-auto">
+              <div
+                className="testimonial-bubble max-w-2xl mx-auto cursor-pointer select-none"
+                onClick={() => nextTestimonial(true)}
+                title="Tap for next"
+              >
                 <Quote className="text-disney-blue text-2xl mb-4 floating-icon" data-testid={`quote-icon-${index}`} />
                 <blockquote className="text-lg md:text-xl font-bold font-semibold text-toontown-darkbrown mb-4 leading-relaxed" data-testid={`testimonial-quote-${index}`}>
                   "{testimonial.quote}"
