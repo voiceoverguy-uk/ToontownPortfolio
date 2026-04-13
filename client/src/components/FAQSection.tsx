@@ -36,7 +36,15 @@ export function FAQSection() {
       question: "What is Arabella's voiceover experience and training?",
       answer: (
         <>
-          Arabella is a Yorkshire born Voiceover. Daughter of established <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="text-mickey-red hover:text-mickey-yellow underline transition-colors">Male Voiceover Artist</a> Guy Harris whose voice is heard worldwide on TV, Radio, Websites, Games and betond. Arabella is winner of a Marketing Week Award. Despite her young age, she has professional recording experience with major national brands and understands studio direction, timing, and client requirements. She's a reliable, professional young talent who takes direction well.
+          Arabella is a Yorkshire born Voiceover. Daughter of established <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="text-mickey-red hover:text-mickey-yellow underline transition-colors">Male Voiceover Artist</a> Guy Harris whose voice is heard worldwide on TV, Radio, Websites, Games and beyond. Arabella is winner of a Marketing Week Award. Despite her young age, she has professional recording experience with major national brands and understands studio direction, timing, and client requirements. She's a reliable, professional young talent who takes direction well.
+        </>
+      )
+    },
+    {
+      question: "Can I book Arabella and Dad together?",
+      answer: (
+        <>
+          Yes — both Arabella and her dad, <a href="https://www.voiceoverguy.co.uk" target="_blank" rel="noopener noreferrer" className="text-mickey-red hover:text-mickey-yellow underline transition-colors">Guy Harris</a>, have appeared together many times. If you need a realistic father and daughter relationship in an advert or production, get in touch and we&apos;ll make it happen.
         </>
       )
     },
