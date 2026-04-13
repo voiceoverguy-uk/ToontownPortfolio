@@ -54,6 +54,12 @@ export function PageShell({ children }: PageShellProps) {
                 <a href="/#video-showreel" className={navLinkClass}>
                   🎬 Dad's Showreel
                 </a>
+                <Link href="/british-young-girl-voiceover" className={navLinkClass}>
+                  🇬🇧 British Girl Voiceover
+                </Link>
+                <Link href="/english-speaking-child-voiceover" className={navLinkClass}>
+                  🌍 English Child Voiceover
+                </Link>
                 <a href="/#faq" className={navLinkClass}>
                   ❓ FAQ's
                 </a>
@@ -84,6 +90,12 @@ export function PageShell({ children }: PageShellProps) {
                   <a href="/#video-showreel" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
                     🎬 Dad's Showreel
                   </a>
+                  <Link href="/british-young-girl-voiceover" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
+                    🇬🇧 British Girl Voiceover
+                  </Link>
+                  <Link href="/english-speaking-child-voiceover" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
+                    🌍 English Child Voiceover
+                  </Link>
                   <a href="/#faq" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
                     ❓ FAQ's
                   </a>
