@@ -26,7 +26,11 @@ export function FAQSection() {
     },
     {
       question: "Is Arabella available for international projects?",
-      answer: "Yes! Arabella has voiced projects for UK, European, and Middle East markets. As a professional British child voice artist, she's available for international commercials, animation dubbing, and global brand campaigns. She records from a professional home studio and can accommodate various time zones and delivery requirements."
+      answer: (
+        <>
+          Yes! Arabella has voiced projects for UK, European, and Middle East markets. As a professional British child voice artist, she&apos;s available for international commercials, animation dubbing, and global brand campaigns. She records from her dad&apos;s professional <a href="https://www.voiceoverguy.co.uk/voiceover-studio" target="_blank" rel="noopener noreferrer" className="text-mickey-red hover:text-mickey-yellow underline transition-colors">VoiceoverGuy studio</a> and can accommodate various time zones and delivery requirements.
+        </>
+      )
     },
     {
       question: "What is Arabella's voiceover experience and training?",

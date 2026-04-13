@@ -276,7 +276,7 @@ export default function EnglishSpeakingChildVoiceover() {
                 Frequently Asked Questions
               </h2>
               <div className="space-y-5">
-                {[
+                {([
                   {
                     q: 'How do I book an English speaking child voiceover with Arabella?',
                     a: 'Use the contact form below or email arabella@voiceoverguy.co.uk. Include details about your project, intended market, any accent requirements, and your deadline. You\'ll receive a fast response with rates and availability.',
@@ -287,13 +287,13 @@ export default function EnglishSpeakingChildVoiceover() {
                   },
                   {
                     q: 'Does Arabella work with international clients?',
-                    a: 'Absolutely. Arabella has voiced campaigns for brands in the UK, UAE, and USA. She records remotely from a professional home studio and delivers broadcast-quality audio quickly, making international collaboration straightforward.',
+                    a: <>Absolutely. Arabella has voiced campaigns for brands in the UK, UAE, and USA. She records from her dad&apos;s professional <a href="https://www.voiceoverguy.co.uk/voiceover-studio" target="_blank" rel="noopener noreferrer" className="text-disney-blue underline hover:text-mickey-red transition-colors">VoiceoverGuy studio</a> and delivers broadcast-quality audio quickly, making international collaboration straightforward.</>,
                   },
                   {
                     q: 'What audio formats does Arabella deliver in?',
                     a: 'Arabella delivers broadcast-quality WAV files as standard, with MP3 versions available on request. Files are delivered to client specification and are ready for use across radio, TV, digital, and in-store platforms.',
                   },
-                ].map(({ q, a }) => (
+                ] as {q: string, a: React.ReactNode}[]).map(({ q, a }) => (
                   <details key={q} className="group border-2 border-disney-blue/30 rounded-2xl overflow-hidden">
                     <summary className="cursor-pointer font-bold text-toontown-darkbrown text-lg px-6 py-4 hover:bg-disney-blue/10 transition-colors list-none flex justify-between items-center">
                       {q}

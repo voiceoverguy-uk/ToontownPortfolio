@@ -233,7 +233,7 @@ export default function BritishYoungGirlVoiceover() {
                 Frequently Asked Questions
               </h2>
               <div className="space-y-5">
-                {[
+                {([
                   {
                     q: 'How do I book Arabella for a British young girl voiceover?',
                     a: 'Simply use the contact form below or email arabella@voiceoverguy.co.uk. Share details about your project including the type of content, target audience, deadline, and any voice direction notes. You\'ll receive a prompt response with availability and rates.',
@@ -244,13 +244,13 @@ export default function BritishYoungGirlVoiceover() {
                   },
                   {
                     q: 'Can Arabella record remotely?',
-                    a: 'Yes. Arabella records from a professional home studio and delivers broadcast-quality audio files directly to clients. She can accommodate remote directed sessions and works efficiently to client timelines.',
+                    a: <>Yes. Arabella records at her dad&apos;s professional <a href="https://www.voiceoverguy.co.uk/voiceover-studio" target="_blank" rel="noopener noreferrer" className="text-disney-purple underline hover:text-mickey-red transition-colors">VoiceoverGuy studio</a> and delivers broadcast-quality audio files directly to clients. She can accommodate remote directed sessions and works efficiently to client timelines.</>,
                   },
                   {
                     q: 'What kinds of projects suit Arabella\'s voice?',
                     a: 'Arabella\'s natural British young girl voice suits a wide range of projects including national radio commercials, in-store audio, TV and online advertising, children\'s animation, educational content, charity campaigns, and international brand spots.',
                   },
-                ].map(({ q, a }) => (
+                ] as {q: string, a: React.ReactNode}[]).map(({ q, a }) => (
                   <details key={q} className="group border-2 border-disney-purple/30 rounded-2xl overflow-hidden">
                     <summary className="cursor-pointer font-bold text-toontown-darkbrown text-lg px-6 py-4 hover:bg-disney-purple/10 transition-colors list-none flex justify-between items-center">
                       {q}
