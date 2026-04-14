@@ -57,7 +57,7 @@ const activities = [
     id: 'chicken',
     emoji: '🍗',
     title: 'Chicken Tenders & Snacks',
-    desc: 'The best birthday food ever. Chicken tenders, dips, and all the snacks you could ever want.',
+    desc: 'The best birthday food ever. Chicken tenders, dips, and all the snacks you could ever want. Who doesn\'t love cheap Iceland Chicken?',
     colour: 'bg-mickey-orange border-mickey-red',
     textColour: 'text-white',
   },
