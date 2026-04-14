@@ -33,7 +33,7 @@ const activities = [
     id: 'crafting',
     emoji: '🎨',
     title: 'Snack Box Crafting',
-    desc: 'We\'re making our very own personalised snack boxes — decorate yours and fill it with treats!',
+    desc: 'We\'re making our very own personalised snack boxes. Decorate yours and fill it with treats! Yes, we will supply some treats. You do like Haribo??',
     colour: 'bg-mickey-yellow border-mickey-orange',
     textColour: 'text-toontown-darkbrown',
   },
