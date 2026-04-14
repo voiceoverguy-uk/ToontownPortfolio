@@ -279,10 +279,10 @@ export default function Birthday() {
           >
             ARABELLA<br />{Date.now() >= new Date('2026-06-04').getTime() ? 'IS 10! 🎂' : 'WILL BE 10! 🎂'}
           </h1>
-          <p className="text-xl md:text-2xl font-bold text-disney-purple mt-2" style={{ fontFamily: "'Fredoka One', cursive" }}>
+          <p className="text-base font-bold text-disney-purple mt-2" style={{ fontFamily: "'Fredoka One', cursive" }}>
             Birthday: Wednesday 4th June 🎂
           </p>
-          <p className="text-lg font-bold text-mickey-orange mt-1" style={{ fontFamily: "'Fredoka One', cursive" }}>
+          <p className="text-2xl md:text-3xl font-black text-mickey-orange mt-1" style={{ fontFamily: "'Fredoka One', cursive" }}>
             Party: Saturday 6th June 2026 🎉
           </p>
         </div>
