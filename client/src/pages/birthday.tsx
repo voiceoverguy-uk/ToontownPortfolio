@@ -71,6 +71,9 @@ const navLinks = [
   { label: '🩷 Free Robes', href: '#robes' },
   { label: '🍗 Chicken Tenders', href: '#chicken' },
   { label: '🎤 Karaoke', href: '#karaoke' },
+  { label: '💅 Mini Spa', href: '#spa' },
+  { label: '🌙 Sleepover', href: '#sleepover' },
+  { label: '🎒 What to Bring', href: '#bring' },
 ];
 
 function useCountdown(target: Date) {
@@ -313,7 +316,7 @@ export default function Birthday() {
         </div>
 
         {/* What to bring */}
-        <div className="bg-white rounded-3xl border-4 border-mickey-yellow p-6 mb-8 shadow-lg">
+        <div id="bring" className="bg-white rounded-3xl border-4 border-mickey-yellow p-6 mb-8 shadow-lg scroll-mt-28">
           <h2 className="text-center text-2xl font-black mb-4 text-mickey-orange" style={{ fontFamily: "'Luckiest Guy', cursive" }}>
             WHAT TO BRING 🎒
           </h2>
