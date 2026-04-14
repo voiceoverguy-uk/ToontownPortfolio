@@ -1,4 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+
+const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
 const PARTY_DATE = new Date('2026-06-04T17:00:00');
 
@@ -76,6 +78,27 @@ function useCountdown(target: Date) {
 export default function Birthday() {
   const { days, hours, minutes, seconds } = useCountdown(PARTY_DATE);
   const [confetti, setConfetti] = useState<{ id: number; x: number; colour: string; delay: number; size: number }[]>([]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const lastClipRef = useRef<number>(-1);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playRandomClip = () => {
+    let idx: number;
+    do { idx = Math.floor(Math.random() * BIRTHDAY_CLIPS.length); }
+    while (idx === lastClipRef.current && BIRTHDAY_CLIPS.length > 1);
+    lastClipRef.current = idx;
+
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+    const audio = new Audio(BIRTHDAY_CLIPS[idx]);
+    audioRef.current = audio;
+    setIsPlaying(true);
+    audio.play();
+    audio.onended = () => setIsPlaying(false);
+    audio.onerror = () => setIsPlaying(false);
+  };
 
   useEffect(() => {
     const colours = ['#e23636', '#f5c842', '#4a90e2', '#ff7f3f', '#8b5cf6', '#10b981'];
@@ -148,6 +171,35 @@ export default function Birthday() {
           </p>
           <p className="text-white text-lg font-bold opacity-90" style={{ fontFamily: "'Fredoka One', cursive" }}>
             Arabella is turning 10 and she'd love you to come for a very special sleepover party!
+          </p>
+        </div>
+
+        {/* PRESS ME button */}
+        <div className="mb-8 text-center">
+          <button
+            onClick={playRandomClip}
+            className="relative inline-block select-none focus:outline-none"
+            style={{ transform: isPlaying ? 'scale(0.94)' : 'scale(1)', transition: 'transform 0.15s ease' }}
+          >
+            <div
+              className="rounded-full px-10 py-6 font-black text-white text-3xl md:text-4xl shadow-2xl border-4 border-white"
+              style={{
+                fontFamily: "'Luckiest Guy', cursive",
+                background: isPlaying
+                  ? 'linear-gradient(135deg, #10b981, #4a90e2)'
+                  : 'linear-gradient(135deg, #e23636, #ff7f3f)',
+                boxShadow: isPlaying
+                  ? '0 6px 0 #065f46, 0 10px 30px rgba(16,185,129,0.5)'
+                  : '0 6px 0 #991b1b, 0 10px 30px rgba(226,54,54,0.5)',
+                textShadow: '2px 2px 0 rgba(0,0,0,0.25)',
+                letterSpacing: '0.05em',
+              }}
+            >
+              {isPlaying ? '🔊 Playing...' : '🎙️ PRESS ME!'}
+            </div>
+          </button>
+          <p className="text-sm font-bold text-disney-purple mt-3" style={{ fontFamily: "'Fredoka One', cursive" }}>
+            Hear a message from Arabella!
           </p>
         </div>
 
