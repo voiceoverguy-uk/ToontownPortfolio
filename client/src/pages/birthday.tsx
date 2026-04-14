@@ -24,7 +24,7 @@ function fireConfetti() {
 
 const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
-const DAD_PHONE = '07973350178';
+const DAD_WHATSAPP = 'https://wa.me/447973350178?text=Hi%21%20I%27d%20love%20to%20come%20to%20Arabella%27s%20birthday%20party%20%F0%9F%8E%89';
 
 const PARTY_DATE = new Date('2026-06-06T17:00:00');
 
@@ -398,14 +398,16 @@ export default function Birthday() {
             RSVP 📱
           </p>
           <p className="text-white font-bold mb-3 opacity-90" style={{ fontFamily: "'Fredoka One', cursive" }}>
-            Can you come? Let us know by texting Dad!
+            Can you come? Let us know by WhatsApp!
           </p>
           <a
-            href={`sms:${DAD_PHONE}`}
-            className="inline-block rounded-2xl px-8 py-3 font-black text-xl text-toontown-darkbrown shadow-lg border-4 border-white hover:scale-105 transition-transform duration-200"
-            style={{ background: '#f5c842', fontFamily: "'Luckiest Guy', cursive", textShadow: 'none' }}
+            href={DAD_WHATSAPP}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-2xl px-8 py-3 font-black text-xl text-white shadow-lg border-4 border-white hover:scale-105 transition-transform duration-200"
+            style={{ background: '#25D366', fontFamily: "'Luckiest Guy', cursive", textShadow: 'none' }}
           >
-            📲 Text Dad
+            💬 WhatsApp Dad
           </a>
         </div>
 
