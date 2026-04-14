@@ -73,7 +73,7 @@ const activities = [
     id: 'spa',
     emoji: '💅',
     title: 'Mini Spa',
-    desc: 'Nails, face masks, the works. Full pamper mode is ON.',
+    desc: 'Nails, face masks, the works. Full pamper mode is ON. (Do your own feet though!)',
     colour: 'bg-toontown-green border-disney-blue',
     textColour: 'text-white',
   },
