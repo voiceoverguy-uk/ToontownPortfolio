@@ -1,6 +1,26 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'wouter';
 import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
+import confetti from 'canvas-confetti';
+
+const PARTY_COLOURS = ['#e23636', '#f5c842', '#8b5cf6', '#4a90e2', '#ff7f3f', '#10b981'];
+
+function fireConfetti() {
+  const opts = {
+    colors: PARTY_COLOURS,
+    startVelocity: 45,
+    spread: 120,
+    ticks: 120,
+    gravity: 0.9,
+    scalar: 1.1,
+    origin: { x: 0.5, y: 0.55 },
+  };
+  confetti({ ...opts, particleCount: 80, angle: 90 });
+  setTimeout(() => {
+    confetti({ ...opts, particleCount: 60, angle: 75, origin: { x: 0.35, y: 0.6 } });
+    confetti({ ...opts, particleCount: 60, angle: 105, origin: { x: 0.65, y: 0.6 } });
+  }, 300);
+}
 
 const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
@@ -112,6 +132,7 @@ export default function Birthday() {
     const audio = new Audio(BIRTHDAY_CLIPS[idx]);
     audioRef.current = audio;
     setIsPlaying(true);
+    fireConfetti();
     audio.play();
     audio.onended = () => setIsPlaying(false);
     audio.onerror = () => setIsPlaying(false);
