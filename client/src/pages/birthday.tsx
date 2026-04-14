@@ -24,7 +24,9 @@ function fireConfetti() {
 
 const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
-const PARTY_DATE = new Date('2026-06-04T17:00:00');
+const DAD_PHONE = 'YOUR_NUMBER_HERE';
+
+const PARTY_DATE = new Date('2026-06-06T17:00:00');
 
 const activities = [
   {
@@ -160,7 +162,7 @@ export default function Birthday() {
     const prevTwDesc = document.querySelector('meta[name="twitter:description"]')?.getAttribute('content') ?? '';
 
     const bdTitle = "Arabella's 10th Birthday Party! 🎉";
-    const bdDesc = "You're invited to Arabella's 10th birthday sleepover! Movies, karaoke, spa, chicken tenders and more. 4th June 2026 🎂";
+    const bdDesc = "You're invited to Arabella's 10th birthday sleepover party on Saturday 6th June 2026! Movies, karaoke, spa, chicken tenders and more. 🎂";
     const bdUrl = 'https://www.arabellaharris.com/birthday';
 
     document.title = bdTitle;
@@ -278,18 +280,38 @@ export default function Birthday() {
             ARABELLA<br />{Date.now() >= new Date('2026-06-04').getTime() ? 'IS 10! 🎂' : 'WILL BE 10! 🎂'}
           </h1>
           <p className="text-xl md:text-2xl font-bold text-disney-purple mt-2" style={{ fontFamily: "'Fredoka One', cursive" }}>
-            Thursday 4th June 2026
+            Birthday: Wednesday 4th June 🎂
+          </p>
+          <p className="text-lg font-bold text-mickey-orange mt-1" style={{ fontFamily: "'Fredoka One', cursive" }}>
+            Party: Saturday 6th June 2026 🎉
           </p>
         </div>
 
         {/* You're Invited */}
-        <div className="rounded-3xl p-6 mb-8 text-center shadow-xl border-4 border-mickey-yellow" style={{ background: 'linear-gradient(135deg, #8b5cf6, #4a90e2)' }}>
+        <div className="rounded-3xl p-6 mb-5 text-center shadow-xl border-4 border-mickey-yellow" style={{ background: 'linear-gradient(135deg, #8b5cf6, #4a90e2)' }}>
           <p className="text-3xl font-black text-white mb-1" style={{ fontFamily: "'Luckiest Guy', cursive", textShadow: '2px 2px 0 rgba(0,0,0,0.3)' }}>
             YOU'RE INVITED! 🎀
           </p>
           <p className="text-white text-lg font-bold opacity-90" style={{ fontFamily: "'Fredoka One', cursive" }}>
-            Arabella is turning 10 and she'd love you to come for a very special sleepover party!
+            Arabella is turning 10 and she'd love you to join her for a very special sleepover party on <span className="underline">Saturday 6th June</span>!
           </p>
+        </div>
+
+        {/* RSVP */}
+        <div className="rounded-3xl p-5 mb-8 text-center shadow-xl border-4 border-toontown-green" style={{ background: 'linear-gradient(135deg, #10b981, #4a90e2)' }}>
+          <p className="text-2xl font-black text-white mb-1" style={{ fontFamily: "'Luckiest Guy', cursive", textShadow: '2px 2px 0 rgba(0,0,0,0.25)' }}>
+            RSVP 📱
+          </p>
+          <p className="text-white font-bold mb-3 opacity-90" style={{ fontFamily: "'Fredoka One', cursive" }}>
+            Can you come? Let us know by texting Dad!
+          </p>
+          <a
+            href={`sms:${DAD_PHONE}`}
+            className="inline-block rounded-2xl px-8 py-3 font-black text-xl text-toontown-darkbrown shadow-lg border-4 border-white hover:scale-105 transition-transform duration-200"
+            style={{ background: '#f5c842', fontFamily: "'Luckiest Guy', cursive", textShadow: 'none' }}
+          >
+            📲 Text Dad
+          </a>
         </div>
 
         {/* PRESS ME */}
