@@ -151,6 +151,35 @@ export default function Birthday() {
     );
   }, []);
 
+  useEffect(() => {
+    const prevTitle = document.title;
+    const prevOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content') ?? '';
+    const prevOgDesc = document.querySelector('meta[property="og:description"]')?.getAttribute('content') ?? '';
+    const prevOgUrl = document.querySelector('meta[property="og:url"]')?.getAttribute('content') ?? '';
+    const prevTwTitle = document.querySelector('meta[name="twitter:title"]')?.getAttribute('content') ?? '';
+    const prevTwDesc = document.querySelector('meta[name="twitter:description"]')?.getAttribute('content') ?? '';
+
+    const bdTitle = "Arabella's 10th Birthday Party! 🎉";
+    const bdDesc = "You're invited to Arabella's 10th birthday sleepover! Movies, karaoke, spa, chicken tenders and more. 4th June 2026 🎂";
+    const bdUrl = 'https://www.arabellaharris.com/birthday';
+
+    document.title = bdTitle;
+    document.querySelector('meta[property="og:title"]')?.setAttribute('content', bdTitle);
+    document.querySelector('meta[property="og:description"]')?.setAttribute('content', bdDesc);
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', bdUrl);
+    document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', bdTitle);
+    document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', bdDesc);
+
+    return () => {
+      document.title = prevTitle;
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', prevOgTitle);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', prevOgDesc);
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', prevOgUrl);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', prevTwTitle);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', prevTwDesc);
+    };
+  }, []);
+
   const pad = (n: number) => String(n).padStart(2, '0');
 
   const scrollTo = (href: string) => {
