@@ -151,7 +151,7 @@ export default function Birthday() {
               WebkitTextStroke: '1px #5c2d0e',
             }}
           >
-            ARABELLA<br />IS 10! 🎂
+            ARABELLA<br />{Date.now() >= new Date('2026-06-04').getTime() ? 'IS 10! 🎂' : 'WILL BE 10! 🎂'}
           </h1>
           <p
             className="text-xl md:text-2xl font-bold text-disney-purple mt-2"
