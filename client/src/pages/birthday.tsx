@@ -66,14 +66,14 @@ const activities = [
 ];
 
 const navLinks = [
-  { label: '🎬 Movie Time', href: '#movie' },
-  { label: '🎨 Crafting', href: '#crafting' },
-  { label: '🩷 Free Robes', href: '#robes' },
-  { label: '🍗 Chicken Tenders', href: '#chicken' },
-  { label: '🎤 Karaoke', href: '#karaoke' },
-  { label: '💅 Mini Spa', href: '#spa' },
-  { label: '🌙 Sleepover', href: '#sleepover' },
-  { label: '🎒 What to Bring', href: '#bring' },
+  { label: '🎬 Movie Time', short: '🎬 Movie', href: '#movie' },
+  { label: '🎨 Crafting', short: '🎨 Crafting', href: '#crafting' },
+  { label: '🩷 Free Robes', short: '🩷 Robes', href: '#robes' },
+  { label: '🍗 Chicken Tenders', short: '🍗 Chicken', href: '#chicken' },
+  { label: '🎤 Karaoke', short: '🎤 Karaoke', href: '#karaoke' },
+  { label: '💅 Mini Spa', short: '💅 Spa', href: '#spa' },
+  { label: '🌙 Sleepover', short: '🌙 Sleepover', href: '#sleepover' },
+  { label: '🎒 What to Bring', short: '🎒 Bring', href: '#bring' },
 ];
 
 function useCountdown(target: Date) {
@@ -154,15 +154,15 @@ export default function Birthday() {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex items-center gap-1 lg:gap-2 flex-wrap justify-end">
+          <div className="hidden md:flex items-center gap-1 flex-wrap justify-end">
             {navLinks.map((l) => (
               <button
                 key={l.href}
                 onClick={() => scrollTo(l.href)}
-                className="font-bold text-base px-3 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent hover:bg-mickey-yellow/40 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400"
+                className="font-bold text-sm px-2 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent hover:bg-mickey-yellow/40 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400"
                 style={{ fontFamily: "'Fredoka One', cursive" }}
               >
-                {l.label}
+                {l.short}
               </button>
             ))}
           </div>
