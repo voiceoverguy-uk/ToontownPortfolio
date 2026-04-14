@@ -24,7 +24,7 @@ function fireConfetti() {
 
 const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
-const DAD_PHONE = 'YOUR_NUMBER_HERE';
+const DAD_PHONE = '07973350178';
 
 const PARTY_DATE = new Date('2026-06-06T17:00:00');
 
