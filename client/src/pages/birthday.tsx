@@ -124,6 +124,7 @@ export default function Birthday() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastClipRef = useRef<number>(-1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasPlayed, setHasPlayed] = useState(false);
 
   const playRandomClip = () => {
     let idx: number;
@@ -134,6 +135,7 @@ export default function Birthday() {
     const audio = new Audio(BIRTHDAY_CLIPS[idx]);
     audioRef.current = audio;
     setIsPlaying(true);
+    setHasPlayed(true);
     fireConfetti();
     audio.play();
     audio.onended = () => setIsPlaying(false);
@@ -318,7 +320,7 @@ export default function Birthday() {
             </div>
           </button>
           <p className="text-sm font-bold text-disney-purple mt-3" style={{ fontFamily: "'Fredoka One', cursive" }}>
-            Hear a message from Arabella!
+            {hasPlayed && !isPlaying ? '...again!' : 'Hear a message from Arabella!'}
           </p>
         </div>
 
