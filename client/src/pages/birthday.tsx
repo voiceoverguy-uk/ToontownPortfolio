@@ -26,7 +26,7 @@ const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
 const DAD_WHATSAPP = 'https://wa.me/447973350178?text=Hi%21%20I%27d%20love%20to%20come%20to%20Arabella%27s%20birthday%20party%20%F0%9F%8E%89';
 
-const PARTY_DATE = new Date('2026-06-06T17:00:00');
+const PARTY_DATE = new Date('2026-06-06T13:00:00');
 
 const activities = [
   {
@@ -283,7 +283,7 @@ export default function Birthday() {
             Birthday: Wednesday 4th June 🎂
           </p>
           <p className="text-2xl md:text-3xl font-black text-mickey-orange mt-1" style={{ fontFamily: "'Fredoka One', cursive" }}>
-            Party: Saturday 6th June 2026 🎉
+            Party: Saturday 6th June 2026 at 1pm 🎉
           </p>
         </div>
 
