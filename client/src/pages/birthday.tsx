@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { PageShell } from '@/components/PageShell';
+import { Link } from 'wouter';
+import arabellaNavLogo from '@assets/arabella-harris-navigation-bar_1757607955178.jpg';
 
 const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
@@ -7,6 +8,7 @@ const PARTY_DATE = new Date('2026-06-04T17:00:00');
 
 const activities = [
   {
+    id: 'crafting',
     emoji: '🎨',
     title: 'Snack Box Crafting',
     desc: 'We\'re making our very own personalised snack boxes — decorate yours and fill it with treats!',
@@ -14,6 +16,7 @@ const activities = [
     textColour: 'text-toontown-darkbrown',
   },
   {
+    id: 'karaoke',
     emoji: '🎤',
     title: 'Karaoke',
     desc: 'Grab the mic and sing your heart out! Bops only, no bad vibes allowed.',
@@ -21,6 +24,7 @@ const activities = [
     textColour: 'text-white',
   },
   {
+    id: 'movie',
     emoji: '🎬',
     title: 'Movie in the Cinema Room',
     desc: 'We\'ve got the whole cinema room to ourselves — snuggle up and watch something amazing!',
@@ -28,6 +32,7 @@ const activities = [
     textColour: 'text-white',
   },
   {
+    id: 'chicken',
     emoji: '🍗',
     title: 'Chicken Tenders & Snacks',
     desc: 'The best birthday food ever. Chicken tenders, dips, and all the snacks you could ever want.',
@@ -35,6 +40,7 @@ const activities = [
     textColour: 'text-white',
   },
   {
+    id: 'robes',
     emoji: '🩷',
     title: 'Birthday Robes',
     desc: 'Everyone gets their very own birthday robe to wear all night. So cosy, so cute.',
@@ -42,6 +48,7 @@ const activities = [
     textColour: 'text-white',
   },
   {
+    id: 'spa',
     emoji: '💅',
     title: 'Mini Spa',
     desc: 'Nails, face masks, the works. Full pamper mode is ON.',
@@ -49,12 +56,21 @@ const activities = [
     textColour: 'text-white',
   },
   {
+    id: 'sleepover',
     emoji: '🌙',
     title: 'Sleepover!',
     desc: 'Stay the night, stay up late (maybe!), and wake up for the best morning ever.',
     colour: 'bg-disney-purple border-mickey-red',
     textColour: 'text-white',
   },
+];
+
+const navLinks = [
+  { label: '🎬 Movie Time', href: '#movie' },
+  { label: '🎨 Crafting', href: '#crafting' },
+  { label: '🩷 Free Robes', href: '#robes' },
+  { label: '🍗 Chicken Tenders', href: '#chicken' },
+  { label: '🎤 Karaoke', href: '#karaoke' },
 ];
 
 function useCountdown(target: Date) {
@@ -79,6 +95,7 @@ function useCountdown(target: Date) {
 export default function Birthday() {
   const { days, hours, minutes, seconds } = useCountdown(PARTY_DATE);
   const [confetti, setConfetti] = useState<{ id: number; x: number; colour: string; delay: number; size: number }[]>([]);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastClipRef = useRef<number>(-1);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -88,11 +105,7 @@ export default function Birthday() {
     do { idx = Math.floor(Math.random() * BIRTHDAY_CLIPS.length); }
     while (idx === lastClipRef.current && BIRTHDAY_CLIPS.length > 1);
     lastClipRef.current = idx;
-
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.currentTime = 0;
-    }
+    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
     const audio = new Audio(BIRTHDAY_CLIPS[idx]);
     audioRef.current = audio;
     setIsPlaying(true);
@@ -116,9 +129,66 @@ export default function Birthday() {
 
   const pad = (n: number) => String(n).padStart(2, '0');
 
+  const scrollTo = (href: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
-    <PageShell>
-    <div className="min-h-screen overflow-x-hidden pt-24" style={{ background: 'linear-gradient(135deg, #f9e4f0 0%, #e8f4fd 30%, #fef9e7 60%, #e8f4fd 100%)' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(135deg, #f9e4f0 0%, #e8f4fd 30%, #fef9e7 60%, #e8f4fd 100%)' }}>
+
+      {/* Birthday Nav */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/20 backdrop-blur-md border-b-4 border-mickey-yellow shadow-lg">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          {/* Logo → home */}
+          <Link href="/">
+            <img
+              src={arabellaNavLogo}
+              alt="Arabella Harris"
+              className="h-12 md:h-16 w-auto cursor-pointer hover:scale-105 transition-transform duration-300"
+            />
+          </Link>
+
+          {/* Desktop links */}
+          <div className="hidden md:flex items-center gap-1 lg:gap-2 flex-wrap justify-end">
+            {navLinks.map((l) => (
+              <button
+                key={l.href}
+                onClick={() => scrollTo(l.href)}
+                className="font-bold text-base px-3 py-2 rounded-xl transition-all duration-200 hover:scale-105 border-4 border-transparent hover:bg-mickey-yellow/40 text-toontown-darkbrown hover:shadow-md hover:border-yellow-400"
+                style={{ fontFamily: "'Fredoka One', cursive" }}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden bg-mickey-yellow text-toontown-darkbrown font-black rounded-xl p-3 text-xl border-4 border-mickey-orange shadow-md"
+          >
+            {mobileOpen ? '✕' : '☰'}
+          </button>
+        </div>
+
+        {/* Mobile menu */}
+        {mobileOpen && (
+          <div className="md:hidden bg-white/95 border-t-4 border-mickey-yellow px-6 py-4 space-y-2">
+            {navLinks.map((l) => (
+              <button
+                key={l.href}
+                onClick={() => scrollTo(l.href)}
+                className="w-full block font-bold text-lg py-3 px-4 rounded-xl text-center border-4 border-transparent hover:bg-mickey-yellow/30 text-toontown-darkbrown hover:border-yellow-400 transition-all"
+                style={{ fontFamily: "'Fredoka One', cursive" }}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </nav>
 
       {/* Floating confetti */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -133,13 +203,12 @@ export default function Birthday() {
               height: c.size,
               backgroundColor: c.colour,
               animation: `confettiFall ${4 + c.delay}s linear ${c.delay}s infinite`,
-              transform: `rotate(${Math.random() * 360}deg)`,
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 max-w-2xl mx-auto px-4 py-8">
+      <div className="relative z-10 max-w-2xl mx-auto px-4 pt-28 pb-8">
 
         {/* Header */}
         <div className="text-center mb-8">
@@ -155,19 +224,13 @@ export default function Birthday() {
           >
             ARABELLA<br />{Date.now() >= new Date('2026-06-04').getTime() ? 'IS 10! 🎂' : 'WILL BE 10! 🎂'}
           </h1>
-          <p
-            className="text-xl md:text-2xl font-bold text-disney-purple mt-2"
-            style={{ fontFamily: "'Fredoka One', cursive" }}
-          >
+          <p className="text-xl md:text-2xl font-bold text-disney-purple mt-2" style={{ fontFamily: "'Fredoka One', cursive" }}>
             Thursday 4th June 2026
           </p>
         </div>
 
-        {/* You're Invited card */}
-        <div
-          className="rounded-3xl p-6 mb-8 text-center shadow-xl border-4 border-mickey-yellow"
-          style={{ background: 'linear-gradient(135deg, #8b5cf6, #4a90e2)' }}
-        >
+        {/* You're Invited */}
+        <div className="rounded-3xl p-6 mb-8 text-center shadow-xl border-4 border-mickey-yellow" style={{ background: 'linear-gradient(135deg, #8b5cf6, #4a90e2)' }}>
           <p className="text-3xl font-black text-white mb-1" style={{ fontFamily: "'Luckiest Guy', cursive", textShadow: '2px 2px 0 rgba(0,0,0,0.3)' }}>
             YOU'RE INVITED! 🎀
           </p>
@@ -176,7 +239,7 @@ export default function Birthday() {
           </p>
         </div>
 
-        {/* PRESS ME button */}
+        {/* PRESS ME */}
         <div className="mb-8 text-center">
           <button
             onClick={playRandomClip}
@@ -187,12 +250,8 @@ export default function Birthday() {
               className="rounded-full px-10 py-6 font-black text-white text-3xl md:text-4xl shadow-2xl border-4 border-white"
               style={{
                 fontFamily: "'Luckiest Guy', cursive",
-                background: isPlaying
-                  ? 'linear-gradient(135deg, #10b981, #4a90e2)'
-                  : 'linear-gradient(135deg, #e23636, #ff7f3f)',
-                boxShadow: isPlaying
-                  ? '0 6px 0 #065f46, 0 10px 30px rgba(16,185,129,0.5)'
-                  : '0 6px 0 #991b1b, 0 10px 30px rgba(226,54,54,0.5)',
+                background: isPlaying ? 'linear-gradient(135deg, #10b981, #4a90e2)' : 'linear-gradient(135deg, #e23636, #ff7f3f)',
+                boxShadow: isPlaying ? '0 6px 0 #065f46, 0 10px 30px rgba(16,185,129,0.5)' : '0 6px 0 #991b1b, 0 10px 30px rgba(226,54,54,0.5)',
                 textShadow: '2px 2px 0 rgba(0,0,0,0.25)',
                 letterSpacing: '0.05em',
               }}
@@ -211,17 +270,9 @@ export default function Birthday() {
             ⏰ Party starts in...
           </p>
           <div className="grid grid-cols-4 gap-3">
-            {[
-              { label: 'Days', val: days },
-              { label: 'Hours', val: hours },
-              { label: 'Mins', val: minutes },
-              { label: 'Secs', val: seconds },
-            ].map(({ label, val }) => (
+            {[{ label: 'Days', val: days }, { label: 'Hours', val: hours }, { label: 'Mins', val: minutes }, { label: 'Secs', val: seconds }].map(({ label, val }) => (
               <div key={label} className="bg-white rounded-2xl border-4 border-disney-purple p-3 text-center shadow-lg">
-                <div
-                  className="text-3xl md:text-4xl font-black text-mickey-red leading-none"
-                  style={{ fontFamily: "'Luckiest Guy', cursive" }}
-                >
+                <div className="text-3xl md:text-4xl font-black text-mickey-red leading-none" style={{ fontFamily: "'Luckiest Guy', cursive" }}>
                   {pad(val)}
                 </div>
                 <div className="text-xs font-bold text-disney-purple uppercase tracking-wide mt-1" style={{ fontFamily: "'Fredoka One', cursive" }}>
@@ -236,26 +287,20 @@ export default function Birthday() {
         <div className="mb-8">
           <h2
             className="text-center text-3xl font-black mb-5"
-            style={{
-              fontFamily: "'Luckiest Guy', cursive",
-              color: '#ff7f3f',
-              textShadow: '2px 2px 0 #e23636',
-            }}
+            style={{ fontFamily: "'Luckiest Guy', cursive", color: '#ff7f3f', textShadow: '2px 2px 0 #e23636' }}
           >
             WHAT'S HAPPENING! 🌟
           </h2>
           <div className="space-y-4">
-            {activities.map((a, i) => (
+            {activities.map((a) => (
               <div
-                key={i}
-                className={`rounded-2xl border-4 p-4 shadow-lg flex items-start gap-4 ${a.colour}`}
+                key={a.id}
+                id={a.id}
+                className={`rounded-2xl border-4 p-4 shadow-lg flex items-start gap-4 scroll-mt-28 ${a.colour}`}
               >
                 <span className="text-4xl flex-shrink-0">{a.emoji}</span>
                 <div>
-                  <h3
-                    className={`text-xl font-black mb-1 ${a.textColour}`}
-                    style={{ fontFamily: "'Fredoka One', cursive" }}
-                  >
+                  <h3 className={`text-xl font-black mb-1 ${a.textColour}`} style={{ fontFamily: "'Fredoka One', cursive" }}>
                     {a.title}
                   </h3>
                   <p className={`text-sm font-semibold leading-snug ${a.textColour} opacity-90`}>
@@ -269,10 +314,7 @@ export default function Birthday() {
 
         {/* What to bring */}
         <div className="bg-white rounded-3xl border-4 border-mickey-yellow p-6 mb-8 shadow-lg">
-          <h2
-            className="text-center text-2xl font-black mb-4 text-mickey-orange"
-            style={{ fontFamily: "'Luckiest Guy', cursive" }}
-          >
+          <h2 className="text-center text-2xl font-black mb-4 text-mickey-orange" style={{ fontFamily: "'Luckiest Guy', cursive" }}>
             WHAT TO BRING 🎒
           </h2>
           <ul className="space-y-2">
@@ -292,11 +334,8 @@ export default function Birthday() {
           </ul>
         </div>
 
-        {/* Footer message */}
-        <div
-          className="rounded-3xl p-6 text-center shadow-xl border-4 border-mickey-red"
-          style={{ background: 'linear-gradient(135deg, #e23636, #ff7f3f)' }}
-        >
+        {/* Footer */}
+        <div className="rounded-3xl p-6 text-center shadow-xl border-4 border-mickey-red" style={{ background: 'linear-gradient(135deg, #e23636, #ff7f3f)' }}>
           <p className="text-white text-2xl font-black mb-1" style={{ fontFamily: "'Luckiest Guy', cursive", textShadow: '2px 2px 0 rgba(0,0,0,0.2)' }}>
             Can't wait to see you! 🥳
           </p>
@@ -305,9 +344,7 @@ export default function Birthday() {
           </p>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
-          arabellaharris.com/birthday
-        </p>
+        <p className="text-center text-xs text-gray-400 mt-6">arabellaharris.com/birthday</p>
       </div>
 
       <style>{`
@@ -317,6 +354,5 @@ export default function Birthday() {
         }
       `}</style>
     </div>
-    </PageShell>
   );
 }
