@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { PageShell } from '@/components/PageShell';
 
 const BIRTHDAY_CLIPS = ['/b1.mp3', '/b2.mp3', '/b3.mp3', '/b4.mp3'];
 
@@ -116,7 +117,8 @@ export default function Birthday() {
   const pad = (n: number) => String(n).padStart(2, '0');
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ background: 'linear-gradient(135deg, #f9e4f0 0%, #e8f4fd 30%, #fef9e7 60%, #e8f4fd 100%)' }}>
+    <PageShell>
+    <div className="min-h-screen overflow-x-hidden pt-24" style={{ background: 'linear-gradient(135deg, #f9e4f0 0%, #e8f4fd 30%, #fef9e7 60%, #e8f4fd 100%)' }}>
 
       {/* Floating confetti */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
@@ -315,5 +317,6 @@ export default function Birthday() {
         }
       `}</style>
     </div>
+    </PageShell>
   );
 }
