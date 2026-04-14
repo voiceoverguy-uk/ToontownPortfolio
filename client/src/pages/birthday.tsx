@@ -49,7 +49,7 @@ const activities = [
     id: 'movie',
     emoji: '🎬',
     title: 'Movie in the Cinema Room',
-    desc: 'We\'ve got the whole cinema room to ourselves — snuggle up and watch something amazing!',
+    desc: 'We\'ve got the whole cinema room to ourselves — snuggle up and watch something amazing! Horror movies and Bambi?',
     colour: 'bg-disney-blue border-disney-purple',
     textColour: 'text-white',
   },
