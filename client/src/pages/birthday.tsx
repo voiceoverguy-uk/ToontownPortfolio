@@ -81,7 +81,7 @@ const activities = [
     id: 'sleepover',
     emoji: '🌙',
     title: 'Sleepover!',
-    desc: 'Stay the night, stay up late (maybe!), and wake up for the best morning ever.',
+    desc: 'Stay the night, stay up late (maybe!), and wake up for the best morning ever. If your best morning is 6am and cold porridge!',
     colour: 'bg-disney-purple border-mickey-red',
     textColour: 'text-white',
   },
