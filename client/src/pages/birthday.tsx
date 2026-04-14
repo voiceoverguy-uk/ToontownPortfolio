@@ -65,7 +65,7 @@ const activities = [
     id: 'robes',
     emoji: '🩷',
     title: 'Birthday Robes',
-    desc: 'Everyone gets their very own birthday robe to wear all night. So cosy, so cute.',
+    desc: 'Everyone gets their very own birthday robe to wear all night. So cosy, so cute. High quality from Shein!',
     colour: 'bg-mickey-red border-mickey-orange',
     textColour: 'text-white',
   },
