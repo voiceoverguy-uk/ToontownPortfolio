@@ -297,23 +297,6 @@ export default function Birthday() {
           </p>
         </div>
 
-        {/* RSVP */}
-        <div className="rounded-3xl p-5 mb-8 text-center shadow-xl border-4 border-toontown-green" style={{ background: 'linear-gradient(135deg, #10b981, #4a90e2)' }}>
-          <p className="text-2xl font-black text-white mb-1" style={{ fontFamily: "'Luckiest Guy', cursive", textShadow: '2px 2px 0 rgba(0,0,0,0.25)' }}>
-            RSVP 📱
-          </p>
-          <p className="text-white font-bold mb-3 opacity-90" style={{ fontFamily: "'Fredoka One', cursive" }}>
-            Can you come? Let us know by texting Dad!
-          </p>
-          <a
-            href={`sms:${DAD_PHONE}`}
-            className="inline-block rounded-2xl px-8 py-3 font-black text-xl text-toontown-darkbrown shadow-lg border-4 border-white hover:scale-105 transition-transform duration-200"
-            style={{ background: '#f5c842', fontFamily: "'Luckiest Guy', cursive", textShadow: 'none' }}
-          >
-            📲 Text Dad
-          </a>
-        </div>
-
         {/* PRESS ME */}
         <div className="mb-8 text-center">
           <button
@@ -407,6 +390,23 @@ export default function Birthday() {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* RSVP */}
+        <div className="rounded-3xl p-5 mb-8 text-center shadow-xl border-4 border-toontown-green" style={{ background: 'linear-gradient(135deg, #10b981, #4a90e2)' }}>
+          <p className="text-2xl font-black text-white mb-1" style={{ fontFamily: "'Luckiest Guy', cursive", textShadow: '2px 2px 0 rgba(0,0,0,0.25)' }}>
+            RSVP 📱
+          </p>
+          <p className="text-white font-bold mb-3 opacity-90" style={{ fontFamily: "'Fredoka One', cursive" }}>
+            Can you come? Let us know by texting Dad!
+          </p>
+          <a
+            href={`sms:${DAD_PHONE}`}
+            className="inline-block rounded-2xl px-8 py-3 font-black text-xl text-toontown-darkbrown shadow-lg border-4 border-white hover:scale-105 transition-transform duration-200"
+            style={{ background: '#f5c842', fontFamily: "'Luckiest Guy', cursive", textShadow: 'none' }}
+          >
+            📲 Text Dad
+          </a>
         </div>
 
         {/* Footer */}
