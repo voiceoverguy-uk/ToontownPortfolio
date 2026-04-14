@@ -41,7 +41,7 @@ const activities = [
     id: 'karaoke',
     emoji: '🎤',
     title: 'Karaoke',
-    desc: 'Grab the mic and sing your heart out! Bops only, no bad vibes allowed.',
+    desc: 'Grab the mic and sing your heart out! Bops only, no bad vibes allowed. Bad singers will be evicted!',
     colour: 'bg-disney-purple border-disney-blue',
     textColour: 'text-white',
   },
