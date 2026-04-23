@@ -460,6 +460,28 @@ export default function Home() {
             </div>
             </div>
 
+          {/* Zara Home Kids Video - Always Visible */}
+          <div data-testid="zara-video-content">
+            <section id="zara-video" className="mb-12 scroll-mt-24" data-testid="zara-video-section">
+              <div className="text-center mb-8">
+                <Play className="text-disney-purple text-4xl mb-4 mx-auto" data-testid="zara-video-icon" />
+                <h3 className="font-bold text-3xl md:text-4xl text-disney-purple">Watch the Zara Home Kids Film</h3>
+                <p className="font-bold text-lg text-toontown-darkbrown mt-2" style={{ fontFamily: '"Fredoka One", cursive' }}>
+                  Featuring the voice of Arabella
+                </p>
+              </div>
+
+              <div className="max-w-3xl mx-auto">
+                <YouTubeVideo
+                  videoId="22iYJ6R7tWU"
+                  title="Zara Home Kids Film featuring Arabella Harris"
+                  label="Credit: Zara Home Kids"
+                  testId="zara"
+                />
+              </div>
+            </section>
+          </div>
+
           {/* Testimonials Section - Always Visible */}
           <TestimonialsCarousel />
 
