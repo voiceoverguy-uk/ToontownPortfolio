@@ -8,8 +8,8 @@ const formSchema = z.object({
   name: z.string().min(1, 'Please enter your name'),
   email: z.string().email('Please enter a valid email address'),
   message: z.string().refine(
-    (val) => val.trim().split(/\s+/).filter(Boolean).length >= 8,
-    { message: 'Please write at least 8 words so we know how to help' }
+    (val) => val.trim().split(/\s+/).filter(Boolean).length >= 7,
+    { message: 'Please write at least 7 words so we know how to help' }
   ),
   website: z.string().optional(),
 });

@@ -51,9 +51,6 @@ export function PageShell({ children }: PageShellProps) {
                 <a href="/#audio-showreel" className={navLinkClass}>
                   🎵 Arabella's Showreels
                 </a>
-                <a href="/#video-showreel" className={navLinkClass}>
-                  🎬 Dad's Showreel
-                </a>
                 <Link href="/british-young-girl-voiceover" className={navLinkClass}>
                   🇬🇧 British Girl Voiceover
                 </Link>
@@ -86,9 +83,6 @@ export function PageShell({ children }: PageShellProps) {
                 <div className="space-y-3">
                   <a href="/#audio-showreel" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
                     🎵 Arabella's Showreels
-                  </a>
-                  <a href="/#video-showreel" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
-                    🎬 Dad's Showreel
                   </a>
                   <Link href="/british-young-girl-voiceover" className={mobileLinkClass} onClick={() => setIsMobileMenuOpen(false)}>
                     🇬🇧 British Girl Voiceover
